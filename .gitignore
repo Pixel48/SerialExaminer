@@ -9,7 +9,6 @@ __pycache__/
 # Distribution / packaging
 .Python
 build/
-test/
 develop-eggs/
 dist/
 downloads/
@@ -40,6 +39,9 @@ pip-delete-this-directory.txt
 
 # Unit test / coverage reports
 htmlcov/
+test/
+*.bat
+*.cmd
 .tox/
 .nox/
 .coverage
