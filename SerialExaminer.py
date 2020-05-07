@@ -16,6 +16,8 @@ C = 0
 INPUT_FILES = None
 OUTPUT_FILE = None
 KEY_FILE = None
+qestionCount = 0
+answersCount = 0
 
 def newRow(arg = 1):
   global C, R
@@ -131,11 +133,12 @@ class MainWindow(object):
 class KeyCreatorWindow(object):
   """Creator for CreateKey Window"""
   def __init__(self, master):
-    self.questionCount = 40
-    self.answersCount = 4
+    global questionCount
+    questionCount = 40
+    global answersCount
+    answersCount = 4
     self.master = master
     self.frame = Frame(self.master)
-    self.master.grab_set()
     self.build(self.frame)
     self.frame.grid()
   def build(self, frame):
@@ -169,7 +172,7 @@ class KeyCreatorWindow(object):
     # countLabel
     newCol()
     self.questionLabelCount = Label(frame)
-    self.questionLabelCount['text'] = self.questionCount
+    self.questionLabelCount['text'] = questionCount
     self.questionLabelCount['width'] = 3
     self.questionLabelCount.grid(row = R, column = C)
     # button +1
@@ -186,29 +189,29 @@ class KeyCreatorWindow(object):
     self.questionButtonPlus10['width'] = 3
     self.questionButtonPlus10['command'] = self.questionCountPlus10
     self.questionButtonPlus10.grid(row = R, column = C)
-    # posible answears quantinity #
-    # label
-    newRow()
-    self.answersQuantinity = Label(frame)
-    self.answersQuantinity['text'] = "Posible answears quantinity"
-    self.answersQuantinity.grid(row = R, column = C)
-    # 2 radio
-    newCol()
-    self.answers2 = Radiobutton(frame)
-    self.answers2['variable'] = self.answersCount
-    self.answers2['text'] = "2"
-    self.answers2['value'] = 2
-    self.answers2.deselect()
-    self.answers2.grid(row = R, column = C, columnspan = 2)
-    # 4
-    newCol()
-    newCol()
-    self.answers4 = Radiobutton(frame)
-    self.answers4['variable'] = self.answersCount
-    self.answers4['text'] = "4"
-    self.answers4['value'] = 4
-    self.answers4.select()
-    self.answers4.grid(row = R, column = C, columnspan = 2)
+    # # posible answears quantinity # # NOTE: conented for now, i'll use it leater
+    # # label
+    # newRow()
+    # self.answersQuantinity = Label(frame)
+    # self.answersQuantinity['text'] = "Posible answears quantinity"
+    # self.answersQuantinity.grid(row = R, column = C)
+    # # 2 radio
+    # newCol()
+    # self.answers2 = Radiobutton(frame)
+    # self.answers2['variable'] = self.answersCount
+    # self.answers2['text'] = "2"
+    # self.answers2['value'] = 2
+    # self.answers2.deselect()
+    # self.answers2.grid(row = R, column = C, columnspan = 2)
+    # # 4
+    # newCol()
+    # newCol()
+    # self.answers4 = Radiobutton(frame)
+    # self.answers4['variable'] = self.answersCount
+    # self.answers4['text'] = "4"
+    # self.answers4['value'] = 4
+    # self.answers4.select()
+    # self.answers4.grid(row = R, column = C, columnspan = 2)
     # main key creator init button #
     newRow()
     self.nextWindowFont = tkFont.Font(size = 14)
@@ -218,31 +221,34 @@ class KeyCreatorWindow(object):
     self.nextWindow.grid(row = R, column = C, columnspan = 6, sticky = 'we')
 
   def questionCountMinus10(self):
-    self.questionCount -= 10
-    if self.questionCount < 1:
-      self.questionCount = 100
-    self.questionLabelCount['text'] = self.questionCount
+    global questionCount
+    questionCount -= 10
+    if questionCount < 1:
+      questionCount = 100
+    self.questionLabelCount['text'] = questionCount
   def questionCountMinus1(self):
-    self.questionCount -= 1
-    if self.questionCount < 1:
-      self.questionCount = 100
-    self.questionLabelCount['text'] = self.questionCount
+    global questionCount
+    questionCount -= 1
+    if questionCount < 1:
+      questionCount = 100
+    self.questionLabelCount['text'] = questionCount
   def questionCountPlus1(self):
-    self.questionCount += 1
-    if self.questionCount > 100:
-      self.questionCount = 1
-    self.questionLabelCount['text'] = self.questionCount
+    global questionCount
+    questionCount += 1
+    if questionCount > 100:
+      questionCount = 1
+    self.questionLabelCount['text'] = questionCount
   def questionCountPlus10(self):
-    self.questionCount += 10
-    if self.questionCount > 100:
-      self.questionCount = 1
-    self.questionLabelCount['text'] = self.questionCount
+    global questionCount
+    questionCount += 10
+    if questionCount > 100:
+      questionCount = 10
+    self.questionLabelCount['text'] = questionCount
   def mainKeyCreator(self):
     self.mainWindowCreateKey = Toplevel(self.master)
     self.app = MainKeyCreatorWindow(self.mainWindowCreateKey)
 
   def die(self):
-    self.master.grab_release()
     self.master.destroy()
 
 class MainKeyCreatorWindow(object):
@@ -250,14 +256,80 @@ class MainKeyCreatorWindow(object):
   def __init__(self, master):
     self.master = master
     self.frame = Frame(self.master)
-    self.master.grab_set()
-    self.build()
+    self.questionNo = 1
+    self.build(self.frame)
     self.frame.grid()
-  def build(self):
-    pass
+  def build(self, frame):
+    zeroCol()
+    # main label #
+    # label/counter
+    self.mainFont = tkFont.Font(size = 14)
+    self.mainLabel = Label(frame, font = self.mainFont)
+    self.mainLabelUpdate()
+    self.mainLabel.grid(row = R, column = C, columnspan = 5)
+    # question/answer buttons
+    # back button
+    newRow()
+    self.backButton = Button(frame)
+    self.backButton['width'] = 3
+    self.backButton['text'] = "<"
+    self.backButton['command'] = self.backQuestion
+    self.backButton.grid(row = R, column = C)
+    # A
+    newCol()
+    self.aButton = Button(frame)
+    self.aButton['width'] = 3
+    self.aButton['text'] = "A"
+    self.aButton['command'] = self.aAnswer
+    self.aButton.grid(row = R, column = C)
+    # B
+    newCol()
+    self.bButton = Button(frame)
+    self.bButton['width'] = 3
+    self.bButton['text'] = "B"
+    self.bButton['command'] = self.bAnswer
+    self.bButton.grid(row = R, column = C)
+    # C
+    newCol()
+    self.cButton = Button(frame)
+    self.cButton['width'] = 3
+    self.cButton['text'] = "C"
+    self.cButton['command'] = self.cAnswer
+    self.cButton.grid(row = R, column = C)
+    # D
+    newCol()
+    self.dButton = Button(frame)
+    self.dButton['width'] = 3
+    self.dButton['text'] = "D"
+    self.dButton['command'] = self.dAnswer
+    self.dButton.grid(row = R, column = C)
 
+  def backQuestion(self):
+    self.questionNo -= 1
+    self.mainLabelUpdate()
+  def aAnswer(self):
+    self.bindAnswer(self.questionNo, "A")
+    self.questionNo += 1
+    self.mainLabelUpdate()
+  def bAnswer(self):
+    self.bindAnswer(self.questionNo, "B")
+    self.questionNo += 1
+    self.mainLabelUpdate()
+  def cAnswer(self):
+    self.bindAnswer(self.questionNo, "C")
+    self.questionNo += 1
+    self.mainLabelUpdate()
+  def dAnswer(self):
+    self.bindAnswer(self.questionNo, "D")
+    self.questionNo += 1
+    self.mainLabelUpdate()
+  def bindAnswer(self, questionNumber, questionAnswer):
+    pass
+  def mainLabelUpdate(self):
+    self.mainLabel['text'] = "Question " + str(self.questionNo)
+    if self.questionNo > questionCount:
+      self.die()
   def die(self):
-    self.master.grab_release()
     self.master.destroy()
 
 def main():
