@@ -8,7 +8,6 @@
 from tkinter import *
 from tkinter import filedialog
 import tkinter.font as tkFont
-# import os, pickle, csv # NOTE: Not used yet
 
 # SOME GLOBALS
 R = 0
@@ -113,19 +112,33 @@ class MainWindow(object):
     self.outputButtonExport['state'] = DISABLED
     self.outputButtonExport.grid(row = R, column = C)
 
-  def browseExams(self):
-    global INPUT_FILES
-    INPUT_FILES = os.path.normpath(filedialog.askdirectory())
   def createKey(self):
     self.windowCreateKey = Toplevel(self.master)
     self.app = KeyCreatorWindow(self.windowCreateKey)
   def importKey(self):
+    global KEY_FILE
+    self.keyButtonImport['state'] = DISABLED
+    self.keyButtonCreate['state'] = DISABLED
+    KEY_FILE = os.path.normpath(filedialog.askopenfilename(
+      title = "Select exam key file",
+      initialdir = '.',
+      filetypes =(("Python binary files", "*.dat"),
+                  # ("Csv files", "*.csv"), # TODO: add csv key import
+                  # ("Excel sheets", "*.xml"), # TODO: add xml key import
+                  ("All files", "*.*"))
+    ))
+    self.keyButtonImport['state'] = NORMAL
+    self.keyButtonCreate['state'] = NORMAL
+    if ".dat" in KEY_FILE:
+      self.inputButton['state'] = NORMAL
+  def browseExams(self):
+    global INPUT_FILES
+    INPUT_FILES = os.path.normpath(filedialog.askdirectory())
+  def examinate(self):
     pass
   def resultDisplay(self):
     pass
   def resultExport(self):
-    pass
-  def examinate(self):
     pass
 
 class KeyCreatorWindow(object):
@@ -135,7 +148,6 @@ class KeyCreatorWindow(object):
     self.answersCount = 4
     self.master = master
     self.frame = Frame(self.master)
-    self.master.grab_set()
     self.build(self.frame)
     self.frame.grid()
   def build(self, frame):
@@ -242,7 +254,6 @@ class KeyCreatorWindow(object):
     self.app = MainKeyCreatorWindow(self.mainWindowCreateKey)
 
   def die(self):
-    self.master.grab_release()
     self.master.destroy()
 
 class MainKeyCreatorWindow(object):
@@ -250,14 +261,12 @@ class MainKeyCreatorWindow(object):
   def __init__(self, master):
     self.master = master
     self.frame = Frame(self.master)
-    self.master.grab_set()
     self.build()
     self.frame.grid()
   def build(self):
     pass
 
   def die(self):
-    self.master.grab_release()
     self.master.destroy()
 
 def main():
@@ -269,7 +278,6 @@ def main():
   x = (ws/20)*10
   y = (hs/20)*9
   # root.geometry('+%d+%d'%(x, y)) # set position
-  root.iconbitmap(r'./ico.ico') # ico
   app = MainWindow(root)
   root.mainloop()
 
