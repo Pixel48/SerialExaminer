@@ -8,7 +8,7 @@
 from tkinter import *
 from tkinter import filedialog
 import tkinter.font as tkFont
-import os, pickle, csv
+import os#, pickle, csv # NOTE: not used yet
 
 # SOME GLOBALS
 R = 0
@@ -132,7 +132,7 @@ def main():
   x = (ws/20)*10
   y = (hs/20)*9
   root.geometry('+%d+%d'%(x, y)) # set position
-  root.iconbitmap(r'./ico.ico') # ico
+  root.iconbitmap(r'./ico.ico') # icon
   app = MainWindow(root)
   root.mainloop()
 
