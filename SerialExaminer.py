@@ -8,7 +8,7 @@
 from tkinter import *
 from tkinter import filedialog
 import tkinter.font as tkFont
-import os, pickle, csv
+# import os, pickle, csv # NOTE: Not used yet
 
 # SOME GLOBALS
 R = 0
@@ -16,8 +16,6 @@ C = 0
 INPUT_FILES = None
 OUTPUT_FILE = None
 KEY_FILE = None
-signatureFont = tkFont.Font(size =7)
-mainFont = tkFont.Font(size=20)
 
 def newRow(arg = 1):
   global C, R
@@ -37,18 +35,19 @@ class MainWindow(object):
     self.frame = Frame(self.master)
     self.build(self.frame)
     self.frame.grid()
-
   def build(self, frame):
     zeroCol()
     # signature stuff #
-    self.gh = Label(frame, font = signatureFont)
+    self.signatureFont = tkFont.Font(size = 7)
+    self.gh = Label(frame, font = self.signatureFont)
     self.gh['text'] = "GitHub.com/Pixel48/SerialExaminer"
     self.gh['fg'] = 'grey'
     self.gh.grid(row = 99, column = 0, columnspan = 3, sticky = 'e')
     #/signature stuff/#
     # main #
     # label
-    self.mainLabel = Label(frame, font = mainFont)
+    self.mainFont = tkFont.Font(size = 20)
+    self.mainLabel = Label(frame, font = self.mainFont)
     self.mainLabel['text'] = "SerialExaminer v0.1.0"
     self.mainFont['size'] = 15
     self.mainLabel.grid(row = R, column = C, columnspan = 3)
@@ -119,7 +118,7 @@ class MainWindow(object):
     INPUT_FILES = os.path.normpath(filedialog.askdirectory())
   def createKey(self):
     self.windowCreateKey = Toplevel(self.master)
-    self.app = CreateKeyWindow(self.windowCreateKey)
+    self.app = KeyCreatorWindow(self.windowCreateKey)
   def importKey(self):
     pass
   def resultDisplay(self):
@@ -129,27 +128,133 @@ class MainWindow(object):
   def examinate(self):
     pass
 
-class CreateKeyWindow(object):
+class KeyCreatorWindow(object):
   """Creator for CreateKey Window"""
   def __init__(self, master):
+    self.questionCount = 40
+    self.answersCount = 4
     self.master = master
     self.frame = Frame(self.master)
-    master.grab_set()
+    self.master.grab_set()
     self.build(self.frame)
     self.frame.grid()
-
   def build(self, frame):
     zeroCol()
     # window name #
     # label
-    self.mainLabel = Label(frame, font = mainFont)
-    self.mainLabel['text'] = "Text Key Creator"
-    self.mainLabel.grid()
-    # Question count #
+    self.mainFont = tkFont.Font(size = 14)
+    self.mainLabel = Label(frame, font = self.mainFont)
+    self.mainLabel['text'] = "Serial Examiner\nKey Creator"
+    self.mainLabel.grid(row = R, column = C, columnspan = 6)
+    # question quantinity #
     # label
+    newRow()
+    self.questionLabel = Label(frame)
+    self.questionLabel['text'] = "Question quantinity"
+    self.questionLabel.grid(row = R, column = C)
+    # button -10
+    newCol()
+    self.questionButtonMinus10 = Button(frame)
+    self.questionButtonMinus10['text'] = "<<"
+    self.questionButtonMinus10['width'] = 3
+    self.questionButtonMinus10['command'] = self.questionCountMinus10
+    self.questionButtonMinus10.grid(row = R, column = C)
+    # button -1
+    newCol()
+    self.questionButtonMinus1 = Button(frame)
+    self.questionButtonMinus1['text'] = "<"
+    self.questionButtonMinus1['width'] = 3
+    self.questionButtonMinus1['command'] = self.questionCountMinus1
+    self.questionButtonMinus1.grid(row = R, column = C)
+    # countLabel
+    newCol()
+    self.questionLabelCount = Label(frame)
+    self.questionLabelCount['text'] = self.questionCount
+    self.questionLabelCount['width'] = 3
+    self.questionLabelCount.grid(row = R, column = C)
+    # button +1
+    newCol()
+    self.questionButtonPlus1 = Button(frame)
+    self.questionButtonPlus1['text'] = ">"
+    self.questionButtonPlus1['width'] = 3
+    self.questionButtonPlus1['command'] = self.questionCountPlus1
+    self.questionButtonPlus1.grid(row = R, column = C)
+    # button +10
+    newCol()
+    self.questionButtonPlus10 = Button(frame)
+    self.questionButtonPlus10['text'] = ">>"
+    self.questionButtonPlus10['width'] = 3
+    self.questionButtonPlus10['command'] = self.questionCountPlus10
+    self.questionButtonPlus10.grid(row = R, column = C)
+    # posible answears quantinity #
+    # label
+    newRow()
+    self.answersQuantinity = Label(frame)
+    self.answersQuantinity['text'] = "Posible answears quantinity"
+    self.answersQuantinity.grid(row = R, column = C)
+    # 2 radio
+    newCol()
+    self.answers2 = Radiobutton(frame)
+    self.answers2['variable'] = self.answersCount
+    self.answers2['text'] = "2"
+    self.answers2['value'] = 2
+    self.answers2.deselect()
+    self.answers2.grid(row = R, column = C, columnspan = 2)
+    # 4
+    newCol()
+    newCol()
+    self.answers4 = Radiobutton(frame)
+    self.answers4['variable'] = self.answersCount
+    self.answers4['text'] = "4"
+    self.answers4['value'] = 4
+    self.answers4.select()
+    self.answers4.grid(row = R, column = C, columnspan = 2)
+    # main key creator init button #
+    newRow()
+    self.nextWindowFont = tkFont.Font(size = 14)
+    self.nextWindow = Button(frame, font = self.nextWindowFont)
+    self.nextWindow['text'] = "Create Key!"
+    self.nextWindow['command'] = self.mainKeyCreator
+    self.nextWindow.grid(row = R, column = C, columnspan = 6, sticky = 'we')
 
-    self.questionCountLabel = Label(frame)
+  def questionCountMinus10(self):
+    self.questionCount -= 10
+    if self.questionCount < 1:
+      self.questionCount = 100
+    self.questionLabelCount['text'] = self.questionCount
+  def questionCountMinus1(self):
+    self.questionCount -= 1
+    if self.questionCount < 1:
+      self.questionCount = 100
+    self.questionLabelCount['text'] = self.questionCount
+  def questionCountPlus1(self):
+    self.questionCount += 1
+    if self.questionCount > 100:
+      self.questionCount = 1
+    self.questionLabelCount['text'] = self.questionCount
+  def questionCountPlus10(self):
+    self.questionCount += 10
+    if self.questionCount > 100:
+      self.questionCount = 1
+    self.questionLabelCount['text'] = self.questionCount
+  def mainKeyCreator(self):
+    self.mainWindowCreateKey = Toplevel(self.master)
+    self.app = MainKeyCreatorWindow(self.mainWindowCreateKey)
 
+  def die(self):
+    self.master.grab_release()
+    self.master.destroy()
+
+class MainKeyCreatorWindow(object):
+  """Window to create exam key"""
+  def __init__(self, master):
+    self.master = master
+    self.frame = Frame(self.master)
+    self.master.grab_set()
+    self.build()
+    self.frame.grid()
+  def build(self):
+    pass
 
   def die(self):
     self.master.grab_release()
@@ -158,12 +263,12 @@ class CreateKeyWindow(object):
 def main():
   root = Tk()
   root.title("SeriEx")
-  # root.resizable(width=False, height=False) # lock window resize
+  root.resizable(width=False, height=False) # lock window resize
   ws = root.winfo_screenwidth()
   hs = root.winfo_screenheight()
   x = (ws/20)*10
   y = (hs/20)*9
-  root.geometry('+%d+%d'%(x, y)) # set position
+  # root.geometry('+%d+%d'%(x, y)) # set position
   root.iconbitmap(r'./ico.ico') # ico
   app = MainWindow(root)
   root.mainloop()
