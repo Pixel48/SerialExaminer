@@ -354,12 +354,8 @@ def main():
   hs = root.winfo_screenheight()
   x = (ws/20)*10
   y = (hs/20)*9
-<<<<<<< HEAD
-  root.geometry('+%d+%d'%(x, y)) # set position
   root.iconbitmap(r'./ico.ico') # icon
-=======
   # root.geometry('+%d+%d'%(x, y)) # set position
->>>>>>> dev/core/key/create
   app = MainWindow(root)
   root.mainloop()
 
