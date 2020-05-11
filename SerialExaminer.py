@@ -116,8 +116,8 @@ class MainWindow(object):
     self.outputButtonExport.grid(row = R, column = C)
 
   def createKey(self):
-    self.windowCreateKey = Toplevel(self.master)
-    self.app = KeyCreatorWindow(self.windowCreateKey)
+    self.masterWindowCreateKey = Toplevel(self.master)
+    self.appWindowCreateKey = KeyCreatorWindow(self.masterWindowCreateKey, self)
   def importKey(self):
     global KEY_FILE
     self.keyButtonImport['state'] = DISABLED
@@ -146,12 +146,12 @@ class MainWindow(object):
 
 class KeyCreatorWindow(object):
   """Creator for CreateKey Window"""
-  def __init__(self, master):
-    global questionCount
+  def __init__(self, master, above):
+    global questionCount, answersCount
     questionCount = 40
-    global answersCount
     answersCount = 4
     self.master = master
+    self.above = above
     self.frame = Frame(self.master)
     self.build(self.frame)
     self.frame.grid()
@@ -233,6 +233,13 @@ class KeyCreatorWindow(object):
     self.nextWindow['text'] = "Create Key!"
     self.nextWindow['command'] = self.mainKeyCreator
     self.nextWindow.grid(row = R, column = C, columnspan = 6, sticky = 'we')
+    # key config done button #
+    newRow()
+    self.keyDone = Button(frame, font = self.nextWindowFont)
+    self.keyDone['text'] = "Done"
+    self.keyDone['command'] = self.die
+    self.keyDone['state'] = DISABLED
+    self.keyDone.grid(row = R, column = C, columnspan = 6, sticky = 'we')
 
   def questionCountMinus10(self):
     global questionCount
@@ -259,16 +266,18 @@ class KeyCreatorWindow(object):
       questionCount = 10
     self.questionLabelCount['text'] = questionCount
   def mainKeyCreator(self):
-    self.mainWindowCreateKey = Toplevel(self.master)
-    self.app = MainKeyCreatorWindow(self.mainWindowCreateKey)
+    self.masterMainWindowCreateKey = Toplevel(self.master)
+    self.appWindowCreateKey = MainKeyCreatorWindow(self.masterMainWindowCreateKey, self)
 
   def die(self):
+    self.above.inputButton['state'] = NORMAL
     self.master.destroy()
 
 class MainKeyCreatorWindow(object):
   """Window to create exam key"""
-  def __init__(self, master):
+  def __init__(self, master, above):
     self.master = master
+    self.above = above
     self.frame = Frame(self.master)
     self.questionNo = 1
     self.build(self.frame)
@@ -342,6 +351,8 @@ class MainKeyCreatorWindow(object):
   def mainLabelUpdate(self):
     self.mainLabel['text'] = "Question " + str(self.questionNo)
     if self.questionNo > questionCount:
+      self.above.keyDone['state'] = NORMAL
+      self.above.nextWindow['text'] = "ReCreate Key!"
       self.die()
   def die(self):
     self.master.destroy()
