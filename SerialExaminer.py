@@ -125,14 +125,14 @@ class MainWindow(object):
     KEY_FILE = os.path.normpath(filedialog.askopenfilename(
       title = "Select exam key file",
       initialdir = '.',
-      filetypes =(("Python binary files", "*.dat"),
+      filetypes =(("Exam Key File", "*.exkey"),
                   # ("Csv files", "*.csv"), # TODO: add csv key import
                   # ("Excel sheets", "*.xml"), # TODO: add xml key import
                   ("All files", "*.*"))
     ))
     self.keyButtonImport['state'] = NORMAL
     self.keyButtonCreate['state'] = NORMAL
-    if ".dat" in KEY_FILE:
+    if ".exkey" in KEY_FILE:
       self.inputButton['state'] = NORMAL
   def browseExams(self):
     global INPUT_FILES
@@ -270,6 +270,17 @@ class KeyCreatorWindow(object):
     self.appWindowCreateKey = MainKeyCreatorWindow(self.masterMainWindowCreateKey, self)
 
   def die(self):
+    global KEY_FILE
+    KEY_FILE = filedialog.asksaveasfilename(
+      title = "Select exam key file",
+      initialdir = '.',
+      filetypes =(("Exam Key File", "*.exkey"),
+                  # ("Csv files", "*.csv"), # TODO: add csv key export
+                  # ("Excel sheets", "*.xml"), # TODO: add xml key export
+                  )
+    )
+    if KEY_FILE is '':
+      return
     self.above.inputButton['state'] = NORMAL
     self.master.destroy()
 
