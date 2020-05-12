@@ -48,13 +48,13 @@ class MainWindow(object):
     self.gh.grid(row = 99, column = 0, columnspan = 3, sticky = 'e')
     # version #
     global versionTag
-    self.version = Label(font = self.signatureFont)
+    self.version = Label(frame, font = self.signatureFont)
     self.version['text'] = versionTag
     self.version.grid(row = 99, column = 0, sticky = 'w')
     # main #
     # label
     self.mainFont = tkFont.Font(size=20)
-    self.mainLabel = Label(font = self.mainFont)
+    self.mainLabel = Label(frame, font = self.mainFont)
     self.mainLabel['text'] = "SerialExaminer"
     self.mainFont['size'] = 15
     self.mainLabel.grid(row = R, column = C, columnspan = 3)
