@@ -345,6 +345,8 @@ class MainKeyCreatorWindow(object):
 
   def backQuestion(self):
     self.questionNo -= 1
+    if self.questionNo < 1:
+      self.questionNo = 1
     self.mainLabelUpdate()
   def aAnswer(self):
     self.bindAnswer(self.questionNo, "A")
