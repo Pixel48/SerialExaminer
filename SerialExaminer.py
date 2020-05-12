@@ -144,10 +144,13 @@ class MainWindow(object):
     global INPUT_FILES
     testDir = os.path.normpath(filedialog.askdirectory())
     testFiles = os.listdir(testDir)
+    buffer = []
     for file in testFiles:
-      INPUT_FILES.append(os.path.join(testDir, file))
-    print(INPUT_FILES)
+      buffer.append(os.path.join(testDir, file))
     # TODO: validation
+    for file in buffer:
+      if '.txt' in buffer:
+        INPUT_FILES.append(file)
   def examinate(self):
     pass
   def resultDisplay(self):
