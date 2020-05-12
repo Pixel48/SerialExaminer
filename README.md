@@ -1,8 +1,28 @@
 # SerialExaminer
 > To make my teachers life bit easier
->> And proof them that even the strangest of students can somehow help :D
+>>(... and proof them that even the strangest students can somehow help :)
 
 ![Main Window](./docs/img/main_window.png)
+
+### Tasklist
+- [x] Basic GUI
+- [x] Key create (\*.exkey)
+- [x] Basic key create interface
+- [x] Set custom questions quantity
+- [ ] Set custom answers quantity
+- [x] Key import from \*.exkey files
+- [ ] Key import from \*.txt files
+- [ ] Key import from \*.xml files
+- [ ] Import test files from provided directory
+- [ ] Test test files with imported/created key
+- [ ] Display test results
+- [ ] Export test results to provided file in \*.csv format
+- [ ] Export test results to provided file in \*.xml format
+- [ ] Export test results to provided file in \*.txt format
+- [ ] Release basic aplha
+- [ ] Send it to my highschool teachers
+- [ ] Make it usable and useful
+- [ ] Add autoupdate faeture from this GitHub repository
 
 ## Why would you use it?
 Good question! An maybe that's why this section is titled like that...
