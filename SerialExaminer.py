@@ -4,11 +4,12 @@
 # Workflow:      https://trello.com/b/NcEXmMyl
 # Repository:    https://github.com/Pixel48/SerialExaminer.git
 # Documentation: https://github.com/Pixel48/SerialExaminer (WIP)
-
 from tkinter import *
 from tkinter import filedialog
 import tkinter.font as tkFont
 import os#, shutil, pickle, csv # NOTE: not used yet
+
+versionTag = 'v0.0.0'
 
 # SOME GLOBALS
 R = 0
@@ -45,12 +46,16 @@ class MainWindow(object):
     self.gh['text'] = "GitHub.com/Pixel48/SerialExaminer"
     self.gh['fg'] = 'grey'
     self.gh.grid(row = 99, column = 0, columnspan = 3, sticky = 'e')
-    #/signature stuff/#
+    # version #
+    global versionTag
+    self.version = Label(font = self.signatureFont)
+    self.version['text'] = versionTag
+    self.version.grid(row = 99, column = 0, sticky = 'w')
     # main #
     # label
-    self.mainFont = tkFont.Font(size = 20)
-    self.mainLabel = Label(frame, font = self.mainFont)
-    self.mainLabel['text'] = "SerialExaminer v0.1.0"
+    self.mainFont = tkFont.Font(size=20)
+    self.mainLabel = Label(font = self.mainFont)
+    self.mainLabel['text'] = "SerialExaminer"
     self.mainFont['size'] = 15
     self.mainLabel.grid(row = R, column = C, columnspan = 3)
     # exam key files #
