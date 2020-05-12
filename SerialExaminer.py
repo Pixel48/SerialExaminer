@@ -285,7 +285,8 @@ class KeyCreatorWindow(object):
       initialdir = '.',
       filetypes =(("Exam Key File", "*.exkey"),)
     ))
-    KEY_FILE += '.exkey'
+    if '.exkey' not in KEY_FILE:
+      KEY_FILE += '.exkey'
     if KEY_FILE is '':
       return # if no filename provided, don't proceed
     self.exportKeyFile(KEY_FILE)
