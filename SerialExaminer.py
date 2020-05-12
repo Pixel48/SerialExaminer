@@ -158,6 +158,7 @@ class KeyCreatorWindow(object):
     self.master = master
     self.above = above
     self.frame = Frame(self.master)
+    self.keyData = {}
     self.build(self.frame)
     self.frame.grid()
   def build(self, frame):
@@ -286,6 +287,7 @@ class KeyCreatorWindow(object):
     )
     if KEY_FILE is '':
       return
+    # TODO: write key file
     self.above.inputButton['state'] = NORMAL
     self.master.destroy()
 
@@ -365,6 +367,7 @@ class MainKeyCreatorWindow(object):
     self.questionNo += 1
     self.mainLabelUpdate()
   def bindAnswer(self, questionNumber, questionAnswer):
+    # TODO: bind key data to above.keyData
     pass
   def mainLabelUpdate(self):
     self.mainLabel['text'] = "Question " + str(self.questionNo)
