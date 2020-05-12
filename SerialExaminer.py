@@ -7,7 +7,7 @@
 from tkinter import *
 from tkinter import filedialog
 import tkinter.font as tkFont
-import os#, shutil, pickle, csv # NOTE: not used yet
+import os, pickle#, shutil, csv # NOTE: not used yet
 
 versionTag = 'v0.0.0'
 
@@ -17,6 +17,7 @@ C = 0
 INPUT_FILES = None
 OUTPUT_FILE = None
 KEY_FILE = None
+KEY_DICT = {}
 qestionCount = 0
 answersCount = 0
 
@@ -158,7 +159,6 @@ class KeyCreatorWindow(object):
     self.master = master
     self.above = above
     self.frame = Frame(self.master)
-    self.keyData = {}
     self.build(self.frame)
     self.frame.grid()
   def build(self, frame):
@@ -274,26 +274,30 @@ class KeyCreatorWindow(object):
   def mainKeyCreator(self):
     self.masterMainWindowCreateKey = Toplevel(self.master)
     self.appWindowCreateKey = MainKeyCreatorWindow(self.masterMainWindowCreateKey, self)
+  def exportKeyFile(self, file):
+    with open(file, 'wb') as keyFile:
+      pickle.dump(KEY_DICT, keyFile)
 
   def die(self):
     global KEY_FILE
-    KEY_FILE = filedialog.asksaveasfilename(
+    KEY_FILE = os.path.normpath(filedialog.asksaveasfilename(
       title = "Select exam key file",
       initialdir = '.',
-      filetypes =(("Exam Key File", "*.exkey"),
-                  # ("Csv files", "*.csv"), # TODO: add csv key export
-                  # ("Excel sheets", "*.xml"), # TODO: add xml key export
-                  )
-    )
+      filetypes =(("Exam Key File", "*.exkey"),)
+    ))
+    if '.exkey' not in KEY_FILE:
+      KEY_FILE += '.exkey'
     if KEY_FILE is '':
-      return
-    # TODO: write key file
+      return # if no filename provided, don't proceed
+    self.exportKeyFile(KEY_FILE)
     self.above.inputButton['state'] = NORMAL
     self.master.destroy()
 
 class MainKeyCreatorWindow(object):
   """Window to create exam key"""
   def __init__(self, master, above):
+    global KEY_DICT
+    KEY_DICT = {}
     self.master = master
     self.above = above
     self.frame = Frame(self.master)
@@ -367,7 +371,8 @@ class MainKeyCreatorWindow(object):
     self.questionNo += 1
     self.mainLabelUpdate()
   def bindAnswer(self, questionNumber, questionAnswer):
-    self.above.keyData[questionNumber] = questionAnswer # NOTE: that should work...
+    global KEY_DICT
+    KEY_DICT[questionNumber] = questionAnswer # NOTE: that should work...
   def mainLabelUpdate(self):
     self.mainLabel['text'] = "Question " + str(self.questionNo)
     if self.questionNo > questionCount:
