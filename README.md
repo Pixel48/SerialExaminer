@@ -2,8 +2,7 @@
 > To make my teachers life bit easier
 >> And proof them that even the strangest of students can somehow help :D
 
-![icon](http://icons.iconarchive.com/icons/elegantthemes/beautiful-flat-one-color/128/stack-icon.png)
-> Icon [source](http://www.iconarchive.com/show/beautiful-flat-one-color-icons-by-elegantthemes/stack-icon.html)
+![Main Window](./docs/img/main_window.png)
 
 ## Why would you use it?
 Good question! An maybe that's why this section is titled like that...
@@ -19,13 +18,11 @@ Let's suppose that your students can use computers to make .txt file with answer
 ***This is this software***
 > Actually *will be*, when will be enough completed to work
 
+## Run / Install
+Nothing here for now, please wait for aplha
+
 ## Usage
-Nothing here, you can look for first alpha at my [trello table](https://trello.com/b/NcEXmMyl)
-
-... but for now you can read some Lorem ipsum!
-
-## ***Lorem ipsum***
-*Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.*
+Nothing here for now, please wait for aplha
 
 Copyright (c) 2020 [Pixel48](www.github.com/Pixel48) All Rights Reserved.
 > And copyright, because why not
