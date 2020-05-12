@@ -367,8 +367,7 @@ class MainKeyCreatorWindow(object):
     self.questionNo += 1
     self.mainLabelUpdate()
   def bindAnswer(self, questionNumber, questionAnswer):
-    # TODO: bind key data to above.keyData
-    pass
+    self.above.keyData[questionNumber] = questionAnswer # NOTE: that should work...
   def mainLabelUpdate(self):
     self.mainLabel['text'] = "Question " + str(self.questionNo)
     if self.questionNo > questionCount:
