@@ -295,6 +295,8 @@ class KeyCreatorWindow(object):
 class MainKeyCreatorWindow(object):
   """Window to create exam key"""
   def __init__(self, master, above):
+    global KEY_DICT
+    KEY_DICT = {}
     self.master = master
     self.above = above
     self.frame = Frame(self.master)
