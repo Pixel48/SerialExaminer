@@ -283,11 +283,9 @@ class KeyCreatorWindow(object):
     KEY_FILE = os.path.normpath(filedialog.asksaveasfilename(
       title = "Select exam key file",
       initialdir = '.',
-      filetypes =(("Exam Key File", "*.exkey"),
-                  # ("Csv files", "*.csv"), # TODO: add csv key export
-                  # ("Excel sheets", "*.xml"), # TODO: add xml key export
-                  )
+      filetypes =(("Exam Key File", "*.exkey"),)
     ))
+    KEY_FILE += '.exkey'
     if KEY_FILE is '':
       return # if no filename provided, don't proceed
     self.exportKeyFile(KEY_FILE)
