@@ -197,9 +197,9 @@ class MainWindow(object):
           if question in KEY_DICT.keys():
             if answersDict[question] == KEY_DICT[question]:
               points += 1
-        RESULT_DICT[os.path.basename(testFile)] = [str(points) + '/' + str(questionCount),
-                                                   str(points*100/questionCount) + '%']
-        print(RESULT_DICT[os.path.basename(testFile)])
+        resultDictKey = os.path.basename(testFile).split('.')[0]
+        RESULT_DICT[resultDictKey] = [str(points) + '/' + str(questionCount), str(points*100/questionCount) + '%']
+        print(resultDictKey + ':', RESULT_DICT[resultDictKey])
   def resultDisplay(self):
     pass
   def resultExport(self):
