@@ -10,15 +10,20 @@
 - [x] Basic key create interface
 - [x] Set custom questions quantity
 - [ ] Set custom answers quantity
-- [x] Key import from \*.exkey files
-- [ ] Key import from \*.txt files
-- [ ] Key import from \*.xml files
-- [ ] Import test files from provided directory
+- [ ] Key import in
+- [x] ... \*.exkey format
+- [ ] ... \*.txt format
+- [ ] ... \*.xml format
+- [ ] Import test files from provided directory in selected format
+- [ ] ... \*.txt
+- [ ] ... \*.csv
+- [ ] ... \*.xml
 - [ ] Test test files with imported/created key
 - [ ] Display test results
-- [ ] Export test results to provided file in \*.csv format
-- [ ] Export test results to provided file in \*.xml format
-- [ ] Export test results to provided file in \*.txt format
+- [ ] Export test results to provided file in
+- [ ] ... \*.csv format
+- [ ] ... \*.xml format
+- [ ] ... \*.txt format
 - [ ] Release basic aplha
 - [ ] Send it to my highschool teachers
 - [ ] Make it usable and useful

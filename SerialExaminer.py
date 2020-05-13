@@ -14,7 +14,7 @@ versionTag = 'v0.0.0'
 # SOME GLOBALS
 R = 0
 C = 0
-INPUT_FILES = None
+INPUT_FILES = []
 OUTPUT_FILE = None
 KEY_FILE = None
 KEY_DICT = {}
@@ -142,7 +142,15 @@ class MainWindow(object):
       self.inputButton['state'] = NORMAL
   def browseExams(self):
     global INPUT_FILES
-    INPUT_FILES = os.path.normpath(filedialog.askdirectory())
+    testDir = os.path.normpath(filedialog.askdirectory())
+    testFiles = os.listdir(testDir)
+    buffer = []
+    for file in testFiles:
+      buffer.append(os.path.join(testDir, file))
+    # TODO: validation
+    for file in buffer:
+      if '.txt' in file:
+        INPUT_FILES.append(file)
   def examinate(self):
     pass
   def resultDisplay(self):
