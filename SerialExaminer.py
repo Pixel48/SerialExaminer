@@ -338,44 +338,45 @@ class MainKeyCreatorWindow(object):
     # label/counter
     self.mainFont = tkFont.Font(size = 14)
     self.mainLabel = Label(frame, font = self.mainFont)
+    self.mainLabel['width'] = 20
     self.mainLabelUpdate()
-    self.mainLabel.grid(row = R, column = C, columnspan = 5)
+    self.mainLabel.grid(row = R, column = C, columnspan = 5, sticky = 'we')
     # question/answer buttons #
     # back button
     newRow()
     self.backButton = Button(frame)
-    self.backButton['width'] = 3
+    # self.backButton['width'] = 3
     self.backButton['text'] = "<"
     self.backButton['command'] = self.backQuestion
-    self.backButton.grid(row = R, column = C)
+    self.backButton.grid(row = R, column = C, sticky = 'we')
     # A
     newCol()
     self.aButton = Button(frame)
-    self.aButton['width'] = 3
+    # self.aButton['width'] = 3
     self.aButton['text'] = "A"
     self.aButton['command'] = self.aAnswer
-    self.aButton.grid(row = R, column = C)
+    self.aButton.grid(row = R, column = C, sticky = 'we')
     # B
     newCol()
     self.bButton = Button(frame)
-    self.bButton['width'] = 3
+    # self.bButton['width'] = 3
     self.bButton['text'] = "B"
     self.bButton['command'] = self.bAnswer
-    self.bButton.grid(row = R, column = C)
+    self.bButton.grid(row = R, column = C, sticky = 'we')
     # C
     newCol()
     self.cButton = Button(frame)
-    self.cButton['width'] = 3
+    # self.cButton['width'] = 3
     self.cButton['text'] = "C"
     self.cButton['command'] = self.cAnswer
-    self.cButton.grid(row = R, column = C)
+    self.cButton.grid(row = R, column = C, sticky = 'we')
     # D
     newCol()
     self.dButton = Button(frame)
-    self.dButton['width'] = 3
+    # self.dButton['width'] = 3
     self.dButton['text'] = "D"
     self.dButton['command'] = self.dAnswer
-    self.dButton.grid(row = R, column = C)
+    self.dButton.grid(row = R, column = C, sticky = 'we')
 
   def backQuestion(self):
     self.questionNo -= 1
