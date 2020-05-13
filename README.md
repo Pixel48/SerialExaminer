@@ -91,4 +91,4 @@ Just `git clone https://github.com/Pixel48/SerialExaminer.git` and use python. O
 - [ ] Make it usable and useful
 - [ ] Add autoupdate faeture
 
-Copyright (c) 2020 [Pixel48](www.github.com/Pixel48) All Rights Reserved.
+Copyright (c) 2020 [Pixel48](https://github.com/Pixel48/) All Rights Reserved.
