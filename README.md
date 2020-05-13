@@ -21,15 +21,14 @@ Let's suppose that your students can use computers to make .txt file with answer
 There's several ways to launch SerialExaminer
 
 #### Windows
-1. Use precompiled \*.exe file from project folder
-   - Download SerialExaminer.exe project folder
-2. Download all project files and compile it to \*.exe file with [pyinstaller](https://www.pyinstaller.org/)
+1. Download all project files and compile it to \*.exe file with [pyinstaller](https://www.pyinstaller.org/)
    - Download project folder
+   - Download the newest version of python from [here](https://www.python.org/downloads/)
    - Follow first two steps from way one
    - Run `pip3 install pyinstaller==3.4` in CMD
    - Run `pyinstaller -w -F -i ico.ico SerialExaminer.py` in CMD at project folder
    - Take completed SerialExaminer.exe file from dist/ folder
-3. Download all project files and launch SerialExaminer.py with [Python3](https://www.python.org/)
+2. Download all project files and launch SerialExaminer.py with [Python3](https://www.python.org/)
    - Download project folder
    - Download the newest version of python from [here](https://www.python.org/downloads/)
    - Add python to your [PATH](https://superuser.com/questions/143119/how-do-i-add-python-to-the-windows-path)
