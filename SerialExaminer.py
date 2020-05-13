@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 # SerialExaminer.py
 #   by Pixel
-# Workflow:      https://trello.com/b/NcEXmMyl
 # Repository:    https://github.com/Pixel48/SerialExaminer.git
 # Documentation: https://github.com/Pixel48/SerialExaminer (WIP)
 from tkinter import *
@@ -196,7 +195,6 @@ class MainWindow(object):
         resultName = os.path.basename(testFile).split('.')[0]
         RESULT_DICT[resultName] = [str(points) + '/' + str(questionCount), str(round(points*100/questionCount, 2)) + '%']
         # NOTE: Result format: {<Filename>: ['<points>/<maxPoints', '<goodAnswersIn%>%']}
-        # print(resultName + ':', RESULT_DICT[resultName])
     self.outputButtonDsiplay['state'] = NORMAL
     # self.outputButtonExport['state'] = NORMAL # NOTE: for future use
   def resultDisplay(self):
@@ -264,30 +262,6 @@ class KeyCreatorWindow(object):
     self.questionButtonPlus10['width'] = 3
     self.questionButtonPlus10['command'] = self.questionCountPlus10
     self.questionButtonPlus10.grid(row = R, column = C)
-    # # posible answears quantinity # # NOTE: conented for now, i'll use it leater
-    # # label
-    # newRow()
-    # self.answersQuantinity = Label(frame)
-    # self.answersQuantinity['text'] = "Posible answears quantinity"
-    # self.answersQuantinity.grid(row = R, column = C)
-    # # 2 radio
-    # newCol()
-    # self.answers2 = Radiobutton(frame)
-    # self.answers2['variable'] = self.answersCount
-    # self.answers2['text'] = "2"
-    # self.answers2['value'] = 2
-    # self.answers2.deselect()
-    # self.answers2.grid(row = R, column = C, columnspan = 2)
-    # # 4
-    # newCol()
-    # newCol()
-    # self.answers4 = Radiobutton(frame)
-    # self.answers4['variable'] = self.answersCount
-    # self.answers4['text'] = "4"
-    # self.answers4['value'] = 4
-    # self.answers4.select()
-    # self.answers4.grid(row = R, column = C, columnspan = 2)
-    # main key creator init button #
     newRow()
     self.nextWindowFont = tkFont.Font(size = 14)
     self.nextWindow = Button(frame, font = self.nextWindowFont)
@@ -367,7 +341,7 @@ class MainKeyCreatorWindow(object):
     self.mainLabel = Label(frame, font = self.mainFont)
     self.mainLabelUpdate()
     self.mainLabel.grid(row = R, column = C, columnspan = 5)
-    # question/answer buttons
+    # question/answer buttons #
     # back button
     newRow()
     self.backButton = Button(frame)
@@ -427,7 +401,7 @@ class MainKeyCreatorWindow(object):
     self.mainLabelUpdate()
   def bindAnswer(self, questionNumber, questionAnswer):
     global KEY_DICT
-    KEY_DICT[questionNumber] = questionAnswer # NOTE: that should work...
+    KEY_DICT[questionNumber] = questionAnswer
   def mainLabelUpdate(self):
     self.mainLabel['text'] = "Question " + str(self.questionNo)
     if self.questionNo > questionCount:
