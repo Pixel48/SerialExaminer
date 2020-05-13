@@ -31,7 +31,6 @@ def newCol(arg = 1):
 def zeroCol():
   global C, R
   C = R = 0
-
 def splitLine(line):
   if line.split('.')[0].isdigit():
     line = line.split('.')
@@ -195,8 +194,8 @@ class MainWindow(object):
         resultName = os.path.basename(testFile).split('.')[0]
         RESULT_DICT[resultName] = [str(points) + '/' + str(questionCount), str(round(points*100/questionCount, 2)) + '%']
         # NOTE: Result format: {<Filename>: ['<points>/<maxPoints', '<goodAnswersIn%>%']}
-    self.outputButtonDsiplay['state'] = NORMAL
     # self.outputButtonExport['state'] = NORMAL # NOTE: for future use
+    self.outputButtonDsiplay['state'] = NORMAL
   def resultDisplay(self):
     self.masterResultDisplayWindow = Toplevel(self.master)
     self.appResultDisplayWindow = ResultDisplayWindow(self.masterResultDisplayWindow, self)
@@ -408,6 +407,7 @@ class MainKeyCreatorWindow(object):
       self.above.keyDone['state'] = NORMAL
       self.above.nextWindow['text'] = "ReCreate Key!"
       self.die()
+
   def die(self):
     self.master.destroy()
 
@@ -426,7 +426,7 @@ class ResultDisplayWindow(object):
     Label(frame,
           text = "Name",
           fg = 'blue',
-          width = 20).grid(row = R, column = C)
+          width = 15).grid(row = R, column = C)
     newCol()
     Label(frame,
           text = "Points",
