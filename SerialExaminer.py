@@ -149,7 +149,7 @@ class MainWindow(object):
       buffer.append(os.path.join(testDir, file))
     # TODO: validation
     for file in buffer:
-      if '.txt' in buffer:
+      if '.txt' in file:
         INPUT_FILES.append(file)
   def examinate(self):
     pass
