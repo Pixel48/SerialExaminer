@@ -198,9 +198,10 @@ class MainWindow(object):
         # NOTE: Result format: {<Filename>: ['<points>/<maxPoints', '<goodAnswersIn%>%']}
         # print(resultName + ':', RESULT_DICT[resultName])
     self.outputButtonDsiplay['state'] = NORMAL
-    self.outputButtonExport['state'] = NORMAL
+    # self.outputButtonExport['state'] = NORMAL # NOTE: for future use
   def resultDisplay(self):
-    pass
+    self.masterResultDisplayWindow = Toplevel(self.master)
+    self.appResultDisplayWindow = ResultDisplayWindow(self.masterResultDisplayWindow, self)
   def resultExport(self):
     pass
 
@@ -435,6 +436,43 @@ class MainKeyCreatorWindow(object):
       self.die()
   def die(self):
     self.master.destroy()
+
+class ResultDisplayWindow(object):
+  """Pop-up with test results from RESULT_DICT"""
+  def __init__(self, master, above):
+    self.master = master
+    self.above = above
+    self.frame = Frame(self.master)
+    self.build(self.frame)
+    self.frame.grid()
+  def build(self, frame):
+    global RESULT_DICT
+    zeroCol()
+    # legend #
+    Label(frame,
+          text = "Name",
+          fg = 'blue',
+          width = 20).grid(row = R, column = C)
+    newCol()
+    Label(frame,
+          text = "Points",
+          fg = 'blue',
+          width = 10).grid(row = R, column = C)
+    newCol()
+    Label(frame,
+          text = "Result",
+          fg = 'red').grid(row = R, column = C)
+    # results #
+    for filename in RESULT_DICT:
+      newRow()
+      Label(frame,
+            text = filename).grid(row = R, column = C)
+      newCol()
+      Label(frame,
+            text = RESULT_DICT[filename][0]).grid(row = R, column = C)
+      newCol()
+      Label(frame,
+            text = RESULT_DICT[filename][1]).grid(row = R, column = C)
 
 def main():
   root = Tk()
