@@ -19,7 +19,7 @@ OUTPUT_FILE = None
 KEY_FILE = None
 KEY_DICT = {}
 RESULT_DICT = {}
-qestionCount = 0
+questionCount = 0
 answersCount = 0
 
 def newRow(arg = 1):
@@ -164,7 +164,12 @@ class MainWindow(object):
       self.inputButton['state'] = NORMAL
   def browseExams(self):
     global INPUT_FILES
-    testDir = os.path.normpath(filedialog.askdirectory())
+    testDir = os.path.normpath(filedialog.askdirectory(
+    title = "Examination txt files location",
+    initialdir = '.',
+    # filetypes =(("Examination txt files location", "*.txt"),
+    #             )
+    ))
     testFiles = os.listdir(testDir)
     buffer = []
     for file in testFiles:
@@ -173,8 +178,24 @@ class MainWindow(object):
     for file in buffer:
       if '.txt' in file:
         INPUT_FILES.append(file)
+    if INPUT_FILES:
+      self.examinateButton['state'] = NORMAL
   def examinate(self):
-    pass
+    global questionCount
+    for testFile in INPUT_FILES:
+      with open(testFile, 'r') as examinateFile:
+        answersDict = {}
+        points = 0
+        for line in examinateFile:
+          line = splitLine(line)
+          answersDict[line[0]] = line[1]
+        for question in answersDict.keys():
+          if question in KEY_DICT.keys():
+            if answersDict[question] == KEY_DICT[question]:
+              points += 1
+        RESULT_DICT[os.path.basename(testFile)] = [str(points) + '/' + str(questionCount),
+                                                   str(points*100/questionCount) + '%']
+        print(RESULT_DICT[os.path.basename(testFile)])
   def resultDisplay(self):
     pass
   def resultExport(self):
