@@ -26,7 +26,7 @@ There's several ways to launch SerialExaminer
 2. Download all project files and compile it to \*.exe file with [pyinstaller](https://www.pyinstaller.org/)
    - Download project folder
    - Follow first two steps from way one
-   - Run `pip3 install pyinstaller` in CMD
+   - Run `pip3 install pyinstaller==3.4` in CMD
    - Run `pyinstaller -w -F -i ico.ico SerialExaminer.py` in CMD at project folder
    - Take completed SerialExaminer.exe file from dist/ folder
 3. Download all project files and launch SerialExaminer.py with [Python3](https://www.python.org/)
