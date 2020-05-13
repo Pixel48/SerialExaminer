@@ -9,7 +9,6 @@
 - [x] Key create (\*.exkey)
 - [x] Basic key create interface
 - [x] Set custom questions quantity
-- [ ] Set custom answers quantity
 - [ ] Key import in
 - [x] ... \*.exkey format
 - [ ] ... \*.txt format
@@ -24,7 +23,7 @@
 - [ ] ... \*.csv format
 - [ ] ... \*.xml format
 - [ ] ... \*.txt format
-- [ ] Release basic aplha
+- [x] Release basic aplha
 - [ ] Send it to my highschool teachers
 - [ ] Make it usable and useful
 - [ ] Add autoupdate faeture
