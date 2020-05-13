@@ -15,7 +15,7 @@
 - [ ] ... \*.txt format
 - [ ] ... \*.xml format
 - [ ] Import test files from provided directory in selected format
-- [ ] ... \*.txt
+- [x] ... \*.txt
 - [ ] ... \*.csv
 - [ ] ... \*.xml
 - [ ] Test test files with imported/created key
