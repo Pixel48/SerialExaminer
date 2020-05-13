@@ -67,7 +67,7 @@ Just `git clone https://github.com/Pixel48/SerialExaminer.git` and use python. O
 ![Example results table](docs/img/results.png)
 > Future updates will add export options and `predicted grade` column in results
 
-### Tasklist
+## Tasklist
 - [x] Basic GUI
 - [x] Key create (\*.exkey)
 - [x] Basic key create interface
