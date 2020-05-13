@@ -18,7 +18,8 @@ INPUT_FILES = []
 OUTPUT_FILE = None
 KEY_FILE = None
 KEY_DICT = {}
-qestionCount = 0
+RESULT_DICT = {}
+questionCount = 0
 answersCount = 0
 
 def newRow(arg = 1):
@@ -31,6 +32,27 @@ def newCol(arg = 1):
 def zeroCol():
   global C, R
   C = R = 0
+
+def splitLine(line):
+  if line.split('.')[0].isdigit():
+    line = line.split('.')
+    line[0] = int(line[0])
+    if line[1]:
+      if 'a' in line[1].lower():
+        line[1] = 'A'
+      elif 'b' in line[1].lower():
+        line[1] = 'B'
+      elif 'c' in line[1].lower():
+        line[1] = 'C'
+      elif 'd' in line[1].lower():
+        line[1] = 'D'
+      else:
+        line[1] = 'X'
+      return line
+    else:
+      return [line[0], 'X']
+  else:
+    return [0, 'X']
 
 class MainWindow(object):
   """Creator for main apilcation window"""
@@ -65,7 +87,6 @@ class MainWindow(object):
     self.keyLabel = Label(frame)
     self.keyLabel['text'] = "Exam key file"
     self.keyLabel.grid(row = R, column = C)
-    # TODO: exam key generate window/button
     # create button
     newCol()
     self.keyButtonCreate = Button(frame)
@@ -139,20 +160,45 @@ class MainWindow(object):
     self.keyButtonImport['state'] = NORMAL
     self.keyButtonCreate['state'] = NORMAL
     if ".exkey" in KEY_FILE:
+      global questionCount, KEY_DICT
+      with open(KEY_FILE, 'rb') as keyf:
+        KEY_DICT = pickle.load(keyf)
+      questionCount = len(KEY_DICT.keys())
       self.inputButton['state'] = NORMAL
   def browseExams(self):
     global INPUT_FILES
-    testDir = os.path.normpath(filedialog.askdirectory())
+    testDir = os.path.normpath(filedialog.askdirectory(
+    title = "Examination txt files location",
+    initialdir = '.',
+    ))
     testFiles = os.listdir(testDir)
     buffer = []
     for file in testFiles:
       buffer.append(os.path.join(testDir, file))
-    # TODO: validation
     for file in buffer:
       if '.txt' in file:
         INPUT_FILES.append(file)
+    if INPUT_FILES:
+      self.examinateButton['state'] = NORMAL
   def examinate(self):
-    pass
+    global questionCount
+    for testFile in INPUT_FILES:
+      with open(testFile, 'r') as examinateFile:
+        answersDict = {}
+        points = 0
+        for line in examinateFile:
+          line = splitLine(line)
+          answersDict[line[0]] = line[1]
+        for question in answersDict.keys():
+          if question in KEY_DICT.keys():
+            if answersDict[question] == KEY_DICT[question]:
+              points += 1
+        resultName = os.path.basename(testFile).split('.')[0]
+        RESULT_DICT[resultName] = [str(points) + '/' + str(questionCount), str(round(points*100/questionCount, 2)) + '%']
+        # NOTE: Result format: {<Filename>: ['<points>/<maxPoints', '<goodAnswersIn%>%']}
+        # print(resultName + ':', RESULT_DICT[resultName])
+    self.outputButtonDsiplay['state'] = NORMAL
+    self.outputButtonExport['state'] = NORMAL
   def resultDisplay(self):
     pass
   def resultExport(self):
