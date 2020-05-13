@@ -19,7 +19,7 @@
 - [ ] ... \*.csv
 - [ ] ... \*.xml
 - [x] Test test files with imported/created key
-- [ ] Display test results
+- [x] Display test results
 - [ ] Export test results to provided file in
 - [ ] ... \*.csv format
 - [ ] ... \*.xml format
