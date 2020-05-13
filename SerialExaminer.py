@@ -200,7 +200,8 @@ class MainWindow(object):
     self.outputButtonDsiplay['state'] = NORMAL
     self.outputButtonExport['state'] = NORMAL
   def resultDisplay(self):
-    pass
+    self.masterResultDisplayWindow = Toplevel(self.master)
+    self.appResultDisplayWindow = ResultDisplayWindow(self.masterResultDisplayWindow, self)
   def resultExport(self):
     pass
 
@@ -433,6 +434,20 @@ class MainKeyCreatorWindow(object):
       self.above.keyDone['state'] = NORMAL
       self.above.nextWindow['text'] = "ReCreate Key!"
       self.die()
+  def die(self):
+    self.master.destroy()
+
+class ResultDisplayWindow(object):
+  """Pop-up with test results from RESULT_DICT"""
+  def __init__(self, master, above):
+    self.master = master
+    self.above = above
+    self.frame = Frame(self.master)
+    self.build(self.frame)
+    self.frame.grid()
+  def build(self, frame):
+    pass
+
   def die(self):
     self.master.destroy()
 
