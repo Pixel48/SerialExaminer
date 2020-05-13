@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 # SerialExaminer.py
 #   by Pixel
-# Workflow:      https://trello.com/b/NcEXmMyl
 # Repository:    https://github.com/Pixel48/SerialExaminer.git
 # Documentation: https://github.com/Pixel48/SerialExaminer (WIP)
 from tkinter import *
@@ -32,7 +31,6 @@ def newCol(arg = 1):
 def zeroCol():
   global C, R
   C = R = 0
-
 def splitLine(line):
   if line.split('.')[0].isdigit():
     line = line.split('.')
@@ -196,9 +194,8 @@ class MainWindow(object):
         resultName = os.path.basename(testFile).split('.')[0]
         RESULT_DICT[resultName] = [str(points) + '/' + str(questionCount), str(round(points*100/questionCount, 2)) + '%']
         # NOTE: Result format: {<Filename>: ['<points>/<maxPoints', '<goodAnswersIn%>%']}
-        # print(resultName + ':', RESULT_DICT[resultName])
-    self.outputButtonDsiplay['state'] = NORMAL
     # self.outputButtonExport['state'] = NORMAL # NOTE: for future use
+    self.outputButtonDsiplay['state'] = NORMAL
   def resultDisplay(self):
     self.masterResultDisplayWindow = Toplevel(self.master)
     self.appResultDisplayWindow = ResultDisplayWindow(self.masterResultDisplayWindow, self)
@@ -264,30 +261,6 @@ class KeyCreatorWindow(object):
     self.questionButtonPlus10['width'] = 3
     self.questionButtonPlus10['command'] = self.questionCountPlus10
     self.questionButtonPlus10.grid(row = R, column = C)
-    # # posible answears quantinity # # NOTE: conented for now, i'll use it leater
-    # # label
-    # newRow()
-    # self.answersQuantinity = Label(frame)
-    # self.answersQuantinity['text'] = "Posible answears quantinity"
-    # self.answersQuantinity.grid(row = R, column = C)
-    # # 2 radio
-    # newCol()
-    # self.answers2 = Radiobutton(frame)
-    # self.answers2['variable'] = self.answersCount
-    # self.answers2['text'] = "2"
-    # self.answers2['value'] = 2
-    # self.answers2.deselect()
-    # self.answers2.grid(row = R, column = C, columnspan = 2)
-    # # 4
-    # newCol()
-    # newCol()
-    # self.answers4 = Radiobutton(frame)
-    # self.answers4['variable'] = self.answersCount
-    # self.answers4['text'] = "4"
-    # self.answers4['value'] = 4
-    # self.answers4.select()
-    # self.answers4.grid(row = R, column = C, columnspan = 2)
-    # main key creator init button #
     newRow()
     self.nextWindowFont = tkFont.Font(size = 14)
     self.nextWindow = Button(frame, font = self.nextWindowFont)
@@ -365,44 +338,45 @@ class MainKeyCreatorWindow(object):
     # label/counter
     self.mainFont = tkFont.Font(size = 14)
     self.mainLabel = Label(frame, font = self.mainFont)
+    self.mainLabel['width'] = 20
     self.mainLabelUpdate()
-    self.mainLabel.grid(row = R, column = C, columnspan = 5)
-    # question/answer buttons
+    self.mainLabel.grid(row = R, column = C, columnspan = 5, sticky = 'we')
+    # question/answer buttons #
     # back button
     newRow()
     self.backButton = Button(frame)
-    self.backButton['width'] = 3
+    # self.backButton['width'] = 3
     self.backButton['text'] = "<"
     self.backButton['command'] = self.backQuestion
-    self.backButton.grid(row = R, column = C)
+    self.backButton.grid(row = R, column = C, sticky = 'we')
     # A
     newCol()
     self.aButton = Button(frame)
-    self.aButton['width'] = 3
+    # self.aButton['width'] = 3
     self.aButton['text'] = "A"
     self.aButton['command'] = self.aAnswer
-    self.aButton.grid(row = R, column = C)
+    self.aButton.grid(row = R, column = C, sticky = 'we')
     # B
     newCol()
     self.bButton = Button(frame)
-    self.bButton['width'] = 3
+    # self.bButton['width'] = 3
     self.bButton['text'] = "B"
     self.bButton['command'] = self.bAnswer
-    self.bButton.grid(row = R, column = C)
+    self.bButton.grid(row = R, column = C, sticky = 'we')
     # C
     newCol()
     self.cButton = Button(frame)
-    self.cButton['width'] = 3
+    # self.cButton['width'] = 3
     self.cButton['text'] = "C"
     self.cButton['command'] = self.cAnswer
-    self.cButton.grid(row = R, column = C)
+    self.cButton.grid(row = R, column = C, sticky = 'we')
     # D
     newCol()
     self.dButton = Button(frame)
-    self.dButton['width'] = 3
+    # self.dButton['width'] = 3
     self.dButton['text'] = "D"
     self.dButton['command'] = self.dAnswer
-    self.dButton.grid(row = R, column = C)
+    self.dButton.grid(row = R, column = C, sticky = 'we')
 
   def backQuestion(self):
     self.questionNo -= 1
@@ -427,13 +401,14 @@ class MainKeyCreatorWindow(object):
     self.mainLabelUpdate()
   def bindAnswer(self, questionNumber, questionAnswer):
     global KEY_DICT
-    KEY_DICT[questionNumber] = questionAnswer # NOTE: that should work...
+    KEY_DICT[questionNumber] = questionAnswer
   def mainLabelUpdate(self):
     self.mainLabel['text'] = "Question " + str(self.questionNo)
     if self.questionNo > questionCount:
       self.above.keyDone['state'] = NORMAL
       self.above.nextWindow['text'] = "ReCreate Key!"
       self.die()
+
   def die(self):
     self.master.destroy()
 
@@ -452,7 +427,7 @@ class ResultDisplayWindow(object):
     Label(frame,
           text = "Name",
           fg = 'blue',
-          width = 20).grid(row = R, column = C)
+          width = 15).grid(row = R, column = C)
     newCol()
     Label(frame,
           text = "Points",
