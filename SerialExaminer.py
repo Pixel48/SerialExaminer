@@ -1,23 +1,24 @@
 # -*- coding: utf-8 -*-
 # SerialExaminer.py
 #   by Pixel
-# Workflow:      https://trello.com/b/NcEXmMyl
 # Repository:    https://github.com/Pixel48/SerialExaminer.git
 # Documentation: https://github.com/Pixel48/SerialExaminer (WIP)
 from tkinter import *
 from tkinter import filedialog
 import tkinter.font as tkFont
-import os#, shutil, pickle, csv # NOTE: not used yet
+import os, pickle#, shutil, csv # NOTE: not used yet
 
 versionTag = 'v0.0.0'
 
 # SOME GLOBALS
 R = 0
 C = 0
-INPUT_FILES = None
+INPUT_FILES = []
 OUTPUT_FILE = None
 KEY_FILE = None
-qestionCount = 0
+KEY_DICT = {}
+RESULT_DICT = {}
+questionCount = 0
 answersCount = 0
 
 def newRow(arg = 1):
@@ -30,6 +31,26 @@ def newCol(arg = 1):
 def zeroCol():
   global C, R
   C = R = 0
+def splitLine(line):
+  if line.split('.')[0].isdigit():
+    line = line.split('.')
+    line[0] = int(line[0])
+    if line[1]:
+      if 'a' in line[1].lower():
+        line[1] = 'A'
+      elif 'b' in line[1].lower():
+        line[1] = 'B'
+      elif 'c' in line[1].lower():
+        line[1] = 'C'
+      elif 'd' in line[1].lower():
+        line[1] = 'D'
+      else:
+        line[1] = 'X'
+      return line
+    else:
+      return [line[0], 'X']
+  else:
+    return [0, 'X']
 
 class MainWindow(object):
   """Creator for main apilcation window"""
@@ -64,7 +85,6 @@ class MainWindow(object):
     self.keyLabel = Label(frame)
     self.keyLabel['text'] = "Exam key file"
     self.keyLabel.grid(row = R, column = C)
-    # TODO: exam key generate window/button
     # create button
     newCol()
     self.keyButtonCreate = Button(frame)
@@ -138,14 +158,47 @@ class MainWindow(object):
     self.keyButtonImport['state'] = NORMAL
     self.keyButtonCreate['state'] = NORMAL
     if ".exkey" in KEY_FILE:
+      global questionCount, KEY_DICT
+      with open(KEY_FILE, 'rb') as keyf:
+        KEY_DICT = pickle.load(keyf)
+      questionCount = len(KEY_DICT.keys())
       self.inputButton['state'] = NORMAL
   def browseExams(self):
     global INPUT_FILES
-    INPUT_FILES = os.path.normpath(filedialog.askdirectory())
+    testDir = os.path.normpath(filedialog.askdirectory(
+    title = "Examination txt files location",
+    initialdir = '.',
+    ))
+    testFiles = os.listdir(testDir)
+    buffer = []
+    for file in testFiles:
+      buffer.append(os.path.join(testDir, file))
+    for file in buffer:
+      if '.txt' in file:
+        INPUT_FILES.append(file)
+    if INPUT_FILES:
+      self.examinateButton['state'] = NORMAL
   def examinate(self):
-    pass
+    global questionCount
+    for testFile in INPUT_FILES:
+      with open(testFile, 'r') as examinateFile:
+        answersDict = {}
+        points = 0
+        for line in examinateFile:
+          line = splitLine(line)
+          answersDict[line[0]] = line[1]
+        for question in answersDict.keys():
+          if question in KEY_DICT.keys():
+            if answersDict[question] == KEY_DICT[question]:
+              points += 1
+        resultName = os.path.basename(testFile).split('.')[0]
+        RESULT_DICT[resultName] = [str(points) + '/' + str(questionCount), str(round(points*100/questionCount, 2)) + '%']
+        # NOTE: Result format: {<Filename>: ['<points>/<maxPoints', '<goodAnswersIn%>%']}
+    # self.outputButtonExport['state'] = NORMAL # NOTE: for future use
+    self.outputButtonDsiplay['state'] = NORMAL
   def resultDisplay(self):
-    pass
+    self.masterResultDisplayWindow = Toplevel(self.master)
+    self.appResultDisplayWindow = ResultDisplayWindow(self.masterResultDisplayWindow, self)
   def resultExport(self):
     pass
 
@@ -208,30 +261,6 @@ class KeyCreatorWindow(object):
     self.questionButtonPlus10['width'] = 3
     self.questionButtonPlus10['command'] = self.questionCountPlus10
     self.questionButtonPlus10.grid(row = R, column = C)
-    # # posible answears quantinity # # NOTE: conented for now, i'll use it leater
-    # # label
-    # newRow()
-    # self.answersQuantinity = Label(frame)
-    # self.answersQuantinity['text'] = "Posible answears quantinity"
-    # self.answersQuantinity.grid(row = R, column = C)
-    # # 2 radio
-    # newCol()
-    # self.answers2 = Radiobutton(frame)
-    # self.answers2['variable'] = self.answersCount
-    # self.answers2['text'] = "2"
-    # self.answers2['value'] = 2
-    # self.answers2.deselect()
-    # self.answers2.grid(row = R, column = C, columnspan = 2)
-    # # 4
-    # newCol()
-    # newCol()
-    # self.answers4 = Radiobutton(frame)
-    # self.answers4['variable'] = self.answersCount
-    # self.answers4['text'] = "4"
-    # self.answers4['value'] = 4
-    # self.answers4.select()
-    # self.answers4.grid(row = R, column = C, columnspan = 2)
-    # main key creator init button #
     newRow()
     self.nextWindowFont = tkFont.Font(size = 14)
     self.nextWindow = Button(frame, font = self.nextWindowFont)
@@ -273,25 +302,30 @@ class KeyCreatorWindow(object):
   def mainKeyCreator(self):
     self.masterMainWindowCreateKey = Toplevel(self.master)
     self.appWindowCreateKey = MainKeyCreatorWindow(self.masterMainWindowCreateKey, self)
+  def exportKeyFile(self, file):
+    with open(file, 'wb') as keyFile:
+      pickle.dump(KEY_DICT, keyFile)
 
   def die(self):
     global KEY_FILE
-    KEY_FILE = filedialog.asksaveasfilename(
+    KEY_FILE = os.path.normpath(filedialog.asksaveasfilename(
       title = "Select exam key file",
       initialdir = '.',
-      filetypes =(("Exam Key File", "*.exkey"),
-                  # ("Csv files", "*.csv"), # TODO: add csv key export
-                  # ("Excel sheets", "*.xml"), # TODO: add xml key export
-                  )
-    )
+      filetypes =(("Exam Key File", "*.exkey"),)
+    ))
+    if '.exkey' not in KEY_FILE:
+      KEY_FILE += '.exkey'
     if KEY_FILE is '':
-      return
+      return # if no filename provided, don't proceed
+    self.exportKeyFile(KEY_FILE)
     self.above.inputButton['state'] = NORMAL
     self.master.destroy()
 
 class MainKeyCreatorWindow(object):
   """Window to create exam key"""
   def __init__(self, master, above):
+    global KEY_DICT
+    KEY_DICT = {}
     self.master = master
     self.above = above
     self.frame = Frame(self.master)
@@ -304,44 +338,45 @@ class MainKeyCreatorWindow(object):
     # label/counter
     self.mainFont = tkFont.Font(size = 14)
     self.mainLabel = Label(frame, font = self.mainFont)
+    self.mainLabel['width'] = 20
     self.mainLabelUpdate()
-    self.mainLabel.grid(row = R, column = C, columnspan = 5)
-    # question/answer buttons
+    self.mainLabel.grid(row = R, column = C, columnspan = 5, sticky = 'we')
+    # question/answer buttons #
     # back button
     newRow()
     self.backButton = Button(frame)
-    self.backButton['width'] = 3
+    # self.backButton['width'] = 3
     self.backButton['text'] = "<"
     self.backButton['command'] = self.backQuestion
-    self.backButton.grid(row = R, column = C)
+    self.backButton.grid(row = R, column = C, sticky = 'we')
     # A
     newCol()
     self.aButton = Button(frame)
-    self.aButton['width'] = 3
+    # self.aButton['width'] = 3
     self.aButton['text'] = "A"
     self.aButton['command'] = self.aAnswer
-    self.aButton.grid(row = R, column = C)
+    self.aButton.grid(row = R, column = C, sticky = 'we')
     # B
     newCol()
     self.bButton = Button(frame)
-    self.bButton['width'] = 3
+    # self.bButton['width'] = 3
     self.bButton['text'] = "B"
     self.bButton['command'] = self.bAnswer
-    self.bButton.grid(row = R, column = C)
+    self.bButton.grid(row = R, column = C, sticky = 'we')
     # C
     newCol()
     self.cButton = Button(frame)
-    self.cButton['width'] = 3
+    # self.cButton['width'] = 3
     self.cButton['text'] = "C"
     self.cButton['command'] = self.cAnswer
-    self.cButton.grid(row = R, column = C)
+    self.cButton.grid(row = R, column = C, sticky = 'we')
     # D
     newCol()
     self.dButton = Button(frame)
-    self.dButton['width'] = 3
+    # self.dButton['width'] = 3
     self.dButton['text'] = "D"
     self.dButton['command'] = self.dAnswer
-    self.dButton.grid(row = R, column = C)
+    self.dButton.grid(row = R, column = C, sticky = 'we')
 
   def backQuestion(self):
     self.questionNo -= 1
@@ -365,15 +400,54 @@ class MainKeyCreatorWindow(object):
     self.questionNo += 1
     self.mainLabelUpdate()
   def bindAnswer(self, questionNumber, questionAnswer):
-    pass
+    global KEY_DICT
+    KEY_DICT[questionNumber] = questionAnswer
   def mainLabelUpdate(self):
     self.mainLabel['text'] = "Question " + str(self.questionNo)
     if self.questionNo > questionCount:
       self.above.keyDone['state'] = NORMAL
       self.above.nextWindow['text'] = "ReCreate Key!"
       self.die()
+
   def die(self):
     self.master.destroy()
+
+class ResultDisplayWindow(object):
+  """Pop-up with test results from RESULT_DICT"""
+  def __init__(self, master, above):
+    self.master = master
+    self.above = above
+    self.frame = Frame(self.master)
+    self.build(self.frame)
+    self.frame.grid()
+  def build(self, frame):
+    global RESULT_DICT
+    zeroCol()
+    # legend #
+    Label(frame,
+          text = "Name",
+          fg = 'blue',
+          width = 15).grid(row = R, column = C)
+    newCol()
+    Label(frame,
+          text = "Points",
+          fg = 'blue',
+          width = 10).grid(row = R, column = C)
+    newCol()
+    Label(frame,
+          text = "Result",
+          fg = 'red').grid(row = R, column = C)
+    # results #
+    for filename in RESULT_DICT:
+      newRow()
+      Label(frame,
+            text = filename).grid(row = R, column = C)
+      newCol()
+      Label(frame,
+            text = RESULT_DICT[filename][0]).grid(row = R, column = C)
+      newCol()
+      Label(frame,
+            text = RESULT_DICT[filename][1]).grid(row = R, column = C)
 
 def main():
   root = Tk()
