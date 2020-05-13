@@ -8,7 +8,7 @@ from tkinter import filedialog
 import tkinter.font as tkFont
 import os, pickle#, shutil, csv # NOTE: not used yet
 
-versionTag = 'v0.1.3'
+versionTag = 'v0.1.4'
 
 # SOME GLOBALS
 R = 0
