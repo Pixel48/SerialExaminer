@@ -2,31 +2,7 @@
 > To make my teachers life bit easier
 >>(... and proof them that even the strangest students can somehow help :)
 
-![Main Window](./docs/img/main_window.png)
-
-### Tasklist
-- [x] Basic GUI
-- [x] Key create (\*.exkey)
-- [x] Basic key create interface
-- [x] Set custom questions quantity
-- [ ] Key import in
-- [x] ... \*.exkey format
-- [ ] ... \*.txt format
-- [ ] ... \*.xml format
-- [ ] Import test files from provided directory in selected format
-- [x] ... \*.txt
-- [ ] ... \*.csv
-- [ ] ... \*.xml
-- [x] Test test files with imported/created key
-- [x] Display test results
-- [ ] Export test results to provided file in
-- [ ] ... \*.csv format
-- [ ] ... \*.xml format
-- [ ] ... \*.txt format
-- [x] Release basic aplha
-- [ ] Send it to my highschool teachers
-- [ ] Make it usable and useful
-- [ ] Add autoupdate faeture
+![Main Window](docs/img/main_window.png)
 
 ## Why would you use it?
 Good question! An maybe that's why this section is titled like that...
@@ -42,11 +18,11 @@ Let's suppose that your students can use computers to make .txt file with answer
 ***This is this software***
 
 ## Run
-There's several ways to launch SerialExaminer:
+There's several ways to launch SerialExaminer
+
 #### Windows
 1. Use precompiled \*.exe file from project folder
-   - Download project folder
-   - Take SerialExaminer.exe file from project folder
+   - Download SerialExaminer.exe project folder
 2. Download all project files and compile it to \*.exe file with [pyinstaller](https://www.pyinstaller.org/)
    - Download project folder
    - Follow first two steps from way one
@@ -82,11 +58,37 @@ Just `git clone https://github.com/Pixel48/SerialExaminer.git` and use python. O
      - After key answer window vanish, hit `Done` button and provide where to save exam key for potential future use. (You dont need to import key after creating it, it's imported immediately after save).
 3. Hit `Browse` button and provide folder with files from step 1.
 4. Hit `Check!` button to calculate results
+
+![Check bitton](docs/img/check_button.png)
 > Future updates will automate this process and remove this button
 
 5. Use `Display` button to show test results
 
 ![Example results table](docs/img/results.png)
 > Future updates will add export options and `predicted grade` column in results
+
+### Tasklist
+- [x] Basic GUI
+- [x] Key create (\*.exkey)
+- [x] Basic key create interface
+- [x] Set custom questions quantity
+- [ ] Key import in
+- [x] ... \*.exkey format
+- [ ] ... \*.txt format
+- [ ] ... \*.xml format
+- [ ] Import test files from provided directory in selected format
+- [x] ... \*.txt
+- [ ] ... \*.csv
+- [ ] ... \*.xml
+- [x] Test test files with imported/created key
+- [x] Display test results
+- [ ] Export test results to provided file in
+- [ ] ... \*.csv format
+- [ ] ... \*.xml format
+- [ ] ... \*.txt format
+- [x] Release basic aplha
+- [x] Send it to my highschool teachers
+- [ ] Make it usable and useful
+- [ ] Add autoupdate faeture
 
 Copyright (c) 2020 [Pixel48](www.github.com/Pixel48) All Rights Reserved.
