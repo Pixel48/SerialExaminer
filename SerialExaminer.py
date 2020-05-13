@@ -18,6 +18,7 @@ INPUT_FILES = []
 OUTPUT_FILE = None
 KEY_FILE = None
 KEY_DICT = {}
+RESULT_DICT = {}
 qestionCount = 0
 answersCount = 0
 
@@ -31,6 +32,27 @@ def newCol(arg = 1):
 def zeroCol():
   global C, R
   C = R = 0
+
+def splitLine(line):
+  if line.split('.')[0].isdigit():
+    line = line.split('.')
+    line[0] = int(line[0])
+    if line[1]:
+      if 'a' in line[1].lower():
+        line[1] = 'A'
+      elif 'b' in line[1].lower():
+        line[1] = 'B'
+      elif 'c' in line[1].lower():
+        line[1] = 'C'
+      elif 'd' in line[1].lower():
+        line[1] = 'D'
+      else:
+        line[1] = 'X'
+      return line
+    else:
+      return [line[0], 'X']
+  else:
+    return [0, 'X']
 
 class MainWindow(object):
   """Creator for main apilcation window"""
