@@ -87,7 +87,6 @@ class MainWindow(object):
     self.keyLabel = Label(frame)
     self.keyLabel['text'] = "Exam key file"
     self.keyLabel.grid(row = R, column = C)
-    # TODO: exam key generate window/button
     # create button
     newCol()
     self.keyButtonCreate = Button(frame)
@@ -171,14 +170,11 @@ class MainWindow(object):
     testDir = os.path.normpath(filedialog.askdirectory(
     title = "Examination txt files location",
     initialdir = '.',
-    # filetypes =(("Examination txt files location", "*.txt"),
-    #             )
     ))
     testFiles = os.listdir(testDir)
     buffer = []
     for file in testFiles:
       buffer.append(os.path.join(testDir, file))
-    # TODO: validation
     for file in buffer:
       if '.txt' in file:
         INPUT_FILES.append(file)
