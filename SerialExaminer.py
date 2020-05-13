@@ -161,6 +161,10 @@ class MainWindow(object):
     self.keyButtonImport['state'] = NORMAL
     self.keyButtonCreate['state'] = NORMAL
     if ".exkey" in KEY_FILE:
+      global questionCount, KEY_DICT
+      with open(KEY_FILE, 'rb') as keyf:
+        KEY_DICT = pickle.load(keyf)
+      questionCount = len(KEY_DICT.keys())
       self.inputButton['state'] = NORMAL
   def browseExams(self):
     global INPUT_FILES
