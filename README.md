@@ -70,10 +70,12 @@ Just `git clone https://github.com/Pixel48/SerialExaminer.git` and use python. O
 2. Run SerialExaminer and create or import exam key file (\*.exkey).
    - If you create exam key...
      - Provide the exact number of questions in the exam and hit `Create key!` button
+
      ![Key parameters](docs/img/key_parameters.png)
      > For now creator supports up to 100 questions, future updates will extend this range
 
      - Provide an answer to the question asked. If you make a mistake you can go back using the `<` button. Window will disappear automatically after entering the last answer
+
      ![Key answers](docs/img/key_ans.png)
      > For now creator supports only 4 answers, future update will extend this range
 
@@ -83,6 +85,7 @@ Just `git clone https://github.com/Pixel48/SerialExaminer.git` and use python. O
 > Future updates will automate this process and remove this button
 
 5. Use `Display` button to show test results
+
 ![Example results table](docs/img/results.png)
 > Future updates will add export options and `predicted grade` column in results
 
