@@ -18,7 +18,7 @@
 - [x] ... \*.txt
 - [ ] ... \*.csv
 - [ ] ... \*.xml
-- [ ] Test test files with imported/created key
+- [x] Test test files with imported/created key
 - [ ] Display test results
 - [ ] Export test results to provided file in
 - [ ] ... \*.csv format
@@ -27,7 +27,7 @@
 - [ ] Release basic aplha
 - [ ] Send it to my highschool teachers
 - [ ] Make it usable and useful
-- [ ] Add autoupdate faeture from this GitHub repository
+- [ ] Add autoupdate faeture
 
 ## Why would you use it?
 Good question! An maybe that's why this section is titled like that...
