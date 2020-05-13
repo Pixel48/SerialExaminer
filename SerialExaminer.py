@@ -197,9 +197,12 @@ class MainWindow(object):
           if question in KEY_DICT.keys():
             if answersDict[question] == KEY_DICT[question]:
               points += 1
-        resultDictKey = os.path.basename(testFile).split('.')[0]
-        RESULT_DICT[resultDictKey] = [str(points) + '/' + str(questionCount), str(points*100/questionCount) + '%']
-        print(resultDictKey + ':', RESULT_DICT[resultDictKey])
+        resultName = os.path.basename(testFile).split('.')[0]
+        RESULT_DICT[resultName] = [str(points) + '/' + str(questionCount), str(round(points*100/questionCount, 2)) + '%']
+        # NOTE: Result format: {<Filename>: ['<points>/<maxPoints', '<goodAnswersIn%>%']}
+        # print(resultName + ':', RESULT_DICT[resultName])
+    self.outputButtonDsiplay['state'] = NORMAL
+    self.outputButtonExport['state'] = NORMAL
   def resultDisplay(self):
     pass
   def resultExport(self):
