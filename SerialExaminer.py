@@ -272,6 +272,7 @@ class KeyCreatorWindow(object):
     self.questionButton0['width'] = 3
     self.questionButton0['command'] = self.question0
     self.questionButton0.grid(row = R, column = C)
+    # key config done button #
     newRow()
     self.nextWindowFont = tkFont.Font(size = 14)
     self.nextWindow = Button(frame, font = self.nextWindowFont)
