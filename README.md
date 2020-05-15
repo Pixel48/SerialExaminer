@@ -53,7 +53,7 @@ Let's suppose that your students can use computers to make .txt file with answer
 ![Example results table](docs/img/results.png)
 > Future updates will add export options and `predicted grade` column in results
 
-## Run
+## Launching
 There's several ways to launch SerialExaminer
 
 #### Windows
