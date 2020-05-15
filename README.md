@@ -35,7 +35,6 @@ Let's suppose that your students can use computers to make .txt file with answer
      - Provide the exact number of questions in the exam and hit `Create key!` button
 
      ![Key parameters](docs/img/key_parameters.png)
-     > For now creator supports up to 100 questions, future updates will extend this range
 
      - Provide an answer to the question asked. If you make a mistake you can go back using the `<` button. Window will disappear automatically after entering the last answer
 
