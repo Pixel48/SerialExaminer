@@ -41,9 +41,9 @@ def splitLine(line):
       line[1] = line[1].strip(' ')[:1].upper()
       return line
     else:
-      return [line[0], 'X']
+      return [line[0], '#']
   else:
-    return [0, 'X']
+    return [0, '#']
 
 class MainWindow(object):
   """Creator for main apilcation window"""
