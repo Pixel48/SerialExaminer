@@ -81,7 +81,7 @@ Just `git clone https://github.com/Pixel48/SerialExaminer.git` and use python. O
 - [x] Set custom answers quantity
 - [ ] Key import from selected file in
 - [x] ... \*.exkey format
-- [ ] ... \*.txt format
+- [ ] ... \*.txt format ('Cheater Provider' feature)
 - [ ] ... \*.xml format
 - [ ] Import test files from provided directory in selected format
 - [x] ... \*.txt
