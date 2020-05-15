@@ -32,14 +32,14 @@ Let's suppose that your students can use computers to make .txt file with answer
 
 2. Run SerialExaminer and create or import exam key file (\*.exkey).
    - If you create exam key...
-     - Provide the exact number of questions in the exam and hit `Create key!` button
+     - Provide the exact number of questions and answers in the exam and hit `Create key!` button
 
      ![Key parameters](docs/img/key_parameters.png)
+     > Now the key creator supports the number of answers from 4 to 12, future updates will gradually expand this range until they finally remove this restriction
 
-     - Provide an answer to the question asked. If you make a mistake you can go back using the `<` button. Window will disappear automatically after entering the last answer
+     - Provide answers to questions about the given number. If you make a mistake you can go back using the `<` button. Window will disappear automatically after entering the last answer
 
      ![Key answers](docs/img/key_ans.png)
-     > For now creator supports only 4 answers, future update will extend this range
 
      - After key answer window vanish, hit `Done` button and provide where to save exam key for potential future use. (You dont need to import key after creating it, it's imported immediately after save).
 3. Hit `Browse` button and provide folder with files from step 1.
@@ -53,7 +53,7 @@ Let's suppose that your students can use computers to make .txt file with answer
 ![Example results table](docs/img/results.png)
 > Future updates will add export options and `predicted grade` column in results
 
-## Run
+## Launching
 There's several ways to launch SerialExaminer
 
 #### Windows
@@ -81,7 +81,7 @@ Just `git clone https://github.com/Pixel48/SerialExaminer.git` and use python. O
 - [x] Set custom answers quantity
 - [ ] Key import from selected file in
 - [x] ... \*.exkey format
-- [ ] ... \*.txt format
+- [ ] ... \*.txt format ('Cheater Provider' feature)
 - [ ] ... \*.xml format
 - [ ] Import test files from provided directory in selected format
 - [x] ... \*.txt
