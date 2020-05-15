@@ -32,11 +32,12 @@ Let's suppose that your students can use computers to make .txt file with answer
 
 2. Run SerialExaminer and create or import exam key file (\*.exkey).
    - If you create exam key...
-     - Provide the exact number of questions in the exam and hit `Create key!` button
+     - Provide the exact number of questions and answers in the exam and hit `Create key!` button
 
      ![Key parameters](docs/img/key_parameters.png)
+     > Now the key creator supports the number of answers from 4 to 12, future updates will gradually expand this range until they finally remove this restriction
 
-     - Provide an answer to the question asked. If you make a mistake you can go back using the `<` button. Window will disappear automatically after entering the last answer
+     - Provide answers to questions about the given number. If you make a mistake you can go back using the `<` button. Window will disappear automatically after entering the last answer
 
      ![Key answers](docs/img/key_ans.png)
 
