@@ -9,7 +9,7 @@ from functools import partial
 import tkinter.font as tkFont
 import os, pickle#, shutil, csv # NOTE: not used yet
 
-versionTag = 'v0.2.0'
+versionTag = 'v0.2.1'
 
 # SOME GLOBALS
 R = 0
@@ -217,7 +217,7 @@ class KeyCreatorWindow(object):
     self.mainFont = tkFont.Font(size = 14)
     self.mainLabel = Label(frame, font = self.mainFont)
     self.mainLabel['text'] = "Serial Examiner\nKey Creator"
-    self.mainLabel.grid(row = R, column = C, columnspan = 6)
+    self.mainLabel.grid(row = R, column = C, columnspan = 7)
     # question quantity #
     # label
     newRow()
