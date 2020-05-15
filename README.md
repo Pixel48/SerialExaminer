@@ -39,7 +39,6 @@ Let's suppose that your students can use computers to make .txt file with answer
      - Provide an answer to the question asked. If you make a mistake you can go back using the `<` button. Window will disappear automatically after entering the last answer
 
      ![Key answers](docs/img/key_ans.png)
-     > For now creator supports only 4 answers, future update will extend this range
 
      - After key answer window vanish, hit `Done` button and provide where to save exam key for potential future use. (You dont need to import key after creating it, it's imported immediately after save).
 3. Hit `Browse` button and provide folder with files from step 1.
