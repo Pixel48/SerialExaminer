@@ -283,13 +283,13 @@ class KeyCreatorWindow(object):
     global questionCount
     questionCount -= 10
     if questionCount < 1:
-      questionCount = 100
+      questionCount = 1
     self.questionLabelCount['text'] = questionCount
   def questionCountMinus1(self):
     global questionCount
     questionCount -= 1
     if questionCount < 1:
-      questionCount = 100
+      questionCount = 1
     self.questionLabelCount['text'] = questionCount
   def questionCountPlus1(self):
     global questionCount
