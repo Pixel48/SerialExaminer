@@ -294,14 +294,14 @@ class KeyCreatorWindow(object):
   def questionCountPlus1(self):
     global questionCount
     questionCount += 1
-    if questionCount > 100:
-      questionCount = 1
+    # if questionCount > 100:
+      # questionCount = 1
     self.questionLabelCount['text'] = questionCount
   def questionCountPlus10(self):
     global questionCount
     questionCount += 10
-    if questionCount > 100:
-      questionCount = 10
+    # if questionCount > 100:
+      # questionCount = 10
     self.questionLabelCount['text'] = questionCount
   def mainKeyCreator(self):
     self.masterMainWindowCreateKey = Toplevel(self.master)
