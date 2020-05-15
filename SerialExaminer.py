@@ -280,11 +280,11 @@ class KeyCreatorWindow(object):
     self.answerLabel.grid(row = R, column = C)
     # answers button -10
     newCol()
-    self.answerButtonMinus10 = Button(frame)
-    self.answerButtonMinus10['text'] = "<<"
-    self.answerButtonMinus10['width'] = 3
-    self.answerButtonMinus10['command'] = self.answerCountMinus10
-    self.answerButtonMinus10.grid(row = R, column = C)
+    self.answerButtonMinus4 = Button(frame)
+    self.answerButtonMinus4['text'] = "<<"
+    self.answerButtonMinus4['width'] = 3
+    self.answerButtonMinus4['command'] = self.answerCountMinus4
+    self.answerButtonMinus4.grid(row = R, column = C)
     # answers button -1
     newCol()
     self.answerButtonMinus1 = Button(frame)
@@ -294,10 +294,10 @@ class KeyCreatorWindow(object):
     self.answerButtonMinus1.grid(row = R, column = C)
     # answersCountLabel
     newCol()
-    self.questionLabelCount = Label(frame)
-    self.questionLabelCount['text'] = answerCount
-    self.questionLabelCount['width'] = 3
-    self.questionLabelCount.grid(row = R, column = C)
+    self.answerLabelCount = Label(frame)
+    self.answerLabelCount['text'] = answersCount
+    self.answerLabelCount['width'] = 3
+    self.answerLabelCount.grid(row = R, column = C)
     # answers button +1
     newCol()
     self.answerButtonPlus1 = Button(frame)
@@ -307,11 +307,11 @@ class KeyCreatorWindow(object):
     self.answerButtonPlus1.grid(row = R, column = C)
     # answers button +10
     newCol()
-    self.answerButtonPlus10 = Button(frame)
-    self.answerButtonPlus10['text'] = ">>"
-    self.answerButtonPlus10['width'] = 3
-    self.answerButtonPlus10['command'] = self.answerCountPlus10
-    self.answerButtonPlus10.grid(row = R, column = C)
+    self.answerButtonPlus4 = Button(frame)
+    self.answerButtonPlus4['text'] = ">>"
+    self.answerButtonPlus4['width'] = 3
+    self.answerButtonPlus4['command'] = self.answerCountPlus4
+    self.answerButtonPlus4.grid(row = R, column = C)
     # Main buttons #
     newRow()
     self.nextWindowFont = tkFont.Font(size = 14)
@@ -356,14 +356,30 @@ class KeyCreatorWindow(object):
       # questionCount = 10
     self.questionLabelCount['text'] = questionCount
 
-  def answersCountMinus10(self):
-    pass
-  def answersCountMinus1(self):
-    pass
-  def answersCountPlus1(self):
-    pass
-  def answersCountPlus10(self):
-    pass
+  def answerCountMinus4(self):
+      global answersCount
+      answersCount -= 4
+      if answersCount < 1:
+        answersCount = 1
+      self.answerLabelCount['text'] = answersCount
+  def answerCountMinus1(self):
+      global answersCount
+      answersCount -= 1
+      if answersCount < 1:
+        answersCount = 1
+      self.answerLabelCount['text'] = answersCount
+  def answerCountPlus1(self):
+      global answersCount
+      answersCount += 1
+      if answersCount > 12:
+        answersCount = 1
+      self.answerLabelCount['text'] = answersCount
+  def answerCountPlus4(self):
+      global answersCount
+      answersCount += 4
+      if answersCount > 12:
+        answersCount = 4
+      self.answerLabelCount['text'] = answersCount
 
   def mainKeyCreator(self):
     self.masterMainWindowCreateKey = Toplevel(self.master)
