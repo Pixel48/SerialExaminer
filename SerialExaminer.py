@@ -225,11 +225,11 @@ class KeyCreatorWindow(object):
     self.mainLabel = Label(frame, font = self.mainFont)
     self.mainLabel['text'] = "Serial Examiner\nKey Creator"
     self.mainLabel.grid(row = R, column = C, columnspan = 6)
-    # question quantinity #
+    # question quantity #
     # label
     newRow()
     self.questionLabel = Label(frame)
-    self.questionLabel['text'] = "Question quantinity"
+    self.questionLabel['text'] = "Question quantity"
     self.questionLabel.grid(row = R, column = C)
     # button -10
     newCol()
