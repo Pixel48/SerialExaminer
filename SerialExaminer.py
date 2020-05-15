@@ -56,6 +56,8 @@ class MainWindow(object):
   """Creator for main apilcation window"""
   def __init__(self, master):
     self.master = master
+    self.master.resizable(width=False, height=False) # lock window resize
+    self.master.iconbitmap(r'./ico.ico') # icon
     self.frame = Frame(self.master)
     self.build(self.frame)
     self.frame.grid()
@@ -209,6 +211,8 @@ class KeyCreatorWindow(object):
     questionCount = 40
     answersCount = 4
     self.master = master
+    self.master.resizable(width=False, height=False) # lock window resize
+    self.master.iconbitmap(r'./ico.ico') # icon
     self.above = above
     self.frame = Frame(self.master)
     self.build(self.frame)
@@ -327,6 +331,8 @@ class MainKeyCreatorWindow(object):
     global KEY_DICT
     KEY_DICT = {}
     self.master = master
+    self.master.resizable(width=False, height=False) # lock window resize
+    self.master.iconbitmap(r'./ico.ico') # icon
     self.above = above
     self.frame = Frame(self.master)
     self.questionNo = 1
@@ -416,6 +422,8 @@ class ResultDisplayWindow(object):
   """Pop-up with test results from RESULT_DICT"""
   def __init__(self, master, above):
     self.master = master
+    self.master.resizable(width=False, height=False) # lock window resize
+    self.master.iconbitmap(r'./ico.ico') # icon
     self.above = above
     self.frame = Frame(self.master)
     self.build(self.frame)
@@ -452,13 +460,8 @@ class ResultDisplayWindow(object):
 def main():
   root = Tk()
   root.title("SeriEx")
-  root.resizable(width=False, height=False) # lock window resize
   ws = root.winfo_screenwidth()
   hs = root.winfo_screenheight()
-  x = (ws/20)*10
-  y = (hs/20)*9
-  root.iconbitmap(r'./ico.ico') # icon
-  # root.geometry('+%d+%d'%(x, y)) # set position
   app = MainWindow(root)
   root.mainloop()
 
