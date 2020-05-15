@@ -78,7 +78,7 @@ Just `git clone https://github.com/Pixel48/SerialExaminer.git` and use python. O
 - [x] Key create (\*.exkey)
 - [x] Basic key create interface
 - [x] Set custom questions quantity
-- [ ] Set custom answers quantity
+- [x] Set custom answers quantity
 - [ ] Key import from selected file in
 - [x] ... \*.exkey format
 - [ ] ... \*.txt format
