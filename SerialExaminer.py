@@ -37,16 +37,10 @@ def splitLine(line):
     line = line.split('.')
     line[0] = int(line[0])
     if line[1]:
-      if 'a' in line[1].lower():
-        line[1] = 'A'
-      elif 'b' in line[1].lower():
-        line[1] = 'B'
-      elif 'c' in line[1].lower():
-        line[1] = 'C'
-      elif 'd' in line[1].lower():
-        line[1] = 'D'
-      else:
-        line[1] = 'X'
+      print(line)
+      line[1] = line[1].strip('\n')
+      line[1] = line[1].strip(' ')[:1].upper()
+      print(line)
       return line
     else:
       return [line[0], 'X']
