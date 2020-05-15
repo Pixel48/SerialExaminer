@@ -4,6 +4,14 @@
 
 ![Main Window](docs/img/main_window.png)
 
+## Table of Contents
+- [Why would you use it?](https://github.com/Pixel48/SerialExaminer#why-would-you-use-it)
+- [How tu use it?](https://github.com/Pixel48/SerialExaminer#usage)
+- [How to run it?](https://github.com/Pixel48/SerialExaminer#run)
+  - [...on Windows](https://github.com/Pixel48/SerialExaminer#windows)
+  - [...on Linux](https://github.com/Pixel48/SerialExaminer#linux)
+- [Developer's tasklist](https://github.com/Pixel48/SerialExaminer#tasklist)
+
 ## Why would you use it?
 Good question! An maybe that's why this section is titled like that...
 
@@ -16,26 +24,6 @@ Of course, you can take some time to correct these answers, but if you teach, fo
 Let's suppose that your students can use computers to make .txt file with answers to test from .pdf file with questions, and then give it to you via pendrive after 15 minutes, and you now can select this pendrive in come kind of program, and in a snap get marks for these students!
 
 ***This is this software***
-
-## Run
-There's several ways to launch SerialExaminer
-
-#### Windows
-1. Download all project files and compile it to \*.exe file with [pyinstaller](https://www.pyinstaller.org/)
-   - Download project folder
-   - Download the newest version of python from [here](https://www.python.org/downloads/)
-   - Follow first two steps from way one
-   - Run `pip3 install pyinstaller==3.4` in CMD
-   - Run `pyinstaller -w -F -i ico.ico SerialExaminer.py` in CMD at project folder
-   - Take completed SerialExaminer.exe file from dist/ folder
-2. Download all project files and launch SerialExaminer.py with [Python3](https://www.python.org/)
-   - Download project folder
-   - Download the newest version of python from [here](https://www.python.org/downloads/)
-   - Add python to your [PATH](https://superuser.com/questions/143119/how-do-i-add-python-to-the-windows-path)
-   - Run `python ./SerialExaminer.py` in CMD at project folder
-
-#### Linux
-Just `git clone https://github.com/Pixel48/SerialExaminer.git` and use python. Or use pyinstaller to make it binary. It's Linux
 
 ## Usage
 1. Ask your students to send you test responses in .txt files named after their full names, journal number, any ID numbers or anything else, that can identify them. Aks them to write answers in these files in format <question number>.<correct answer>, line by line. The order of questions and letter size don't matter.
@@ -66,12 +54,33 @@ Just `git clone https://github.com/Pixel48/SerialExaminer.git` and use python. O
 ![Example results table](docs/img/results.png)
 > Future updates will add export options and `predicted grade` column in results
 
+## Run
+There's several ways to launch SerialExaminer
+
+#### Windows
+1. Download all project files and compile it to \*.exe file with [pyinstaller](https://www.pyinstaller.org/)
+- Download project folder
+- Download the newest version of python from [here](https://www.python.org/downloads/)
+- Follow first two steps from way one
+- Run `pip3 install pyinstaller==3.4` in CMD
+- Run `pyinstaller -w -F -i ico.ico SerialExaminer.py` in CMD at project folder
+- Take completed SerialExaminer.exe file from dist/ folder
+2. Download all project files and launch SerialExaminer.py with [Python3](https://www.python.org/)
+- Download project folder
+- Download the newest version of python from [here](https://www.python.org/downloads/)
+- Add python to your [PATH](https://superuser.com/questions/143119/how-do-i-add-python-to-the-windows-path)
+- Run `python ./SerialExaminer.py` in CMD at project folder
+
+#### Linux
+Just `git clone https://github.com/Pixel48/SerialExaminer.git` and use python. Or use pyinstaller to make it binary. It's Linux
+
 ## Tasklist
 - [x] Basic GUI
 - [x] Key create (\*.exkey)
 - [x] Basic key create interface
 - [x] Set custom questions quantity
-- [ ] Key import in
+- [ ] Set custom answers quantity
+- [ ] Key import from selected file in
 - [x] ... \*.exkey format
 - [ ] ... \*.txt format
 - [ ] ... \*.xml format
@@ -81,13 +90,14 @@ Just `git clone https://github.com/Pixel48/SerialExaminer.git` and use python. O
 - [ ] ... \*.xml
 - [x] Test test files with imported/created key
 - [x] Display test results
-- [ ] Export test results to provided file in
+- [ ] Export test results to selected file in
 - [ ] ... \*.csv format
 - [ ] ... \*.xml format
 - [ ] ... \*.txt format
 - [x] Release basic aplha
-- [x] Send it to my highschool teachers
+- [ ] ~~Send it to my highschool teachers~~ (I fu**ed it up)
+- [ ] Give it to somebody who will actually use it
 - [ ] Make it usable and useful
-- [ ] Add autoupdate faeture
+- [ ] Add autoupdate faeture from [SerialExaminer](https://github.com/Pixel48/SerialExaminer) repository
 
 Copyright (c) 2020 [Pixel48](https://github.com/Pixel48/) All Rights Reserved.
