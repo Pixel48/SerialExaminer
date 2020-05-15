@@ -37,10 +37,8 @@ def splitLine(line):
     line = line.split('.')
     line[0] = int(line[0])
     if line[1]:
-      print(line)
       line[1] = line[1].strip('\n')
       line[1] = line[1].strip(' ')[:1].upper()
-      print(line)
       return line
     else:
       return [line[0], 'X']
