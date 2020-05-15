@@ -5,6 +5,7 @@
 # Documentation: https://github.com/Pixel48/SerialExaminer (WIP)
 from tkinter import *
 from tkinter import filedialog
+from functools import partial
 import tkinter.font as tkFont
 import os, pickle#, shutil, csv # NOTE: not used yet
 
@@ -36,21 +37,13 @@ def splitLine(line):
     line = line.split('.')
     line[0] = int(line[0])
     if line[1]:
-      if 'a' in line[1].lower():
-        line[1] = 'A'
-      elif 'b' in line[1].lower():
-        line[1] = 'B'
-      elif 'c' in line[1].lower():
-        line[1] = 'C'
-      elif 'd' in line[1].lower():
-        line[1] = 'D'
-      else:
-        line[1] = 'X'
+      line[1] = line[1].strip('\n')
+      line[1] = line[1].strip(' ')[:1].upper()
       return line
     else:
-      return [line[0], 'X']
+      return [line[0], '#']
   else:
-    return [0, 'X']
+    return [0, '#']
 
 class MainWindow(object):
   """Creator for main apilcation window"""
@@ -231,34 +224,34 @@ class KeyCreatorWindow(object):
     self.questionLabel = Label(frame)
     self.questionLabel['text'] = "Question quantity"
     self.questionLabel.grid(row = R, column = C)
-    # button -10
+    # questions button -10
     newCol()
     self.questionButtonMinus10 = Button(frame)
     self.questionButtonMinus10['text'] = "<<"
     self.questionButtonMinus10['width'] = 3
     self.questionButtonMinus10['command'] = self.questionCountMinus10
     self.questionButtonMinus10.grid(row = R, column = C)
-    # button -1
+    # questions button -1
     newCol()
     self.questionButtonMinus1 = Button(frame)
     self.questionButtonMinus1['text'] = "<"
     self.questionButtonMinus1['width'] = 3
     self.questionButtonMinus1['command'] = self.questionCountMinus1
     self.questionButtonMinus1.grid(row = R, column = C)
-    # countLabel
+    # questionsCountLabel
     newCol()
     self.questionLabelCount = Label(frame)
     self.questionLabelCount['text'] = questionCount
     self.questionLabelCount['width'] = 3
     self.questionLabelCount.grid(row = R, column = C)
-    # button +1
+    # questions button +1
     newCol()
     self.questionButtonPlus1 = Button(frame)
     self.questionButtonPlus1['text'] = ">"
     self.questionButtonPlus1['width'] = 3
     self.questionButtonPlus1['command'] = self.questionCountPlus1
     self.questionButtonPlus1.grid(row = R, column = C)
-    # button +10
+    # questions button +10
     newCol()
     self.questionButtonPlus10 = Button(frame)
     self.questionButtonPlus10['text'] = ">>"
@@ -272,7 +265,47 @@ class KeyCreatorWindow(object):
     self.questionButton0['width'] = 3
     self.questionButton0['command'] = self.question0
     self.questionButton0.grid(row = R, column = C)
-    # key config done button #
+    # answers quantity #
+    # label
+    newRow()
+    self.answerLabel = Label(frame)
+    self.answerLabel['text'] = "Answers quantinity"
+    self.answerLabel.grid(row = R, column = C)
+    # answers button -10
+    newCol()
+    self.answerButtonMinus4 = Button(frame)
+    self.answerButtonMinus4['text'] = "<<"
+    self.answerButtonMinus4['width'] = 3
+    self.answerButtonMinus4['command'] = self.answerCountMinus4
+    self.answerButtonMinus4.grid(row = R, column = C)
+    # answers button -1
+    newCol()
+    self.answerButtonMinus1 = Button(frame)
+    self.answerButtonMinus1['text'] = "<"
+    self.answerButtonMinus1['width'] = 3
+    self.answerButtonMinus1['command'] = self.answerCountMinus1
+    self.answerButtonMinus1.grid(row = R, column = C)
+    # answersCountLabel
+    newCol()
+    self.answerLabelCount = Label(frame)
+    self.answerLabelCount['text'] = answersCount
+    self.answerLabelCount['width'] = 3
+    self.answerLabelCount.grid(row = R, column = C)
+    # answers button +1
+    newCol()
+    self.answerButtonPlus1 = Button(frame)
+    self.answerButtonPlus1['text'] = ">"
+    self.answerButtonPlus1['width'] = 3
+    self.answerButtonPlus1['command'] = self.answerCountPlus1
+    self.answerButtonPlus1.grid(row = R, column = C)
+    # answers button +10
+    newCol()
+    self.answerButtonPlus4 = Button(frame)
+    self.answerButtonPlus4['text'] = ">>"
+    self.answerButtonPlus4['width'] = 3
+    self.answerButtonPlus4['command'] = self.answerCountPlus4
+    self.answerButtonPlus4.grid(row = R, column = C)
+    # Main buttons #
     newRow()
     self.nextWindowFont = tkFont.Font(size = 14)
     self.nextWindow = Button(frame, font = self.nextWindowFont)
@@ -315,6 +348,32 @@ class KeyCreatorWindow(object):
     # if questionCount > 100:
       # questionCount = 10
     self.questionLabelCount['text'] = questionCount
+
+  def answerCountMinus4(self):
+      global answersCount
+      answersCount -= 4
+      if answersCount < 4:
+        answersCount = 12
+      self.answerLabelCount['text'] = answersCount
+  def answerCountMinus1(self):
+      global answersCount
+      answersCount -= 1
+      if answersCount < 4:
+        answersCount = 12
+      self.answerLabelCount['text'] = answersCount
+  def answerCountPlus1(self):
+      global answersCount
+      answersCount += 1
+      if answersCount > 12:
+        answersCount = 4
+      self.answerLabelCount['text'] = answersCount
+  def answerCountPlus4(self):
+      global answersCount
+      answersCount += 4
+      if answersCount > 12:
+        answersCount = 4
+      self.answerLabelCount['text'] = answersCount
+
   def mainKeyCreator(self):
     self.masterMainWindowCreateKey = Toplevel(self.master)
     self.appWindowCreateKey = MainKeyCreatorWindow(self.masterMainWindowCreateKey, self)
@@ -366,60 +425,95 @@ class MainKeyCreatorWindow(object):
     # self.backButton['width'] = 3
     self.backButton['text'] = "<"
     self.backButton['command'] = self.backQuestion
-    self.backButton.grid(row = R, column = C, sticky = 'we')
-    # A
+    rs = 1
+    if answersCount > 4:
+      rs += 1
+    if answersCount > 8:
+      rs += 1
+    self.backButton.grid(row = R, column = C, rowspan = rs, sticky = 'nesw')
     newCol()
     self.aButton = Button(frame)
-    # self.aButton['width'] = 3
     self.aButton['text'] = "A"
-    self.aButton['command'] = self.aAnswer
+    self.aButton['command'] = partial(self.bindAnswer, "A")
     self.aButton.grid(row = R, column = C, sticky = 'we')
-    # B
     newCol()
     self.bButton = Button(frame)
-    # self.bButton['width'] = 3
     self.bButton['text'] = "B"
-    self.bButton['command'] = self.bAnswer
+    self.bButton['command'] = partial(self.bindAnswer, "B")
     self.bButton.grid(row = R, column = C, sticky = 'we')
-    # C
     newCol()
     self.cButton = Button(frame)
-    # self.cButton['width'] = 3
     self.cButton['text'] = "C"
-    self.cButton['command'] = self.cAnswer
+    self.cButton['command'] = partial(self.bindAnswer, "C")
     self.cButton.grid(row = R, column = C, sticky = 'we')
-    # D
     newCol()
     self.dButton = Button(frame)
-    # self.dButton['width'] = 3
     self.dButton['text'] = "D"
-    self.dButton['command'] = self.dAnswer
+    self.dButton['command'] = partial(self.bindAnswer, "D")
     self.dButton.grid(row = R, column = C, sticky = 'we')
+    if answersCount > 4:
+      newRow()
+      if answersCount > 4:
+        newCol()
+        self.eButton = Button(frame)
+        self.eButton['text'] = "E"
+        self.eButton['command'] = partial(self.bindAnswer, "E")
+        self.eButton.grid(row = R, column = C, sticky = 'we')
+      if answersCount > 5:
+        newCol()
+        self.fButton = Button(frame)
+        self.fButton['text'] = "F"
+        self.fButton['command'] = partial(self.bindAnswer, "F")
+        self.fButton.grid(row = R, column = C, sticky = 'we')
+      if answersCount > 6:
+        newCol()
+        self.gButton = Button(frame)
+        self.gButton['text'] = "G"
+        self.gButton['command'] = partial(self.bindAnswer, "G")
+        self.gButton.grid(row = R, column = C, sticky = 'we')
+      if answersCount > 7:
+        newCol()
+        self.hButton = Button(frame)
+        self.hButton['text'] = "H"
+        self.hButton['command'] = partial(self.bindAnswer, "H")
+        self.hButton.grid(row = R, column = C, sticky = 'we')
+    if answersCount > 8:
+      newRow()
+      if answersCount > 8:
+        newCol()
+        self.iButton = Button(frame)
+        self.iButton['text'] = "I"
+        self.iButton['command'] = partial(self.bindAnswer, "I")
+        self.iButton.grid(row = R, column = C, sticky = 'we')
+      if answersCount > 9:
+        newCol()
+        self.jButton = Button(frame)
+        self.jButton['text'] = "J"
+        self.jButton['command'] = partial(self.bindAnswer, "J")
+        self.jButton.grid(row = R, column = C, sticky = 'we')
+      if answersCount > 10:
+        newCol()
+        self.kButton = Button(frame)
+        self.kButton['text'] = "K"
+        self.kButton['command'] = partial(self.bindAnswer, "K")
+        self.kButton.grid(row = R, column = C, sticky = 'we')
+      if answersCount > 11:
+        newCol()
+        self.lButton = Button(frame)
+        self.lButton['text'] = "L"
+        self.lButton['command'] = partial(self.bindAnswer, "L")
+        self.lButton.grid(row = R, column = C, sticky = 'we')
 
   def backQuestion(self):
     self.questionNo -= 1
     if self.questionNo < 1:
       self.questionNo = 1
     self.mainLabelUpdate()
-  def aAnswer(self):
-    self.bindAnswer(self.questionNo, "A")
-    self.questionNo += 1
-    self.mainLabelUpdate()
-  def bAnswer(self):
-    self.bindAnswer(self.questionNo, "B")
-    self.questionNo += 1
-    self.mainLabelUpdate()
-  def cAnswer(self):
-    self.bindAnswer(self.questionNo, "C")
-    self.questionNo += 1
-    self.mainLabelUpdate()
-  def dAnswer(self):
-    self.bindAnswer(self.questionNo, "D")
-    self.questionNo += 1
-    self.mainLabelUpdate()
-  def bindAnswer(self, questionNumber, questionAnswer):
+  def bindAnswer(self, questionAnswer):
     global KEY_DICT
-    KEY_DICT[questionNumber] = questionAnswer
+    KEY_DICT[self.questionNo] = questionAnswer
+    self.questionNo += 1
+    self.mainLabelUpdate()
   def mainLabelUpdate(self):
     self.mainLabel['text'] = "Question " + str(self.questionNo)
     if self.questionNo > questionCount:
