@@ -360,13 +360,13 @@ class KeyCreatorWindow(object):
       global answersCount
       answersCount -= 4
       if answersCount < 1:
-        answersCount = 1
+        answersCount = 12
       self.answerLabelCount['text'] = answersCount
   def answerCountMinus1(self):
       global answersCount
       answersCount -= 1
       if answersCount < 1:
-        answersCount = 1
+        answersCount = 12
       self.answerLabelCount['text'] = answersCount
   def answerCountPlus1(self):
       global answersCount
