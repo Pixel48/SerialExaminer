@@ -265,20 +265,31 @@ class KeyCreatorWindow(object):
     self.questionButtonPlus10['width'] = 3
     self.questionButtonPlus10['command'] = self.questionCountPlus10
     self.questionButtonPlus10.grid(row = R, column = C)
+    # button 0
+    newCol()
+    self.questionButton0 = Button(frame)
+    self.questionButton0['text'] = "|<-"
+    self.questionButton0['width'] = 3
+    self.questionButton0['command'] = self.question0
+    self.questionButton0.grid(row = R, column = C)
     newRow()
     self.nextWindowFont = tkFont.Font(size = 14)
     self.nextWindow = Button(frame, font = self.nextWindowFont)
     self.nextWindow['text'] = "Create Key!"
     self.nextWindow['command'] = self.mainKeyCreator
-    self.nextWindow.grid(row = R, column = C, columnspan = 6, sticky = 'we')
+    self.nextWindow.grid(row = R, column = C, columnspan = 7, sticky = 'we')
     # key config done button #
     newRow()
     self.keyDone = Button(frame, font = self.nextWindowFont)
     self.keyDone['text'] = "Done"
     self.keyDone['command'] = self.die
     self.keyDone['state'] = DISABLED
-    self.keyDone.grid(row = R, column = C, columnspan = 6, sticky = 'we')
+    self.keyDone.grid(row = R, column = C, columnspan = 7, sticky = 'we')
 
+  def question0(self):
+    global questionCount
+    questionCount = 40
+    self.questionLabelCount['text'] = questionCount
   def questionCountMinus10(self):
     global questionCount
     questionCount -= 10
