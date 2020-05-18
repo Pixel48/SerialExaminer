@@ -87,8 +87,10 @@ Just `git clone https://github.com/Pixel48/SerialExaminer.git` and use python. O
 - [x] ... \*.txt
 - [ ] ... \*.csv
 - [ ] ... \*.xml
+- [ ] Automate importing and examining process
 - [x] Test test files with imported/created key
 - [x] Display test results
+- [ ] ... `predicted grade` column in results
 - [ ] Export test results to selected file in
 - [ ] ... \*.csv format
 - [ ] ... \*.xml format
