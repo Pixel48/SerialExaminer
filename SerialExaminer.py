@@ -7,7 +7,7 @@ from tkinter import *
 from tkinter import filedialog
 from functools import partial
 import tkinter.font as tkFont
-import os, pickle#, shutil, csv # NOTE: not used yet
+import os, pickle
 
 versionTag = 'v0.2.1'
 
@@ -146,8 +146,6 @@ class MainWindow(object):
       title = "Select exam key file",
       initialdir = '.',
       filetypes =(("Exam Key File", "*.exkey"),
-                  # ("Csv files", "*.csv"), # TODO: add csv key import
-                  # ("Excel sheets", "*.xml"), # TODO: add xml key import
                   ("All files", "*.*"))
     ))
     self.keyButtonImport['state'] = NORMAL
@@ -189,7 +187,7 @@ class MainWindow(object):
         resultName = os.path.basename(testFile).split('.')[0]
         RESULT_DICT[resultName] = [str(points) + '/' + str(questionCount), str(round(points*100/questionCount, 2)) + '%']
         # NOTE: Result format: {<Filename>: ['<points>/<maxPoints', '<goodAnswersIn%>%']}
-    # self.outputButtonExport['state'] = NORMAL # NOTE: for future use
+    # self.outputButtonExport['state'] = NORMAL # NOTE: export feature
     self.outputButtonDsiplay['state'] = NORMAL
   def resultDisplay(self):
     self.masterResultDisplayWindow = Toplevel(self.master)
@@ -339,14 +337,10 @@ class KeyCreatorWindow(object):
   def questionCountPlus1(self):
     global questionCount
     questionCount += 1
-    # if questionCount > 100:
-      # questionCount = 1
     self.questionLabelCount['text'] = questionCount
   def questionCountPlus10(self):
     global questionCount
     questionCount += 10
-    # if questionCount > 100:
-      # questionCount = 10
     self.questionLabelCount['text'] = questionCount
 
   def answerCountMinus4(self):
