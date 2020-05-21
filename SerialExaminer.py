@@ -384,11 +384,10 @@ class KeyCreatorWindow(object):
     ))
     if '.exkey' not in KEY_FILE:
       KEY_FILE += '.exkey'
-    if KEY_FILE is '':
-      return # if no filename provided, don't proceed
-    self.exportKeyFile(KEY_FILE)
-    self.above.inputButton['state'] = NORMAL
-    self.master.destroy()
+    if KEY_FILE != '..exkey': # if no filename provided, don't proceed
+      self.exportKeyFile(KEY_FILE)
+      self.above.inputButton['state'] = NORMAL
+      self.master.destroy()
 
 class MainKeyCreatorWindow(object):
   """Window to create exam key"""
