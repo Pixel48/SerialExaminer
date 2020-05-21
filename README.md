@@ -81,20 +81,23 @@ Just `git clone https://github.com/Pixel48/SerialExaminer.git` and use python. O
 - [x] Set custom answers quantity
 - [ ] Key import from selected file in
 - [x] ... \*.exkey format
-- [ ] ... \*.txt format ('Cheater Provider' feature)
+- [ ] ... \*.txt format
 - [ ] ... \*.xml format
 - [ ] Import test files from provided directory in selected format
 - [x] ... \*.txt
 - [ ] ... \*.csv
 - [ ] ... \*.xml
+- [ ] Automate importing and examining process
 - [x] Test test files with imported/created key
+- [ ] Cheater finder
 - [x] Display test results
+- [ ] ... `predicted grade` column in results
 - [ ] Export test results to selected file in
 - [ ] ... \*.csv format
 - [ ] ... \*.xml format
 - [ ] ... \*.txt format
 - [x] Release basic aplha
-- [ ] ~~Send it to my highschool teachers~~ (I fu**ed it up)
+- [x] ~~Send it to my highschool teachers~~ (I fu**ed it up)
 - [ ] Give it to somebody who will actually use it
 - [ ] Make it usable and useful
 - [ ] Add autoupdate faeture from [SerialExaminer](https://github.com/Pixel48/SerialExaminer) repository
