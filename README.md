@@ -97,7 +97,7 @@ Just `git clone https://github.com/Pixel48/SerialExaminer.git` and use python. O
 - [ ] ... \*.xml format
 - [ ] ... \*.txt format
 - [x] Release basic aplha
-- [ ] ~~Send it to my highschool teachers~~ (I fu**ed it up)
+- [x] ~~Send it to my highschool teachers~~ (I fu**ed it up)
 - [ ] Give it to somebody who will actually use it
 - [ ] Make it usable and useful
 - [ ] Add autoupdate faeture from [SerialExaminer](https://github.com/Pixel48/SerialExaminer) repository
