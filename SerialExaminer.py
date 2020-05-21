@@ -150,7 +150,11 @@ class MainWindow(object):
     ))
     self.keyButtonImport['state'] = NORMAL
     self.keyButtonCreate['state'] = NORMAL
+<<<<<<< HEAD
     if ".exkey" in KEY_FILE:
+=======
+    if ('.exkey', '.txt') in KEY_FILE:
+>>>>>>> 0faa360... Fix tuple
       global questionCount, KEY_DICT
       with open(KEY_FILE, 'rb') as keyf:
         KEY_DICT = pickle.load(keyf)
