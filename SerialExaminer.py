@@ -9,7 +9,7 @@ from functools import partial
 import tkinter.font as tkFont
 import os, pickle
 
-versionTag = 'v0.2.1'
+versionTag = 'v0.2.2'
 
 # SOME GLOBALS
 R = 0
