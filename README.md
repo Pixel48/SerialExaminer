@@ -34,7 +34,7 @@ To update it use `git fetch` in *SerialExaminer* folder
 3. Hit `Browse` button and provide folder with files from step 1.
 4. Hit `Check!` button to calculate results
 
-![Check bitton](docs/img/check_button.png)
+![Check button](docs/img/check_button.png)
 > Future updates will automate this process and remove this button
 
 5. Use `Display` button to show test results
