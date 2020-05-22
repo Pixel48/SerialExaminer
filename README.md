@@ -1,7 +1,7 @@
 # SerialExaminer
 SerialExaminer is a small tool to speed up assessing tests and detecting potential fraudsters. It's easy to use, fast to use and will be long developed and improved
 
-Ask your students to send you test responses in .txt files named after their full names, journal number, any ID numbers or anything else, that can identify them. Aks them to write answers in these files in format <question number>.<correct answer>, line by line. The order of questions and letter size don't matter
+Ask your students to send you test responses in .txt files named after their full names, journal number, any ID numbers or anything else, that can identify them. Aks them to write answers in these files in format `<question number>.<correct answer>`, line by line. The order of questions and letter size don't matter
 
 ## Table of Contents
 - [Installation](https://github.com/Pixel48/SerialExaminer#installation)
@@ -12,7 +12,7 @@ Download application installer from [last release](https://github.com/Pixel48/Se
 > For now every installer will trigger [UAC](https://en.wikipedia.org/wiki/User_Account_Control), because it's not digitally signed, because I'm just a student developing a small project and (for now) I can't afford digital certification
 
 ## Usage
-### Creating exam key file 
+### Creating exam key file
 ![Exam file example](docs/img/exam_file.png)
 1. Run SerialExaminer from desktop shortcut and create or import exam key file (\*.exkey).
    - If you create exam key file...
