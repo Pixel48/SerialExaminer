@@ -1,6 +1,8 @@
 # SerialExaminer
 SerialExaminer is a small tool to speed up assessing tests and detecting potential fraudsters. It's easy to use, fast to use and will be long developed and improved
 
+Ask your students to send you test responses in .txt files named after their full names, journal number, any ID numbers or anything else, that can identify them. Aks them to write answers in these files in format <question number>.<correct answer>, line by line. The order of questions and letter size don't matter
+
 ## Table of Contents
 - [Installation](https://github.com/Pixel48/SerialExaminer#installation)
 - [Usage](https://github.com/Pixel48/SerialExaminer#usage)
@@ -10,11 +12,9 @@ Download application installer from [last release](https://github.com/Pixel48/Se
 > For now every installer will trigger [UAC](https://en.wikipedia.org/wiki/User_Account_Control), because it's not digitally signed, because I'm just a student developing a small project and (for now) I can't afford digital certification
 
 ## Usage
-1. Ask your students to send you test responses in .txt files named after their full names, journal number, any ID numbers or anything else, that can identify them. Aks them to write answers in these files in format <question number>.<correct answer>, line by line. The order of questions and letter size don't matter.
-
+### Creating exam key file 
 ![Exam file example](docs/img/exam_file.png)
-
-2. Run SerialExaminer from desktop shortcut and create or import exam key file (\*.exkey).
+1. Run SerialExaminer from desktop shortcut and create or import exam key file (\*.exkey).
    - If you create exam key file...
      - Provide the exact number of questions and answers in the exam and hit `Create key!` button
 
@@ -27,13 +27,13 @@ Download application installer from [last release](https://github.com/Pixel48/Se
 
      - After key answer window vanish, hit `Done` button and provide where to save exam key for potential future use. (You dont need to import key after creating it, it's imported immediately after save).
    - If you already had created exam key file...
-3. Hit `Browse` button and provide folder with files from step 1.
-4. Hit `Check!` button to calculate results
+2. Hit `Browse` button and provide folder with files from step 1.
+3. Hit `Check!` button to calculate results
 
 ![Check button](docs/img/check_button.png)
 > Future updates will automate this process and remove this button
 
-5. Use `Display` button to show test results
+4. Use `Display` button to show test results
 
 ![Example results table](docs/img/results.png)
 > Future updates will add export options and `predicted grade` column in results
