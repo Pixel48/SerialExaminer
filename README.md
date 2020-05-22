@@ -7,7 +7,6 @@ SerialExaminer is a small multitool to speed up assessing tests and detecting po
 - [How to use it?](https://github.com/Pixel48/SerialExaminer#usage)
   - [...on Windows](https://github.com/Pixel48/SerialExaminer#windows)
   - [...on Linux](https://github.com/Pixel48/SerialExaminer#linux)
-- [Developer's tasklist](https://github.com/Pixel48/SerialExaminer#tasklist)
 
 ## Installation
 ### Windows
@@ -54,34 +53,5 @@ To update it use `git fetch` in *SerialExaminer* folder
 
 ![Example results table](docs/img/results.png)
 > Future updates will add export options and `predicted grade` column in results
-
-## Tasklist
-- [x] Basic GUI
-- [x] Key create (\*.exkey)
-- [x] Basic key create interface
-- [x] Set custom questions quantity
-- [x] Set custom answers quantity
-- [ ] Key import from selected file in
-- [x] ... \*.exkey format
-- [ ] ... \*.txt format
-- [ ] ... \*.xml format
-- [ ] Import test files from provided directory in selected format
-- [x] ... \*.txt
-- [ ] ... \*.csv
-- [ ] ... \*.xml
-- [ ] Automate importing and examining process
-- [x] Test test files with imported/created key
-- [ ] Cheater finder
-- [x] Display test results
-- [ ] ... `predicted grade` column in results
-- [ ] Export test results to selected file in
-- [ ] ... \*.csv format
-- [ ] ... \*.xml format
-- [ ] ... \*.txt format
-- [x] Release basic alpha
-- [ ] Introduce it to my high school teachers
-- [ ] Give it to somebody who will actually use it
-- [ ] Make it usable and useful
-- [ ] Add auto upgrade feature from [SerialExaminer](https://github.com/Pixel48/SerialExaminer) repository
 
 Copyright (c) 2020 [Pixel48](https://github.com/Pixel48/) All Rights Reserved.
