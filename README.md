@@ -1,10 +1,8 @@
 # SerialExaminer
 SerialExaminer is a small tool to speed up assessing tests and detecting potential fraudsters. It's easy to use, fast to use and will be long developed and improved
 
-## Table of Contents
-- [What is it?](https://github.com/Pixel48/SerialExaminer#serialexaminer)
-- [How to get it?](https://github.com/Pixel48/SerialExaminer#run)
-- [How to use it?](https://github.com/Pixel48/SerialExaminer#usage)
+- [Installation](https://github.com/Pixel48/SerialExaminer#installation)
+- [Usage](https://github.com/Pixel48/SerialExaminer#usage)
 
 ## Installation
 Download application installer from [last release](https://github.com/Pixel48/SerialExaminer/releases/latest), install it and run using fresh desktop shortcut
