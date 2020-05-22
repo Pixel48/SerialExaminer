@@ -7,7 +7,7 @@
 ## Table of Contents
 - [Why would you use it?](https://github.com/Pixel48/SerialExaminer#why-would-you-use-it)
 - [How tu use it?](https://github.com/Pixel48/SerialExaminer#usage)
-- [How to run it?](https://github.com/Pixel48/SerialExaminer#run)
+- [How to get it?](https://github.com/Pixel48/SerialExaminer#run)
   - [...on Windows](https://github.com/Pixel48/SerialExaminer#windows)
   - [...on Linux](https://github.com/Pixel48/SerialExaminer#linux)
 - [Developer's tasklist](https://github.com/Pixel48/SerialExaminer#tasklist)
@@ -53,25 +53,22 @@ Let's suppose that your students can use computers to make .txt file with answer
 ![Example results table](docs/img/results.png)
 > Future updates will add export options and `predicted grade` column in results
 
-## Launching
-There's several ways to launch SerialExaminer
-
-#### Windows
-1. Download all project files and compile it to \*.exe file with [pyinstaller](https://www.pyinstaller.org/)
-- Download project folder
-- Download the newest version of python from [here](https://www.python.org/downloads/)
-- Follow first two steps from way one
-- Run `pip3 install pyinstaller==3.4` in CMD
-- Run `pyinstaller -w -F -i ico.ico SerialExaminer.py` in CMD at project folder
-- Take completed SerialExaminer.exe file from dist/ folder
-2. Download all project files and launch SerialExaminer.py with [Python3](https://www.python.org/)
-- Download project folder
-- Download the newest version of python from [here](https://www.python.org/downloads/)
-- Add python to your [PATH](https://superuser.com/questions/143119/how-do-i-add-python-to-the-windows-path)
-- Run `python ./SerialExaminer.py` in CMD at project folder
+## Run / Install
+### Windows
+Download application installer from [last release](https://github.com/Pixel48/SerialExaminer/releases/latest), install it and run using fresh desktop shortcut
 
 #### Linux
-Just `git clone https://github.com/Pixel48/SerialExaminer.git` and use python. Or use pyinstaller to make it binary. It's Linux
+***For now in SerialExaminer there's no support for Linux***
+
+Until package for SerialExaminer will be ready with one of future releases, please use source code
+```
+git clone https://github.com/Pixel48/SerialExaminer.git
+cd SerialExaminer
+ln -s ./SerialExaminer.py ~/Desktop/
+```
+
+To update it use `git fetch` in *SerialExaminer* folder
+> Actually you should know that, if you use Linux...
 
 ## Tasklist
 - [x] Basic GUI
@@ -97,7 +94,7 @@ Just `git clone https://github.com/Pixel48/SerialExaminer.git` and use python. O
 - [ ] ... \*.xml format
 - [ ] ... \*.txt format
 - [x] Release basic aplha
-- [x] ~~Send it to my highschool teachers~~ (I fu**ed it up)
+- [ ] Introduce it to my high school teachers
 - [ ] Give it to somebody who will actually use it
 - [ ] Make it usable and useful
 - [ ] Add autoupdate faeture from [SerialExaminer](https://github.com/Pixel48/SerialExaminer) repository
