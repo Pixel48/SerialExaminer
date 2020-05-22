@@ -5,22 +5,10 @@ SerialExaminer is a small multitool to speed up assessing tests and detecting po
 - [What is it?](https://github.com/Pixel48/SerialExaminer#serialexaminer)
 - [How to get it?](https://github.com/Pixel48/SerialExaminer#run)
 - [How to use it?](https://github.com/Pixel48/SerialExaminer#usage)
-  - [...on Windows](https://github.com/Pixel48/SerialExaminer#windows)
-  - [...on Linux](https://github.com/Pixel48/SerialExaminer#linux)
 
 ## Installation
-### Windows
 Download application installer from [last release](https://github.com/Pixel48/SerialExaminer/releases/latest), install it and run using fresh desktop shortcut
 > For now every installer will trigger [UAC](https://en.wikipedia.org/wiki/User_Account_Control), because it's not digitally signed, because I'm just a student developing a small project and (for now) I can't afford digital certification
-
-### Linux
-***For now in SerialExaminer there's no support for Linux***
-
-Until package for SerialExaminer will be ready with one of future releases, please use source code
-```
-git clone https://github.com/Pixel48/SerialExaminer.git
-python3 SerialExaminer.py
-```
 
 To update it use `git fetch` in *SerialExaminer* folder
 > Actually you should know that, if you use Linux...
