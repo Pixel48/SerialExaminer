@@ -3,15 +3,31 @@ SerialExaminer is a small tool to speed up assessing tests and detecting potenti
 
 Ask your students to send you test responses in .txt files named after their full names, journal number, any ID numbers or anything else, that can identify them. Aks them to write answers in these files in format `<question number>.<correct answer>`, line by line. The order of questions and letter size don't matter
 
-## Table of Contents
+#### Table of Contents
 - [Installation](https://github.com/Pixel48/SerialExaminer#installation)
+  - [Windows](https://github.com/Pixel48/SerialExaminer#windows)
+  - [Linux](https://github.com/Pixel48/SerialExaminer#linux)
 - [Usage](https://github.com/Pixel48/SerialExaminer#usage)
+  - [Generating an exam key](https://github.com/Pixel48/SerialExaminer#generating-an-exam-key)
+  - [Importing an exam key](https://github.com/Pixel48/SerialExaminer#importing-an-exam-key)
+  - [Checking tests](https://github.com/Pixel48/SerialExaminer#checking-tests)
+  - [Searching for cheaters](https://github.com/Pixel48/SerialExaminer#-searching-for-cheaters)
 
 ## Installation
-Download application installer from [last release](https://github.com/Pixel48/SerialExaminer/releases/latest), install it and run using fresh desktop shortcut
+### Windows
+To install SerialExaminer download installer from [last release](https://github.com/Pixel48/SerialExaminer/releases/latest), install it and run using fresh desktop shortcut
 > For now every installer will trigger [UAC](https://en.wikipedia.org/wiki/User_Account_Control), because it's not digitally signed, because I'm just a student developing a small project and (for now) I can't afford digital certification
 
 ## Usage
+### Generating an exam key
+
+![Check button](docs/img/check_button.png)
+
+### Importing an exam key
+### Checking tests
+### Searching for cheaters
+
+## Usage (old)
 ### Creating exam key file
 ![Exam file example](docs/img/exam_file.png)
 1. Run SerialExaminer from desktop shortcut and create or import exam key file (\*.exkey).
@@ -38,4 +54,4 @@ Download application installer from [last release](https://github.com/Pixel48/Se
 ![Example results table](docs/img/results.png)
 > Future updates will add export options and `predicted grade` column in results
 
-Copyright (c) 2020 [Pixel48](https://github.com/Pixel48/) All Rights Reserved.
+###### Copyright (c) 2020 [Pixel48](https://github.com/Pixel48/) All Rights Reserved
