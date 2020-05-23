@@ -145,8 +145,8 @@ class MainWindow(object):
     KEY_FILE = os.path.normpath(filedialog.askopenfilename(
       title = "Select exam key file",
       initialdir = '.',
-      filetypes =(("Exam Key File", "*.exkey"),
-                  ("Text file", "*.txt"),
+      filetypes =(("Exam key file", "*.exkey"),
+                  ("Find similar files to...", "*.txt"),
                  )
     ))
     self.keyButtonImport['state'] = NORMAL
