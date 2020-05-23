@@ -379,7 +379,7 @@ class KeyCreatorWindow(object):
     global KEY_FILE
     KEY_FILE = os.path.normpath(filedialog.asksaveasfilename(
       title = "Select exam key file",
-      initialdir = '.',
+      initialdir = 'keys',
       filetypes =(("Exam Key File", "*.exkey"),)
     ))
     if '.exkey' not in KEY_FILE:
