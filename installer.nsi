@@ -5,7 +5,7 @@
 ;Atributes
 Name "SerialExaminer"
 OutFile "SerialExaminerSetup.exe"
-InstallDir $PROGRAMFILES\SerialExaminer
+InstallDir "$PROGRAMFILES\SerialExaminer"
 RequestExecutionLevel admin
 ;Unicode True
 
