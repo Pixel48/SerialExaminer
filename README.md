@@ -30,7 +30,7 @@
   2. Provide answers to questions about the given number. If you make a mistake you can go back using the `<` button. Window will disappear automatically after entering the last answer
 
   ![Key parameters](./docs/img/key_parameters.png)
-  > Now the key creator supports the number of answers from 4 to 12, future updates will gradually expand this range until they finally remove this restriction
+  > Now the key creator supports the number of answers in range from 4 to 12, future updates will gradually expand this range until they finally remove this restriction
 
   3. After key answer window vanish, hit `Done` button and provide where to save exam key for potential future use. (You dont need to import key after creating it, it's imported immediately after save).
 
