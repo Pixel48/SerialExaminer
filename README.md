@@ -32,7 +32,18 @@ How to use SerialExaminer interface
 3. After key answer window vanish, hit `Done` button and provide where to save exam key for potential future use. (You dont need to import key after creating it, it's imported immediately after save).
 
 ### Checking tests
+1. Create or import correct exam key
+2. Hit `Browse` button and provide folder with files written by your students
+3. Hit `Check!` button to calculate results
+4. Hit `Display` button to show test results
+
 ### Searching for cheaters
+1. Hit `Import` button
+2. In new dialog change file extension to *Plain text (*.txt)*
+3. Select the source file to which you want to check the similarity in other tests
+4. Hit `Browse` button and provide folder with other tests
+5. Hit `Check!` button to calculate results
+6. Hit `Display` button to show similarity of other tests to source test
 
 ## Usage (old)
 ### Creating exam key file
