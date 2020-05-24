@@ -146,7 +146,7 @@ class MainWindow(object):
       title = "Select exam key file",
       initialdir = '.',
       filetypes =(("Exam key file", "*.exkey"),
-                  ("Find similar files to...", "*.txt"),
+                  ("Plain text", "*.txt"),
                  )
     ))
     self.keyButtonImport['state'] = NORMAL
