@@ -19,15 +19,17 @@
 
 ## Usage
   How to use SerialExaminer interface
-  
+
   ![Main window dummy](./docs/img/main_window.png)
 
 ### Generating an exam key
-  ![Key parameters](./docs/img/key_parameters.png)
   1. Provide the exact number of questions and answers in the exam and hit `Create key!` button
 
   ![Key parameters](./docs/img/key_parameters.png)
+
   2. Provide answers to questions about the given number. If you make a mistake you can go back using the `<` button. Window will disappear automatically after entering the last answer
+
+  ![Key parameters](./docs/img/key_parameters.png)
   > Now the key creator supports the number of answers from 4 to 12, future updates will gradually expand this range until they finally remove this restriction
 
   3. After key answer window vanish, hit `Done` button and provide where to save exam key for potential future use. (You dont need to import key after creating it, it's imported immediately after save).
