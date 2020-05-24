@@ -19,6 +19,7 @@
 
 ## Usage
   How to use SerialExaminer interface
+  
   ![Main window dummy](./docs/img/main_window.png)
 
 ### Generating an exam key
