@@ -4,7 +4,7 @@
 ;------------------
 ;Atributes
 Name "SerialExaminer"
-OutFile "InstallSerialExaminer.exe"
+OutFile "SerialExaminerSetup.exe"
 InstallDir $PROGRAMFILES\SerialExaminer
 RequestExecutionLevel admin
 ;Unicode True
@@ -24,12 +24,9 @@ Section "SerialExaminer" SerialExaminer
   File /r "dist\SerialExaminer\*"
   CreateDirectory "$INSTDIR\keys"
 
-  WriteRegStr HKLM SOFTWARE\NSIS_Example2 "Install_Dir" "$INSTDIR"
+  WriteRegStr HKLM "SOFTWARE\SerialExaminer" "InstallPath" "$INSTDIR"
   WriteRegStr HKLM "Software\SerialExaminer" "DisplayName" "SerialExaminer"
   WriteRegStr HKLM "Software\SerialExaminer" "UninstallString" '"$INSTDIR\Uninstall.exe"'
-
-  WriteRegDWORD HKLM "Software\SerialExaminer" "NoModify" 1
-  WriteRegDWORD HKLM "Software\SerialExaminer" "NoRepair" 1
 
   WriteUninstaller "$INSTDIR\Uninstall.exe"
 SectionEnd
@@ -46,7 +43,6 @@ SectionEnd
 Section "Uninstall"
   Delete "$DESKTOP\SerialExaminer.lnk"
   Delete "$INSTDIR\Uninstall.exe"
-  RMDir "$INSTDIR\*"
   RMDir /r "$INSTDIR"
   DeleteRegKey HKLM "Software\SerialExaminer"
 SectionEnd
