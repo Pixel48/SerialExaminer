@@ -144,7 +144,7 @@ class MainWindow(object):
     self.keyButtonCreate['state'] = DISABLED
     KEY_FILE = os.path.normpath(filedialog.askopenfilename(
       title = "Select exam key file",
-      initialdir = '.',
+      initialdir = './keys',
       filetypes =(("Exam key file", "*.exkey"),
                   ("Plain text", "*.txt"),
                  )
