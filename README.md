@@ -15,7 +15,7 @@
 
 ## Installation
   Download the latest [SerialExaminer installer](https://github.com/Pixel48/SerialExaminer/releases/latest)
-  > For now, downloading the installer will launch [UAC] (https://en.wikipedia.org/wiki/User_Account_Control) "Unknown publisher" alert because it is not digitally signed - I'm just a student developing a small project and I can't afford digital certification
+  > For now, downloading the installer will launch [UAC](https://en.wikipedia.org/wiki/User_Account_Control) "Unknown publisher" alert because it is not digitally signed - I'm just a student developing a small project and I can't afford digital certification
 
 ## Usage
   How to use SerialExaminer interface
