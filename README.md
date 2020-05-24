@@ -39,6 +39,8 @@
   2. Hit `Browse` button and provide folder with files written by your students
   3. Hit `Check!` button to calculate results
   4. Hit `Display` button to show test results
+
+  ![Result window](./docs/img/results.png)
   > Future updates will add export options and `predicted grade` column in results
 
 ### Searching for cheaters
