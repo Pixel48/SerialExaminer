@@ -9,7 +9,7 @@ from functools import partial
 import tkinter.font as tkFont
 import os, pickle
 
-versionTag = 'v0.2.2'
+versionTag = 'v0.3.0'
 
 # SOME GLOBALS
 R = 0
@@ -145,15 +145,22 @@ class MainWindow(object):
     KEY_FILE = os.path.normpath(filedialog.askopenfilename(
       title = "Select exam key file",
       initialdir = '.',
-      filetypes =(("Exam Key File", "*.exkey"),
-                  ("All files", "*.*"))
+      filetypes =(("Exam key file", "*.exkey"),
+                  ("Plain text", "*.txt"),
+                 )
     ))
     self.keyButtonImport['state'] = NORMAL
     self.keyButtonCreate['state'] = NORMAL
-    if ('.exkey', '.txt') in KEY_FILE:
+    if '.exkey' in KEY_FILE or '.txt' in KEY_FILE:
       global questionCount, KEY_DICT
-      with open(KEY_FILE, 'rb') as keyf:
-        KEY_DICT = pickle.load(keyf)
+      if '.exkey' in KEY_FILE:
+        with open(KEY_FILE, 'rb') as keyf:
+          KEY_DICT = pickle.load(keyf)
+      elif '.txt' in KEY_FILE:
+        with open(KEY_FILE, 'r') as keyf:
+          for line in keyf:
+            line = splitLine(line)
+            KEY_DICT[line[0]] = line[1]
       questionCount = len(KEY_DICT.keys())
       self.inputButton['state'] = NORMAL
   def browseExams(self):
@@ -379,7 +386,7 @@ class KeyCreatorWindow(object):
     global KEY_FILE
     KEY_FILE = os.path.normpath(filedialog.asksaveasfilename(
       title = "Select exam key file",
-      initialdir = '.',
+      initialdir = './keys',
       filetypes =(("Exam Key File", "*.exkey"),)
     ))
     if '.exkey' not in KEY_FILE:
