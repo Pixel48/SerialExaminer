@@ -20,8 +20,6 @@ To install SerialExaminer download installer from [last release](https://github.
 
 ## Usage
 ### Generating an exam key
-
-
 ### Importing an exam key
 ### Checking tests
 ### Searching for cheaters
