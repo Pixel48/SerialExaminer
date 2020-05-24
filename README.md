@@ -43,7 +43,7 @@
 
 ### Searching for cheaters
   1. Hit `Import` button
-  2. In new dialog change file extension to *Plain text (*.txt)*
+  2. In new dialog change file extension to *Plain text (\*.txt)*
   3. Select the source file to which you want to check the similarity in other tests
   4. Hit `Browse` button and provide folder with other tests
   5. Hit `Check!` button to calculate results
