@@ -193,13 +193,28 @@ class MainWindow(object):
         resultName = os.path.basename(testFile).split('.')[0]
         RESULT_DICT[resultName] = [str(points) + '/' + str(questionCount), str(round(points*100/questionCount, 2)) + '%']
         # NOTE: Result format: {<Filename>: ['<points>/<maxPoints', '<goodAnswersIn%>%']}
-    # self.outputButtonExport['state'] = NORMAL # NOTE: export feature
+    self.outputButtonExport['state'] = NORMAL
     self.outputButtonDsiplay['state'] = NORMAL
   def resultDisplay(self):
     self.masterResultDisplayWindow = Toplevel(self.master)
     self.appResultDisplayWindow = ResultDisplayWindow(self.masterResultDisplayWindow, self)
   def resultExport(self):
-    pass
+    # NOTE: RESULT_DICT format: {<Filename>: ['<points>/<maxPoints', '<goodAnswersIn%>%']}
+    global RESULT_DICT
+    EXPOT_FILE = os.path.normpath(filedialog.asksaveasfilename(
+      title = "Save test result",
+      initialdir = '.',
+      defaultextension = '.csv',
+      filetypes =(
+                  ("CSV file", "*.csv"),
+                 )
+    ))
+    if EXPOT_FILE[-4:] == '.csv':
+      with open(EXPOT_FILE, 'w') as export:
+        export.write('FILENAME;'+'POINTS (max '+RESULT_DICT[list(RESULT_DICT.keys())[0]][0].split('/')[1]+');RESULT IN %\n')
+        for key in RESULT_DICT:
+          export.write(key+';'+RESULT_DICT[key][0].split('/')[0]+';'+RESULT_DICT[key][1]+'\n')
+        export.close()
 
 class KeyCreatorWindow(object):
   """Creator for CreateKey Window"""
