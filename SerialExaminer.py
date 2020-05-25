@@ -2,7 +2,6 @@
 # SerialExaminer.py
 #   by Pixel
 # Repository:    https://github.com/Pixel48/SerialExaminer.git
-# Documentation: https://github.com/Pixel48/SerialExaminer (WIP)
 from tkinter import *
 from tkinter import filedialog
 from functools import partial
