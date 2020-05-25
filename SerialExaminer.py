@@ -201,8 +201,15 @@ class MainWindow(object):
     self.appResultDisplayWindow = ResultDisplayWindow(self.masterResultDisplayWindow, self)
   def resultExport(self):
     # NOTE: RESULT_DICT format: {<Filename>: ['<points>/<maxPoints', '<goodAnswersIn%>%']}
-    
-    pass
+    global RESULT_DICT
+    EXPOT_FILE = os.path.normpath(filedialog.askopenfilename(
+      title = "Save test result",
+      initialdir = '.',
+      filetypes =(
+                  ("CSV file", "*.csv"),
+                 )
+    ))
+
 
 class KeyCreatorWindow(object):
   """Creator for CreateKey Window"""
