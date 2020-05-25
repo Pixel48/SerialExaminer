@@ -205,8 +205,8 @@ class MainWindow(object):
       title = "Save test result",
       initialdir = '.',
       defaultextension = '.csv',
-      filetypes =(
-                  ("CSV file", "*.csv"),
+      filetypes =(("CSV file", "*.csv"),
+                  ("Plain text", "*.txt"),
                  )
     )
     if EXPOT_FILE[-4:] == '.csv':
@@ -216,6 +216,16 @@ class MainWindow(object):
         for key in RESULT_DICT:
           export.write(str(i)+';'+key+';'+RESULT_DICT[key][0].split('/')[0]+';'+RESULT_DICT[key][1][:-1].replace('.',',')+'\n')
           i += 1
+        export.close()
+    elif EXPOT_FILE[-4:] == '.txt':
+      with open(EXPOT_FILE, 'w') as export:
+        i = 1
+        x = '  '
+        for key in RESULT_DICT:
+          export.write(str(i)+'.'+x+key+'\t --- '+RESULT_DICT[key][0]+'\t --- '+RESULT_DICT[key][1]+'\n')
+          i += 1
+          if i > 9:
+            x = ' '
         export.close()
 
 class KeyCreatorWindow(object):
