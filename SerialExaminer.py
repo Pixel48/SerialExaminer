@@ -141,13 +141,13 @@ class MainWindow(object):
     global KEY_FILE
     self.keyButtonImport['state'] = DISABLED
     self.keyButtonCreate['state'] = DISABLED
-    KEY_FILE = os.path.normpath(filedialog.askopenfilename(
+    KEY_FILE = filedialog.askopenfilename(
       title = "Select exam key file",
       initialdir = './keys',
       filetypes =(("Exam key file", "*.exkey"),
                   ("Plain text", "*.txt"),
                  )
-    ))
+    )
     self.keyButtonImport['state'] = NORMAL
     self.keyButtonCreate['state'] = NORMAL
     if '.exkey' in KEY_FILE or '.txt' in KEY_FILE:
@@ -164,10 +164,10 @@ class MainWindow(object):
       self.inputButton['state'] = NORMAL
   def browseExams(self):
     global INPUT_FILES
-    testDir = os.path.normpath(filedialog.askdirectory(
+    testDir = filedialog.askdirectory(
     title = "Examination txt files location",
     initialdir = '.',
-    ))
+    )
     testFiles = os.listdir(testDir)
     buffer = []
     for file in testFiles:
@@ -201,14 +201,14 @@ class MainWindow(object):
   def resultExport(self):
     # NOTE: RESULT_DICT format: {<Filename>: ['<points>/<maxPoints', '<goodAnswersIn%>%']}
     global RESULT_DICT
-    EXPOT_FILE = os.path.normpath(filedialog.asksaveasfilename(
+    EXPOT_FILE = filedialog.asksaveasfilename(
       title = "Save test result",
       initialdir = '.',
       defaultextension = '.csv',
       filetypes =(
                   ("CSV file", "*.csv"),
                  )
-    ))
+    )
     if EXPOT_FILE[-4:] == '.csv':
       with open(EXPOT_FILE, 'w+') as export:
         export.write('FILENAME;'+'POINTS (max '+RESULT_DICT[list(RESULT_DICT.keys())[0]][0].split('/')[1]+');RESULT IN %\n')
@@ -398,11 +398,11 @@ class KeyCreatorWindow(object):
 
   def die(self):
     global KEY_FILE
-    KEY_FILE = os.path.normpath(filedialog.asksaveasfilename(
+    KEY_FILE = filedialog.asksaveasfilename(
       title = "Select exam key file",
       initialdir = './keys',
       filetypes =(("Exam Key File", "*.exkey"),)
-    ))
+    )
     if '.exkey' not in KEY_FILE:
       KEY_FILE += '.exkey'
     if KEY_FILE != '..exkey': # if no filename provided, don't proceed
