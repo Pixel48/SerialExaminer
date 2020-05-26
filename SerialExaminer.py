@@ -214,7 +214,7 @@ class MainWindow(object):
         export.write(';FILENAME;'+'POINTS (max '+RESULT_DICT[list(RESULT_DICT.keys())[0]][0].split('/')[1]+');RESULT IN %\n')
         i = 1
         for key in RESULT_DICT:
-          export.write(str(i)+';'+key+';'+RESULT_DICT[key][0].split('/')[0]+';'+RESULT_DICT[key][1]+'\n')
+          export.write(key+';'+RESULT_DICT[key][0].split('/')[0]+';'+RESULT_DICT[key][1][:-1].replace('.',',')+'\n')
           i += 1
         export.close()
 
