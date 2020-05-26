@@ -220,12 +220,12 @@ class MainWindow(object):
     elif EXPOT_FILE[-4:] == '.txt':
       with open(EXPOT_FILE, 'w') as export:
         i = 1
-        x = '  '
+        space = '  '
         for key in RESULT_DICT:
-          export.write(str(i)+'.'+x+key+' --- '+RESULT_DICT[key][0]+' --- '+RESULT_DICT[key][1]+'\n')
+          export.write(str(i)+'.'+space+key+' --- '+RESULT_DICT[key][0]+' --- '+RESULT_DICT[key][1]+'\n')
           i += 1
           if i > 9:
-            x = ' '
+            space = ' '
         export.close()
 
 class KeyCreatorWindow(object):
