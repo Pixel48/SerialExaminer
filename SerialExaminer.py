@@ -222,7 +222,7 @@ class MainWindow(object):
         i = 1
         x = '  '
         for key in RESULT_DICT:
-          export.write(str(i)+'.'+x+key+'\t --- '+RESULT_DICT[key][0]+'\t --- '+RESULT_DICT[key][1]+'\n')
+          export.write(str(i)+'.'+x+key+' --- '+RESULT_DICT[key][0]+' --- '+RESULT_DICT[key][1]+'\n')
           i += 1
           if i > 9:
             x = ' '
