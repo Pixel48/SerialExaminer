@@ -3,10 +3,8 @@
 
   Ask your students to send you test responses in .txt files named after their full names, journal number, any ID numbers or anything else, that can identify them. Ask them to write answers in these files in format `<question number>.<question answer>`, line by line. The order of questions and letter size don't matter
 
-#### Table of Contents
+### Table of Contents
   - [Installation](https://github.com/Pixel48/SerialExaminer#installation)
-    - [Windows](https://github.com/Pixel48/SerialExaminer#windows)
-    - [Linux](https://github.com/Pixel48/SerialExaminer#linux)
   - [Usage](https://github.com/Pixel48/SerialExaminer#usage)
     - [Generating an exam key](https://github.com/Pixel48/SerialExaminer#generating-an-exam-key)
     - [Importing an exam key](https://github.com/Pixel48/SerialExaminer#importing-an-exam-key)
