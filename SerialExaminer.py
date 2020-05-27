@@ -145,7 +145,8 @@ class MainWindow(object):
     KEY_FILE = filedialog.askopenfilename(
       title = "Select exam key file",
       initialdir = './keys',
-      filetypes =(("Exam key file", "*.exkey"),
+      filetypes =(
+                  ("Exam key file", "*.exkey"),
                   ("Plain text", "*.txt"),
                  )
     )
@@ -438,7 +439,9 @@ class KeyCreatorWindow(object):
     KEY_FILE = filedialog.asksaveasfilename(
       title = "Select exam key file",
       initialdir = './keys',
-      filetypes =(("Exam Key File", "*.exkey"),)
+      filetypes =(
+                  ("Exam Key File", "*.exkey"),
+                 )
     )
     if '.exkey' not in KEY_FILE:
       KEY_FILE += '.exkey'
