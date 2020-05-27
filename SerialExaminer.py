@@ -564,8 +564,11 @@ class ResultDisplayWindow(object):
     self.frame.grid()
   def build(self, frame):
     global RESULT_DICT
+    x = 0
     zeroCol()
     # legend #
+
+    newCol()
     Label(frame,
           text = "Name",
           fg = 'blue',
@@ -580,16 +583,42 @@ class ResultDisplayWindow(object):
           text = "Result",
           fg = 'red').grid(row = R, column = C)
     # results #
+    limit = 40
     for filename in RESULT_DICT:
-      newRow()
+      newRow(x//limit*4)
+      x += 1
+      xx = str(x)+'.'
+      if x > limit:
+        xx = '\t' + xx
       Label(frame,
-            text = filename).grid(row = R, column = C)
+            text = xx).grid(row = R, column = C)
+      newCol()
+      Label(frame,
+            text = filename).grid(row = R, column = C, sticky = 'w')
       newCol()
       Label(frame,
             text = RESULT_DICT[filename][0]).grid(row = R, column = C)
       newCol()
       Label(frame,
             text = RESULT_DICT[filename][1]).grid(row = R, column = C)
+      if x % limit == 0:
+        zeroCol((x//limit)*4)
+        # legend #
+
+        newCol()
+        Label(frame,
+              text = "Name",
+              fg = 'blue',
+              width = 15).grid(row = R, column = C)
+        newCol()
+        Label(frame,
+              text = "Points",
+              fg = 'blue',
+              width = 10).grid(row = R, column = C)
+        newCol()
+        Label(frame,
+              text = "Result",
+              fg = 'red').grid(row = R, column = C)
 
 def main():
   root = Tk()
