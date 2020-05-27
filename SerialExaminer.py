@@ -251,7 +251,7 @@ class MainWindow(object):
       row = 2
       col = 'ABCD'
       for key in RESULT_DICT:
-        sh[str(col[0])+str(row)] = str(row-1)
+        sh[str(col[0])+str(row)] = row - 1
         sh[str(col[1])+str(row)] = key
         sh[str(col[2])+str(row)] = int(RESULT_DICT[key][0].split('/')[0])
         sh[str(col[3])+str(row)] = '=ROUND('+str(col[2])+str(row)+'*100/E2, 2)'
