@@ -21,16 +21,18 @@ RESULT_DICT = {}
 questionCount = 0
 answersCount = 0
 
-def newRow(arg = 1):
+def newRow(col = 0, row = 1):
   global C, R
-  R += arg
+  R += row
   C = 0
-def newCol(arg = 1):
+  C += col
+def newCol(col = 1):
   global C
-  C += arg
-def zeroCol():
+  C += col
+def zeroCol(col = 0):
   global C, R
   C = R = 0
+  C = col
 def splitLine(line):
   if line.split('.')[0].isdigit():
     line = line.split('.')
