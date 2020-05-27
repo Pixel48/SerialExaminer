@@ -167,9 +167,9 @@ class MainWindow(object):
   def browseExams(self):
     global INPUT_FILES
     testDir = filedialog.askdirectory(
-    title = "Examination txt files location",
-    initialdir = '.',
-    )
+      title = "Examination txt files location",
+      initialdir = '.',
+     )
     testFiles = os.listdir(testDir)
     buffer = []
     for file in testFiles:
@@ -439,13 +439,13 @@ class KeyCreatorWindow(object):
     KEY_FILE = filedialog.asksaveasfilename(
       title = "Select exam key file",
       initialdir = './keys',
+      initialfile = 'key',
+      defaultextension = '.exkey',
       filetypes =(
                   ("Exam Key File", "*.exkey"),
                  )
     )
-    if '.exkey' not in KEY_FILE:
-      KEY_FILE += '.exkey'
-    if KEY_FILE != '..exkey': # if no filename provided, don't proceed
+    if KEY_FILE != '': # if no filename provided, don't proceed
       self.exportKeyFile(KEY_FILE)
       self.above.inputButton['state'] = NORMAL
       self.master.destroy()
