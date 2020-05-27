@@ -164,6 +164,8 @@ class MainWindow(object):
           for line in keyf:
             line = splitLine(line)
             KEY_DICT[line[0]] = line[1]
+      if 0 in KEY_DICT.keys():
+        KEY_DICT.pop(0)
       questionCount = len(KEY_DICT.keys())
       self.inputButton['state'] = NORMAL
   def browseExams(self):
@@ -611,8 +613,8 @@ class ResultDisplayWindow(object):
           text = "Result",
           fg = 'red').grid(row = R, column = C)
     # results #
-    limit = 40
-    endLimit = 240
+    limit = 45
+    endLimit = 270
     x = 0
     for filename in list(RESULT_DICT.keys())[:endLimit]:
       newRow(x//limit*4)
