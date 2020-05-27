@@ -2,14 +2,14 @@
 # SerialExaminer.py
 #   by Pixel
 # Repository:    https://github.com/Pixel48/SerialExaminer.git
-# Documentation: https://github.com/Pixel48/SerialExaminer (WIP)
 from tkinter import *
 from tkinter import filedialog
 from functools import partial
 import tkinter.font as tkFont
 import os, pickle
+import openpyxl
 
-versionTag = 'v0.3.0'
+versionTag = '0.4.0'
 
 # SOME GLOBALS
 R = 0
@@ -22,16 +22,18 @@ RESULT_DICT = {}
 questionCount = 0
 answersCount = 0
 
-def newRow(arg = 1):
+def newRow(col = 0, row = 1):
   global C, R
-  R += arg
+  R += row
   C = 0
-def newCol(arg = 1):
+  C += col
+def newCol(col = 1):
   global C
-  C += arg
-def zeroCol():
+  C += col
+def zeroCol(col = 0):
   global C, R
   C = R = 0
+  C = col
 def splitLine(line):
   if line.split('.')[0].isdigit():
     line = line.split('.')
@@ -142,13 +144,14 @@ class MainWindow(object):
     global KEY_FILE
     self.keyButtonImport['state'] = DISABLED
     self.keyButtonCreate['state'] = DISABLED
-    KEY_FILE = os.path.normpath(filedialog.askopenfilename(
+    KEY_FILE = filedialog.askopenfilename(
       title = "Select exam key file",
       initialdir = './keys',
-      filetypes =(("Exam key file", "*.exkey"),
+      filetypes =(
+                  ("Exam key file", "*.exkey"),
                   ("Plain text", "*.txt"),
                  )
-    ))
+    )
     self.keyButtonImport['state'] = NORMAL
     self.keyButtonCreate['state'] = NORMAL
     if '.exkey' in KEY_FILE or '.txt' in KEY_FILE:
@@ -161,14 +164,16 @@ class MainWindow(object):
           for line in keyf:
             line = splitLine(line)
             KEY_DICT[line[0]] = line[1]
+      if 0 in KEY_DICT.keys():
+        KEY_DICT.pop(0)
       questionCount = len(KEY_DICT.keys())
       self.inputButton['state'] = NORMAL
   def browseExams(self):
     global INPUT_FILES
-    testDir = os.path.normpath(filedialog.askdirectory(
-    title = "Examination txt files location",
-    initialdir = '.',
-    ))
+    testDir = filedialog.askdirectory(
+      title = "Examination txt files location",
+      initialdir = '.',
+     )
     testFiles = os.listdir(testDir)
     buffer = []
     for file in testFiles:
@@ -194,13 +199,64 @@ class MainWindow(object):
         resultName = os.path.basename(testFile).split('.')[0]
         RESULT_DICT[resultName] = [str(points) + '/' + str(questionCount), str(round(points*100/questionCount, 2)) + '%']
         # NOTE: Result format: {<Filename>: ['<points>/<maxPoints', '<goodAnswersIn%>%']}
-    # self.outputButtonExport['state'] = NORMAL # NOTE: export feature
+    self.outputButtonExport['state'] = NORMAL
     self.outputButtonDsiplay['state'] = NORMAL
   def resultDisplay(self):
     self.masterResultDisplayWindow = Toplevel(self.master)
     self.appResultDisplayWindow = ResultDisplayWindow(self.masterResultDisplayWindow, self)
   def resultExport(self):
-    pass
+    # NOTE: RESULT_DICT format: {<Filename>: ['<points>/<maxPoints', '<goodAnswersIn%>%']}
+    global RESULT_DICT
+    EXPORT_FILE = filedialog.asksaveasfilename(
+      title = "Save test result",
+      initialdir = '.',
+      initialfile = 'test',
+      defaultextension = '.xlsx',
+      filetypes =(
+                  ("Excel Spreadsheet ", '*.xlsx'),
+                  ("CSV file", "*.csv"),
+                  ("Plain text", "*.txt"),
+                 )
+    )
+    if EXPORT_FILE[-4:] == '.csv':
+      with open(EXPORT_FILE, 'w') as export:
+        export.write(';FILENAME;'+'POINTS (max '+len(RESULT_DICT.keys())+');RESULT IN %\n')
+        i = 1
+        for key in RESULT_DICT:
+          export.write(str(i)+';'+key+';'+RESULT_DICT[key][0].split('/')[0]+';'+RESULT_DICT[key][1][:-1].replace('.',',')+'\n')
+          i += 1
+        export.close()
+    elif EXPORT_FILE[-4:] == '.txt':
+      with open(EXPORT_FILE, 'w') as export:
+        i = 1
+        space = '  '
+        for key in RESULT_DICT:
+          export.write(str(i)+'.'+space+key+' --- '+RESULT_DICT[key][0]+' --- '+RESULT_DICT[key][1]+'\n')
+          i += 1
+          if i > 9:
+            space = ' '
+        export.close()
+    elif EXPORT_FILE[-5:] == '.xlsx':
+      wb = openpyxl.Workbook()
+      sh = wb.create_sheet(index=0)
+      sh['B1'] = "FILENAME"
+      sh['C1'] = "POINTS"
+      sh['D1'] = "RESULT (in %)"
+      sh['E1'] = "MAX POINTS"
+      sh['E2'] = len(KEY_DICT.keys())
+      sh.column_dimensions['B'].width = 25
+      sh.column_dimensions['C'].width = 8
+      sh.column_dimensions['D'].width = 13
+      sh.column_dimensions['E'].width = 12
+      row = 2
+      col = 'ABCD'
+      for key in RESULT_DICT:
+        sh[str(col[0])+str(row)] = str(row-1)
+        sh[str(col[1])+str(row)] = key
+        sh[str(col[2])+str(row)] = int(RESULT_DICT[key][0].split('/')[0])
+        sh[str(col[3])+str(row)] = '=ROUND('+str(col[2])+str(row)+'*100/E2, 2)'
+        row += 1
+      wb.save(EXPORT_FILE)
 
 class KeyCreatorWindow(object):
   """Creator for CreateKey Window"""
@@ -384,14 +440,16 @@ class KeyCreatorWindow(object):
 
   def die(self):
     global KEY_FILE
-    KEY_FILE = os.path.normpath(filedialog.asksaveasfilename(
+    KEY_FILE = filedialog.asksaveasfilename(
       title = "Select exam key file",
       initialdir = './keys',
-      filetypes =(("Exam Key File", "*.exkey"),)
-    ))
-    if '.exkey' not in KEY_FILE:
-      KEY_FILE += '.exkey'
-    if KEY_FILE != '..exkey': # if no filename provided, don't proceed
+      initialfile = 'key',
+      defaultextension = '.exkey',
+      filetypes =(
+                  ("Exam Key File", "*.exkey"),
+                 )
+    )
+    if KEY_FILE != '': # if no filename provided, don't proceed
       self.exportKeyFile(KEY_FILE)
       self.above.inputButton['state'] = NORMAL
       self.master.destroy()
@@ -536,8 +594,11 @@ class ResultDisplayWindow(object):
     self.frame.grid()
   def build(self, frame):
     global RESULT_DICT
+    x = 0
     zeroCol()
     # legend #
+
+    newCol()
     Label(frame,
           text = "Name",
           fg = 'blue',
@@ -552,16 +613,44 @@ class ResultDisplayWindow(object):
           text = "Result",
           fg = 'red').grid(row = R, column = C)
     # results #
-    for filename in RESULT_DICT:
-      newRow()
+    limit = 45
+    endLimit = 270
+    x = 0
+    for filename in list(RESULT_DICT.keys())[:endLimit]:
+      newRow(x//limit*4)
+      x += 1
+      xx = str(x)+'.'
+      if x > limit:
+        xx = '\t' + xx
       Label(frame,
-            text = filename).grid(row = R, column = C)
+            text = xx).grid(row = R, column = C)
+      newCol()
+      Label(frame,
+            text = filename).grid(row = R, column = C, sticky = 'w')
       newCol()
       Label(frame,
             text = RESULT_DICT[filename][0]).grid(row = R, column = C)
       newCol()
       Label(frame,
             text = RESULT_DICT[filename][1]).grid(row = R, column = C)
+      if x % limit == 0 and x < endLimit:
+        zeroCol((x//limit)*4)
+        # legend #
+
+        newCol()
+        Label(frame,
+              text = "Name",
+              fg = 'blue',
+              width = 15).grid(row = R, column = C)
+        newCol()
+        Label(frame,
+              text = "Points",
+              fg = 'blue',
+              width = 10).grid(row = R, column = C)
+        newCol()
+        Label(frame,
+              text = "Result",
+              fg = 'red').grid(row = R, column = C)
 
 def main():
   root = Tk()
