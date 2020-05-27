@@ -22,16 +22,18 @@ RESULT_DICT = {}
 questionCount = 0
 answersCount = 0
 
-def newRow(arg = 1):
+def newRow(col = 0, row = 1):
   global C, R
-  R += arg
+  R += row
   C = 0
-def newCol(arg = 1):
+  C += col
+def newCol(col = 1):
   global C
-  C += arg
-def zeroCol():
+  C += col
+def zeroCol(col = 0):
   global C, R
   C = R = 0
+  C = col
 def splitLine(line):
   if line.split('.')[0].isdigit():
     line = line.split('.')
@@ -590,8 +592,11 @@ class ResultDisplayWindow(object):
     self.frame.grid()
   def build(self, frame):
     global RESULT_DICT
+    x = 0
     zeroCol()
     # legend #
+
+    newCol()
     Label(frame,
           text = "Name",
           fg = 'blue',
@@ -606,16 +611,44 @@ class ResultDisplayWindow(object):
           text = "Result",
           fg = 'red').grid(row = R, column = C)
     # results #
-    for filename in RESULT_DICT:
-      newRow()
+    limit = 40
+    endLimit = 240
+    x = 0
+    for filename in list(RESULT_DICT.keys())[:endLimit]:
+      newRow(x//limit*4)
+      x += 1
+      xx = str(x)+'.'
+      if x > limit:
+        xx = '\t' + xx
       Label(frame,
-            text = filename).grid(row = R, column = C)
+            text = xx).grid(row = R, column = C)
+      newCol()
+      Label(frame,
+            text = filename).grid(row = R, column = C, sticky = 'w')
       newCol()
       Label(frame,
             text = RESULT_DICT[filename][0]).grid(row = R, column = C)
       newCol()
       Label(frame,
             text = RESULT_DICT[filename][1]).grid(row = R, column = C)
+      if x % limit == 0 and x < endLimit:
+        zeroCol((x//limit)*4)
+        # legend #
+
+        newCol()
+        Label(frame,
+              text = "Name",
+              fg = 'blue',
+              width = 15).grid(row = R, column = C)
+        newCol()
+        Label(frame,
+              text = "Points",
+              fg = 'blue',
+              width = 10).grid(row = R, column = C)
+        newCol()
+        Label(frame,
+              text = "Result",
+              fg = 'red').grid(row = R, column = C)
 
 def main():
   root = Tk()
