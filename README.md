@@ -70,6 +70,6 @@
 ### Records in result display
   Test result display windows supports up to 240
 
-  ![Maximum result display records](./docs/img/limit_results_display/png)
+  ![Maximum result display records](./docs/img/limit_results_display.png)
 
 ###### Copyright (c) 2020 [Pixel48](https://github.com/Pixel48/) All Rights Reserved
