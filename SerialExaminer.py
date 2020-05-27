@@ -7,6 +7,7 @@ from tkinter import filedialog
 from functools import partial
 import tkinter.font as tkFont
 import os, pickle
+import openpyxl
 
 versionTag = '0.4-beta.0'
 
@@ -204,8 +205,11 @@ class MainWindow(object):
     EXPOT_FILE = filedialog.asksaveasfilename(
       title = "Save test result",
       initialdir = '.',
-      defaultextension = '.csv',
-      filetypes =(("CSV file", "*.csv"),
+      initialfile = 'test',
+      defaultextension = '.xlsx',
+      filetypes =(
+                  ("Excel Spreadsheet ", '*.xlsx'),
+                  ("CSV file", "*.csv"),
                   ("Plain text", "*.txt"),
                  )
     )
@@ -227,6 +231,27 @@ class MainWindow(object):
           if i > 9:
             space = ' '
         export.close()
+    elif EXPOT_FILE[-5:] == '.xlsx':
+      wb = openpyxl.Workbook()
+      sh = wb.create_sheet(index=0)
+      sh['B1'] = "FILENAME"
+      sh['C1'] = "POINTS"
+      sh['D1'] = "RESULT (in %)"
+      sh['E1'] = "MAX POINTS"
+      sh['E2'] = len(KEY_DICT.keys())
+      sh.column_dimensions['B'].width = 25
+      sh.column_dimensions['C'].width = 8
+      sh.column_dimensions['D'].width = 13
+      sh.column_dimensions['E'].width = 12
+      row = 2
+      col = 'ABCD'
+      for key in RESULT_DICT:
+        sh[str(col[0])+str(row)] = str(row-1)
+        sh[str(col[1])+str(row)] = key
+        sh[str(col[2])+str(row)] = int(RESULT_DICT[key][0].split('/')[0])
+        sh[str(col[3])+str(row)] = '=ROUND('+str(col[2])+str(row)+'*100/E2, 2)'
+        row += 1
+      wb.save(EXPOT_FILE)
 
 class KeyCreatorWindow(object):
   """Creator for CreateKey Window"""
