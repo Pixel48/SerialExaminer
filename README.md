@@ -68,7 +68,7 @@
   ![Maximum answers quantity](./docs/img/limit_max_answers_quantity.png)
 
 ### Records in result display
-  Test result display window supports up to 240.
+  Test result display window supports up to 270.
 
   Export feature will work with all records, limit applies to display only
 
