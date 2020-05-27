@@ -584,7 +584,9 @@ class ResultDisplayWindow(object):
           fg = 'red').grid(row = R, column = C)
     # results #
     limit = 40
-    for filename in RESULT_DICT:
+    endLimit = 240
+    x = 0
+    for filename in list(RESULT_DICT.keys())[:endLimit]:
       newRow(x//limit*4)
       x += 1
       xx = str(x)+'.'
@@ -601,7 +603,7 @@ class ResultDisplayWindow(object):
       newCol()
       Label(frame,
             text = RESULT_DICT[filename][1]).grid(row = R, column = C)
-      if x % limit == 0:
+      if x % limit == 0 and x < endLimit:
         zeroCol((x//limit)*4)
         # legend #
 
