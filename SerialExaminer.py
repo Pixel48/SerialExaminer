@@ -32,7 +32,7 @@ def newCol(col = 1):
   C += col
 def zeroCol(col = 0):
   global C, R
-  C = R = 0
+  R = 0
   C = col
 def splitLine(line):
   if line.split('.')[0].isdigit():
