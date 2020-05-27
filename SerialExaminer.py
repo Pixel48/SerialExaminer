@@ -207,7 +207,7 @@ class MainWindow(object):
   def resultExport(self):
     # NOTE: RESULT_DICT format: {<Filename>: ['<points>/<maxPoints', '<goodAnswersIn%>%']}
     global RESULT_DICT
-    EXPOT_FILE = filedialog.asksaveasfilename(
+    EXPORT_FILE = filedialog.asksaveasfilename(
       title = "Save test result",
       initialdir = '.',
       initialfile = 'test',
@@ -218,16 +218,16 @@ class MainWindow(object):
                   ("Plain text", "*.txt"),
                  )
     )
-    if EXPOT_FILE[-4:] == '.csv':
-      with open(EXPOT_FILE, 'w') as export:
+    if EXPORT_FILE[-4:] == '.csv':
+      with open(EXPORT_FILE, 'w') as export:
         export.write(';FILENAME;'+'POINTS (max '+len(RESULT_DICT.keys())+');RESULT IN %\n')
         i = 1
         for key in RESULT_DICT:
           export.write(str(i)+';'+key+';'+RESULT_DICT[key][0].split('/')[0]+';'+RESULT_DICT[key][1][:-1].replace('.',',')+'\n')
           i += 1
         export.close()
-    elif EXPOT_FILE[-4:] == '.txt':
-      with open(EXPOT_FILE, 'w') as export:
+    elif EXPORT_FILE[-4:] == '.txt':
+      with open(EXPORT_FILE, 'w') as export:
         i = 1
         space = '  '
         for key in RESULT_DICT:
@@ -236,7 +236,7 @@ class MainWindow(object):
           if i > 9:
             space = ' '
         export.close()
-    elif EXPOT_FILE[-5:] == '.xlsx':
+    elif EXPORT_FILE[-5:] == '.xlsx':
       wb = openpyxl.Workbook()
       sh = wb.create_sheet(index=0)
       sh['B1'] = "FILENAME"
@@ -256,7 +256,7 @@ class MainWindow(object):
         sh[str(col[2])+str(row)] = int(RESULT_DICT[key][0].split('/')[0])
         sh[str(col[3])+str(row)] = '=ROUND('+str(col[2])+str(row)+'*100/E2, 2)'
         row += 1
-      wb.save(EXPOT_FILE)
+      wb.save(EXPORT_FILE)
 
 class KeyCreatorWindow(object):
   """Creator for CreateKey Window"""
