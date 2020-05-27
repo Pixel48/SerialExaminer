@@ -9,7 +9,7 @@ import tkinter.font as tkFont
 import os, pickle
 import openpyxl
 
-versionTag = '0.4-beta.0'
+versionTag = '0.4.0'
 
 # SOME GLOBALS
 R = 0
