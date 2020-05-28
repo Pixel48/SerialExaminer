@@ -6,13 +6,7 @@
 ### Table of Contents
   - [Installation](https://github.com/Pixel48/SerialExaminer#installation)
   - [Usage](https://github.com/Pixel48/SerialExaminer#usage)
-    - [Generating an exam key](https://github.com/Pixel48/SerialExaminer#generating-an-exam-key)
-    - [Importing an exam key](https://github.com/Pixel48/SerialExaminer#importing-an-exam-key)
-    - [Checking tests](https://github.com/Pixel48/SerialExaminer#checking-tests)
-    - [Searching for cheaters](https://github.com/Pixel48/SerialExaminer#searching-for-cheaters)
   - [Limits](https://github.com/Pixel48/SerialExaminer#limits)
-    - [Answers in exam key](https://github.com/Pixel48/SerialExaminer#answers-in-exam-key)
-    - [Records in result display](https://github.com/Pixel48/SerialExaminer#records-in-result-display)
 
 ## Installation
   Download installer from the [latest release](https://github.com/Pixel48/SerialExaminer/releases/latest)
