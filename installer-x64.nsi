@@ -10,7 +10,7 @@
 ;------------------
 ; Atributes
 Name "SerialExaminer"
-OutFile "SerialExaminerSetup.exe"
+OutFile "SerialExaminerSetup-x64.exe"
 InstallDir "$PROGRAMFILES64\${PROGRAM_NAME}"
 RequestExecutionLevel admin
 ; Unicode True
