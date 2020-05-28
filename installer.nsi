@@ -32,7 +32,7 @@ Section "SerialExaminer" SerialExaminer
 
   WriteRegStr HKLM "${INST_KEY}" "InstallDir" "$INSTDIR"
   WriteRegStr HKLM "${INST_KEY}" "DisplayName" "SerialExaminer"
-  WriteRegStr HKLM "${INST_KEY}" "DisplayVersion" "0.4.1"
+  WriteRegStr HKLM "${INST_KEY}" "DisplayVersion" "0.5.0"
   WriteRegStr HKLM "${INST_KEY}" "DisplayIcon" "$\"$INSTDIR\ico.ico$\""
   WriteRegStr HKLM "${INST_KEY}" "Publisher" "GitHub.com/Pixel48"
   WriteRegStr HKLM "${INST_KEY}" "UninstallString" "$INSTDIR\Uninstall.exe"
@@ -41,7 +41,7 @@ Section "SerialExaminer" SerialExaminer
 
   WriteRegStr HKLM "${UNINST_KEY}" "InstallDir" "$INSTDIR"
   WriteRegStr HKLM "${UNINST_KEY}" "DisplayName" "${PROGRAM_NAME}"
-  WriteRegStr HKLM "${UNINST_KEY}" "DisplayVersion" "0.4.1"
+  WriteRegStr HKLM "${UNINST_KEY}" "DisplayVersion" "0.5.0"
   WriteRegStr HKLM "${UNINST_KEY}" "DisplayIcon" "$\"$INSTDIR\ico.ico$\""
   WriteRegStr HKLM "${UNINST_KEY}" "Publisher" "GitHub.com/Pixel48"
   WriteRegStr HKLM "${UNINST_KEY}" "UninstallString" "$\"$INSTDIR\Uninstall.exe$\""
