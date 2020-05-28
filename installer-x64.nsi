@@ -11,7 +11,7 @@
 ; Atributes
 Name "SerialExaminer"
 OutFile "SerialExaminerSetup.exe"
-InstallDir "$PROGRAMFILES32\${PROGRAM_NAME}"
+InstallDir "$PROGRAMFILES64\${PROGRAM_NAME}"
 RequestExecutionLevel admin
 ; Unicode True
 
@@ -27,7 +27,7 @@ RequestExecutionLevel admin
 
 Section "SerialExaminer" SerialExaminer
   SetOutPath $INSTDIR
-  File /r "dist\SerialExaminer\*"
+  File /r "dist-x64\SerialExaminer\*"
   CreateDirectory "$INSTDIR\keys"
 
   WriteRegStr HKLM "${INST_KEY}" "InstallDir" "$INSTDIR"

@@ -6,22 +6,22 @@
 ### Table of Contents
   - [Installation](https://github.com/Pixel48/SerialExaminer#installation)
   - [Usage](https://github.com/Pixel48/SerialExaminer#usage)
-    - [Generating an exam key](https://github.com/Pixel48/SerialExaminer#generating-an-exam-key)
-    - [Importing an exam key](https://github.com/Pixel48/SerialExaminer#importing-an-exam-key)
-    - [Checking tests](https://github.com/Pixel48/SerialExaminer#checking-tests)
-    - [Searching for cheaters](https://github.com/Pixel48/SerialExaminer#searching-for-cheaters)
   - [Limits](https://github.com/Pixel48/SerialExaminer#limits)
-    - [Answers in exam key](https://github.com/Pixel48/SerialExaminer#answers-in-exam-key)
-    - [Records in result display](https://github.com/Pixel48/SerialExaminer#records-in-result-display)
 
 ## Installation
-  Download the latest [SerialExaminer installer](https://github.com/Pixel48/SerialExaminer/releases/latest)
+  Download installer from the [latest release](https://github.com/Pixel48/SerialExaminer/releases/latest)
 
   `SerialExaminerSetup.exe` is 32-bit. For 64-bit systems, download `SerialExaminerSetup-x64.exe`
-  > For now, downloading the installer will launch [UAC](https://en.wikipedia.org/wiki/User_Account_Control) *Unknown publisher* alert because it is not digitally signed - For now I can't afford digital certification
+  > For now, downloading the installer will launch [UAC](https://en.wikipedia.org/wiki/User_Account_Control) *Unknown publisher* alert because it is not digitally signed - I can't afford digital certification
+
+  > For now, some anti-virus programs may detect the installer as a potential threat because it is not downloaded frequently, so it is not marked as safe (it is unknown to the anti-virus)
 
 ## Usage
-  How to use SerialExaminer interface
+  Guide how to use SerialExaminer interface
+  - [Generating an exam key](https://github.com/Pixel48/SerialExaminer#generating-an-exam-key)
+  - [Importing an exam key](https://github.com/Pixel48/SerialExaminer#importing-an-exam-key)
+  - [Checking tests](https://github.com/Pixel48/SerialExaminer#checking-tests)
+  - [Searching for cheaters](https://github.com/Pixel48/SerialExaminer#searching-for-cheaters)
 
   ![Main window dummy](./docs/img/main_window.png)
 

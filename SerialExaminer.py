@@ -9,7 +9,7 @@ import tkinter.font as tkFont
 import os, pickle
 import openpyxl
 
-versionTag = '0.4.1'
+versionTag = '0.5.0'
 
 # SOME GLOBALS
 R = 0
@@ -32,7 +32,7 @@ def newCol(col = 1):
   C += col
 def zeroCol(col = 0):
   global C, R
-  C = R = 0
+  R = 0
   C = col
 def splitLine(line):
   if line.split('.')[0].isdigit():
@@ -112,7 +112,7 @@ class MainWindow(object):
     newRow()
     self.examinateButtonFont = tkFont.Font(size=15)
     self.examinateButton = Button(frame, font = self.examinateButtonFont)
-    self.examinateButton['text'] = "Check!"
+    self.examinateButton['text'] = "Check"
     self.examinateButton['command'] = self.examinate
     self.examinateButton['state'] = DISABLED
     self.examinateButton.grid(row = R, column = C, columnspan = 3, sticky = 'we')
@@ -370,7 +370,7 @@ class KeyCreatorWindow(object):
     newRow()
     self.nextWindowFont = tkFont.Font(size = 14)
     self.nextWindow = Button(frame, font = self.nextWindowFont)
-    self.nextWindow['text'] = "Create Key!"
+    self.nextWindow['text'] = "Create Key"
     self.nextWindow['command'] = self.mainKeyCreator
     self.nextWindow.grid(row = R, column = C, columnspan = 7, sticky = 'we')
     # key config done button #
@@ -576,7 +576,7 @@ class MainKeyCreatorWindow(object):
     self.mainLabel['text'] = "Question " + str(self.questionNo)
     if self.questionNo > questionCount:
       self.above.keyDone['state'] = NORMAL
-      self.above.nextWindow['text'] = "ReCreate Key!"
+      self.above.nextWindow['text'] = "ReCreate Key"
       self.die()
 
   def die(self):
