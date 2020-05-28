@@ -9,7 +9,7 @@
   - [Limits](https://github.com/Pixel48/SerialExaminer#limits)
 
 ## Installation
-  Download installer from the [latest release](https://github.com/Pixel48/SerialExaminer/releases/latest)
+  Download and run installer from [last release](https://github.com/Pixel48/SerialExaminer/releases/latest)
 
   `SerialExaminerSetup.exe` is 32-bit. For 64-bit systems, download `SerialExaminerSetup-x64.exe`
   > For now, downloading the installer will launch [UAC](https://en.wikipedia.org/wiki/User_Account_Control) *Unknown publisher* alert because it is not digitally signed - I can't afford digital certification
