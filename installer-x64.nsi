@@ -4,8 +4,8 @@
 ;------------------
 ;Atributes
 Name "SerialExaminer"
-OutFile "SerialExaminerSetup-x64.exe"
-InstallDir "$PROGRAMFILES\SerialExaminer"
+OutFile "SerialExaminerSetup.exe"
+InstallDir "$PROGRAMFILES64\SerialExaminer"
 RequestExecutionLevel admin
 ;Unicode True
 
@@ -25,8 +25,8 @@ Section "SerialExaminer" SerialExaminer
   CreateDirectory "$INSTDIR\keys"
 
   WriteRegStr HKLM "SOFTWARE\SerialExaminer" "InstallPath" "$INSTDIR"
-  WriteRegStr HKLM "Software\SerialExaminer" "DisplayName" "SerialExaminer"
-  WriteRegStr HKLM "Software\SerialExaminer" "UninstallString" '"$INSTDIR\Uninstall.exe"'
+  WriteRegStr HKLM "SOFTWARE\SerialExaminer" "DisplayName" "SerialExaminer"
+  WriteRegStr HKLM "SOFTWARE\SerialExaminer" "UninstallString" '"$INSTDIR\Uninstall.exe"'
 
   WriteUninstaller "$INSTDIR\Uninstall.exe"
 SectionEnd
@@ -42,7 +42,6 @@ SectionEnd
 
 Section "Uninstall"
   Delete "$DESKTOP\SerialExaminer.lnk"
-  Delete "$INSTDIR\Uninstall.exe"
   RMDir /r "$INSTDIR"
-  DeleteRegKey HKLM "Software\SerialExaminer"
+  DeleteRegKey HKLM "SOFTWARE\SerialExaminer"
 SectionEnd
