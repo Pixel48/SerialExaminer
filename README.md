@@ -25,7 +25,7 @@
   `SerialExaminerSetup.exe` is 32-bit. For 64-bit systems, download `SerialExaminerSetup-x64.exe`
   To check how many bit your system is, check the system information in _System Settings_
 
-  > Running downloaded the installer will launch __[UAC](https://en.wikipedia.org/wiki/User_Account_Control) *Unknown publisher* alert__ because it is not digitally signed - for now I can't afford digital certification. You can use [Virustotal](https://www.virustotal.com/gui/home/upload) to make sure that installer is clean
+  > Running downloaded installer will launch __[UAC](https://en.wikipedia.org/wiki/User_Account_Control) *Unknown publisher* alert__ because it is not digitally signed - for now I can't afford digital certification. You can use [Virustotal](https://www.virustotal.com/gui/home/upload) to make sure that installer is clean
 
 ### Linux
   To launch this project on your awesome system use following code
