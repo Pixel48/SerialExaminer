@@ -1,75 +1,26 @@
-# SerialExaminer
-  SerialExaminer is a small tool to speed up test evaluation and detection of potential fraudsters. It's easy to use and works quickly with lots of files
+# SerialExaminer [![readme translation](https://img.shields.io/badge/readme%20language-english-blue?color=00f&logo=google-translate&logoColor=fff&style=for-the-badge)][readme-en] [![translate to polish](https://img.shields.io/badge/-polish-red?color=f00&style=for-the-badge)][readme-pl]
+[![license](https://img.shields.io/github/license/Pixel48/SerialExaminer?color=brown)](https://github.com/Pixel48/SerialExaminer/blob/master/LICENSE)
+[![last release](https://img.shields.io/github/v/release/Pixel48/SerialExaminer?color=brightgreen&label=version)](https://github.com/Pixel48/SerialExaminer/releases/latest)
+[![repo size](https://img.shields.io/github/repo-size/Pixel48/SerialExaminer)](github.com/Pixel48/SerialExaminer)
 
-  Ask your students to send you test responses in .txt files named after their full names, journal number, any ID numbers or anything else, that can identify them. Ask them to write answers in these files in format `<question number>.<question answer>`, line by line. The order of questions and letter size don't matter
+## Table of Contents
+  - [Introduction](#introduction)
+    - [Detailed description](#detailed-description)
+  - [Setup](#setup)
+  - [Usage](#usage)
+    - [Generating test answer key](#generating-test-answer-key)
+    - [Importing test answer key](#importing-test-answer-key)
+    - [Checking test answers](#chacking-test-answers)
 
-### Table of Contents
-  - [Installation](https://github.com/Pixel48/SerialExaminer#installation)
-  - [Usage](https://github.com/Pixel48/SerialExaminer#usage)
-  - [Limits](https://github.com/Pixel48/SerialExaminer#limits)
-
-## Installation
-  Download installer from the [latest release](https://github.com/Pixel48/SerialExaminer/releases/latest)
-
-  `SerialExaminerSetup.exe` is 32-bit. For 64-bit systems, download `SerialExaminerSetup-x64.exe`
-  > For now, downloading the installer will launch [UAC](https://en.wikipedia.org/wiki/User_Account_Control) *Unknown publisher* alert because it is not digitally signed - I can't afford digital certification
-
-  > For now, some anti-virus programs may detect the installer as a potential threat because it is not downloaded frequently, so it is not marked as safe (it is unknown to the anti-virus)
-
+## Introduction
+## Setup
 ## Usage
-  Guide how to use SerialExaminer interface
-  - [Generating an exam key](https://github.com/Pixel48/SerialExaminer#generating-an-exam-key)
-  - [Importing an exam key](https://github.com/Pixel48/SerialExaminer#importing-an-exam-key)
-  - [Checking tests](https://github.com/Pixel48/SerialExaminer#checking-tests)
-  - [Searching for cheaters](https://github.com/Pixel48/SerialExaminer#searching-for-cheaters)
+### Generating test answer key
+### Importing test answer key
+### Checking test answers
 
-  ![Main window dummy](./docs/img/main_window.png)
-
-### Generating an exam key
-  1. Provide the exact number of questions and answers in the exam and Press `Create key!` button
-
-  ![Key parameters](./docs/img/key_parameters.png)
-
-  2. Provide answers to questions about the given number. If you make a mistake you can go back using the `<` button. Window will disappear automatically after entering the last answer
-
-  ![Key data](./docs/img/key_ans.png)
-
-  3. After key answer window vanish, press `Done` button and provide where to save exam key for potential future use. (You dont need to import key after creating it, it's imported immediately after save).
-
-### Checking tests
-  1. Create or import correct exam key
-  2. Press `Browse` button and provide folder with files written by your students
-  3. Press `Check` button to calculate results
-  4. Press `Display` button to show test results
-  5. Press `Export` button, if you want to generate report file with result table in selected format
-
-  ![Result window](./docs/img/results.png)
-  > Future updates will add export options and `predicted grade` column in results
-
-### Searching for cheaters
-  1. Press `Import` button
-  2. In new dialog change file extension to ***Plain text (\*.txt)***
-  3. Select the source file to which you want to check the similarity in other tests
-  4. Press `Browse` button and provide folder with other tests
-  5. Press `Check` button to calculate results
-  6. Press `Display` button to show similarity of other tests to source test
-
-## Limits
-  SerialExaminer limitation list for [last release](https://github.com/Pixel48/SerialExaminer/releases/latest).
-
-  *These limits will be removed by future updates.*
-
-### Answers in exam key
-  Key creator supports answers quantity in range from 4 to 12
-
-  ![Minimum answers quantity](./docs/img/limit_min_answers_quantity.png)
-  ![Maximum answers quantity](./docs/img/limit_max_answers_quantity.png)
-
-### Records in result display
-  Test result display window supports up to 270.
-
-  Export feature will work with all records, limit applies to display only
-
-  ![Maximum result display records](./docs/img/limit_results_display.png)
-
+---
 ###### Copyright (c) 2020 [Pixel48](https://github.com/Pixel48/) All Rights Reserved
+
+[readme-en]: ./README.md "English translation"
+[readme-pl]: ./README-PL.md "Polskie tłumaczenie"
