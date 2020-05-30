@@ -32,7 +32,7 @@
 
 ### Linux
   To launch this project on your awesome system use following code
-  > First make sure your system  has installed [python 3](https://www.python.org)
+  > First make sure your system  has installed [Python3](https://www.python.org)
 
   ```bash
   cd ~/Desktop
