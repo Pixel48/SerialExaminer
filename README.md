@@ -5,6 +5,8 @@
 
 ## Table of Contents
   - [Introduction](#introduction)
+    - [Description](#description)
+    - [Example of use](#example-of-use)
   - [Setup](#setup)
     - [Windows](#windows)
     - [Linux](#linux)
@@ -16,7 +18,8 @@
   - [Feedback](#feedback)
 
 ## Introduction
-
+### Description
+### Example of use
 ## Setup
 
 ### Windows
@@ -39,13 +42,9 @@
   ```
 
 ## Usage
-
 ### Generating test answer key
-
 ### Importing test answer key
-
 ### Checking test answers
-
 ### Exporting test results
 
 ## Feedback
