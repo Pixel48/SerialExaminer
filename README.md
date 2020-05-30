@@ -42,10 +42,28 @@
   ```
 
 ## Usage
-### Generating test answer key
-### Importing test answer key
-### Checking test answers
-### Exporting test results
+How to use SerialExaminer
+
+### Generating answer key
+  1. Provide the exact number of questions and answers in the exam and Press `Create key` button
+  2. Provide answers to questions about the question with given number. If you make a mistake you can go back using the `<` button. Window will disappear automatically after entering the last answer
+  3. After key answer window vanish, press `Done` button and provide filename to save answer key for potential future use. Key is automatically imported after saving
+
+### Importing answer key
+  1. Press `Import` button
+  2. In new dialog select key file you want to import
+
+  You can import key from _.txt_ file, if it's formatted as a exam response
+
+### Checking answers
+  1. Create or import correct answer key
+  2. Press Browse button and provide folder with files written by your students
+  3. Press Check button to calculate results
+  4. Press Display button to show test results
+  5. Press Export button, if you want to generate report file with result table in selected format
+  > Future updates will add export options and predicted grade column in results
+
+### Exporting results
 
 ## Feedback
   [![GitHub issues open](https://img.shields.io/github/issues-raw/Pixel48/SerialExaminer?color=yellow)][issues]
