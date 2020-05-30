@@ -12,6 +12,7 @@
     - [Generating test answer key](#generating-test-answer-key)
     - [Importing test answer key](#importing-test-answer-key)
     - [Checking test answers](#chacking-test-answers)
+    - [Exporting test results](#exporting-test-results)
   - [Feedback](#feedback)
 
 ## Introduction
@@ -45,11 +46,13 @@
 
 ### Checking test answers
 
+### Exporting test results
+
 ## Feedback
-  [![GitHub issues](https://img.shields.io/github/issues-raw/Pixel48/SerialExaminer?color=yellow)][issues]
-  [![GitHub issues](https://img.shields.io/github/issues-closed-raw/Pixel48/SerialExaminer?color=red)][issues]
+  [![GitHub issues open](https://img.shields.io/github/issues-raw/Pixel48/SerialExaminer?color=yellow)][issues]
+  [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/Pixel48/SerialExaminer?color=red)][issues]
 
-
+  If you have used the program, feel free to leave feedback on the project's [issues page][issues] to help me improve my work
 
 ---
 ###### Copyright (c) 2020 [Pixel48](https://github.com/Pixel48/) All Rights Reserved
