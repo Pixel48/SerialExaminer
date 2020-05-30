@@ -28,6 +28,8 @@ RequestExecutionLevel admin
 Section "SerialExaminer" SerialExaminer
   SetOutPath $INSTDIR
   File /r "dist-x64\SerialExaminer\*"
+  File "ico.ico"
+  File "unico.ico"
   CreateDirectory "$INSTDIR\keys"
 
   WriteRegStr HKLM "${INST_KEY}" "InstallDir" "$INSTDIR"
