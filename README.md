@@ -5,17 +5,14 @@
 
 ## Table of Contents
   - [Introduction](#introduction)
-    - [Project purpose](#project-purpose)
-    - [Example of use](#example-of-use)
   - [Setup](#setup)
     - [Windows](#windows)
     - [Linux](#linux)
   - [Usage](#usage)
     - [Collecting answers](#collecting-answers)
-    - [Generating test answer key](#generating-test-answer-key)
-    - [Importing test answer key](#importing-test-answer-key)
-    - [Checking test answers](#chacking-test-answers)
-    - [Exporting test results](#exporting-test-results)
+    - [Generating answer key](#generating-answer-key)
+    - [Importing answer key](#importing-answer-key)
+    - [Checking answers](#chacking-answers)
   - [Feedback](#feedback)
 
 ## Introduction
@@ -24,11 +21,10 @@
 ## Setup
 
 ### Windows
-  To launch this project on your computer download and run proper installer form [last release][latest-release]
+  To launch this project on your computer download and run proper installer from [last release][latest-release]
 
   `SerialExaminerSetup.exe` is 32-bit. For 64-bit systems, download `SerialExaminerSetup-x64.exe`
   To check how many bit your system is, check the system information in _System Settings_
-
   > Running downloaded installer will launch __[UAC](https://en.wikipedia.org/wiki/User_Account_Control) *Unknown publisher* alert__ because it is not digitally signed - for now I can't afford digital certification. You can use [Virustotal](https://www.virustotal.com/gui/home/upload) to make sure that installer is clean
 
 ### Linux
@@ -61,11 +57,11 @@
 
 ### Checking answers
   1. Create or import correct answer key
-  2. Press Browse button and provide folder with files written by your students
-  3. Press Check button to calculate results
-  4. Press Display button to show test results
-  5. Press Export button, if you want to generate report file with result table in selected format
-  > Future updates will add export options and predicted grade column in results
+  2. Press `Browse` button and provide folder with files written by your students
+  3. Press `Check` button to calculate results
+  4. Press `Display` button to show test results (First 270 records)
+  5. Press `Export` button, if you want to generate report file with result table in selected format
+  > Future updates will add export options and `predicted grade` column in results
 
 ## Feedback
   [![GitHub issues open](https://img.shields.io/github/issues-raw/Pixel48/SerialExaminer?color=yellow)][issues]
