@@ -5,12 +5,13 @@
 
 ## Table of Contents
   - [Introduction](#introduction)
-    - [Description](#description)
+    - [Project purpose](#project-purpose)
     - [Example of use](#example-of-use)
   - [Setup](#setup)
     - [Windows](#windows)
     - [Linux](#linux)
   - [Usage](#usage)
+    - [Collecting answers](#collecting-answers)
     - [Generating test answer key](#generating-test-answer-key)
     - [Importing test answer key](#importing-test-answer-key)
     - [Checking test answers](#chacking-test-answers)
@@ -18,8 +19,12 @@
   - [Feedback](#feedback)
 
 ## Introduction
-### Description
+
+### Project purpose
+  Most teachers check their students' knowledge through a list of questions with several answer options. This method is ok but it generates a lot of work. Hours of work. With SerialExaminer, these hours can become seconds, returning the wasted time
+
 ### Example of use
+
 ## Setup
 
 ### Windows
@@ -42,7 +47,10 @@
   ```
 
 ## Usage
-How to use SerialExaminer
+  A short guide how to use SerialExaminer
+
+### Collecting answers
+  Ask your students to send you test responses in .txt files named after their full names, journal number, any ID numbers or anything else, that can identify them. Ask them to write answers in these files in format `<question number>.<question answer>`, line by line. The order of questions and letter size don't matter
 
 ### Generating answer key
   1. Provide the exact number of questions and answers in the exam and Press `Create key` button
@@ -62,8 +70,6 @@ How to use SerialExaminer
   4. Press Display button to show test results
   5. Press Export button, if you want to generate report file with result table in selected format
   > Future updates will add export options and predicted grade column in results
-
-### Exporting results
 
 ## Feedback
   [![GitHub issues open](https://img.shields.io/github/issues-raw/Pixel48/SerialExaminer?color=yellow)][issues]
