@@ -19,11 +19,7 @@
   - [Feedback](#feedback)
 
 ## Introduction
-
-### Project purpose
   Most teachers check their students' knowledge through a list of questions with several answer options. This method is ok but it generates a lot of work. Hours of work. With SerialExaminer, these hours can become seconds, returning the wasted time
-
-### Example of use
 
 ## Setup
 
