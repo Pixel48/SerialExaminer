@@ -1,7 +1,7 @@
 # SerialExaminer [![readme translation](https://img.shields.io/badge/tłumaczenie%20pliku-polski-red?color=f00&logo=google-translate&logoColor=fff&style=for-the-badge)][readme-pl] [![translate to english](https://img.shields.io/badge/-english-blue?color=00f&style=for-the-badge)][readme-en]
   [![license](https://img.shields.io/github/license/Pixel48/SerialExaminer?color=brown&label=licencja)](https://github.com/Pixel48/SerialExaminer/blob/master/LICENSE)
   [![last release](https://img.shields.io/github/v/release/Pixel48/SerialExaminer?color=brightgreen&label=wersja)](https://github.com/Pixel48/SerialExaminer/releases/latest)
-  [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/Pixel48/SerialExaminer?color=informational&label=częstotliwość%20zmian&logo=github)]()
+  [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/Pixel48/SerialExaminer?color=informational&logo=github)](https://github.com/Pixel48/SerialExaminer/commits/develop)
 
 ## Table of Contents
   - [Wprowadzenie](#wprowadzenie)
