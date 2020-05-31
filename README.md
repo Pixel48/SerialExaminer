@@ -1,75 +1,77 @@
-# SerialExaminer
-  SerialExaminer is a small tool to speed up test evaluation and detection of potential fraudsters. It's easy to use and works quickly with lots of files
+# SerialExaminer [![readme translation](https://img.shields.io/badge/readme%20translation-english-blue?color=00f&logo=google-translate&logoColor=fff&style=for-the-badge)][readme-en] [![translate to polish](https://img.shields.io/badge/-polski-red?color=f00&style=for-the-badge)][readme-pl]
+  [![license](https://img.shields.io/github/license/Pixel48/SerialExaminer?color=brown)](https://github.com/Pixel48/SerialExaminer/blob/master/LICENSE)
+  [![last release](https://img.shields.io/github/v/release/Pixel48/SerialExaminer?color=brightgreen&label=version)](https://github.com/Pixel48/SerialExaminer/releases/latest)
+  [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/Pixel48/SerialExaminer?color=informational&logo=github)](https://github.com/Pixel48/SerialExaminer/commits/develop)
 
-  Ask your students to send you test responses in .txt files named after their full names, journal number, any ID numbers or anything else, that can identify them. Ask them to write answers in these files in format `<question number>.<question answer>`, line by line. The order of questions and letter size don't matter
+## Table of Contents
+  - [Introduction](#introduction)
+  - [Setup](#setup)
+    - [Windows](#windows)
+    - [Linux](#linux)
+  - [Usage](#usage)
+    - [Collecting answers](#collecting-answers)
+    - [Generating answer key](#generating-answer-key)
+    - [Importing answer key](#importing-answer-key)
+    - [Checking answers](#chacking-answers)
+  - [Feedback](#feedback)
 
-### Table of Contents
-  - [Installation](https://github.com/Pixel48/SerialExaminer#installation)
-  - [Usage](https://github.com/Pixel48/SerialExaminer#usage)
-  - [Limits](https://github.com/Pixel48/SerialExaminer#limits)
+## Introduction
+  Most teachers check their students' knowledge through a list of questions with several answer options. This method is ok but it generates a lot of work. Hours of work. With SerialExaminer, these hours can become seconds, returning the wasted time
 
-## Installation
-  Download and run installer from [last release](https://github.com/Pixel48/SerialExaminer/releases/latest)
+## Setup
+
+### Windows
+  To launch this project on your computer download and run proper installer from [last release][latest-release]
 
   `SerialExaminerSetup.exe` is 32-bit. For 64-bit systems, download `SerialExaminerSetup-x64.exe`
-  > For now, downloading the installer will launch [UAC](https://en.wikipedia.org/wiki/User_Account_Control) *Unknown publisher* alert because it is not digitally signed - I can't afford digital certification
+  To check how many bit your system is, check the system information in _System Settings_
+  > Running downloaded installer will launch __[UAC](https://en.wikipedia.org/wiki/User_Account_Control) *Unknown publisher* alert__ because it is not digitally signed - for now I can't afford digital certification. You can use [Virustotal](https://www.virustotal.com/gui/home/upload) to make sure that installer is clean
 
-  > For now, some anti-virus programs may detect the installer as a potential threat because it is not downloaded frequently, so it is not marked as safe (it is unknown to the anti-virus)
+### Linux
+  To launch this project on your awesome system use following code
+  > First make sure your system  has installed [Python3](https://www.python.org)
+
+  ```bash
+  cd ~/Desktop
+  git clone https://github.com/Pixel48/SerialExaminer.git
+  cd SerialExaminer
+  python3 SerialExaminer.py
+  ```
 
 ## Usage
-  Guide how to use SerialExaminer interface
-  - [Generating an exam key](https://github.com/Pixel48/SerialExaminer#generating-an-exam-key)
-  - [Importing an exam key](https://github.com/Pixel48/SerialExaminer#importing-an-exam-key)
-  - [Checking tests](https://github.com/Pixel48/SerialExaminer#checking-tests)
-  - [Searching for cheaters](https://github.com/Pixel48/SerialExaminer#searching-for-cheaters)
+  A short guide how to use SerialExaminer
 
-  ![Main window dummy](./docs/img/main_window.png)
+### Collecting answers
+  Ask your students to send you test responses in .txt files named after their full names, journal number, any ID numbers or anything else, that can identify them. Ask them to write answers in these files in format `<question number>.<question answer>`, line by line. The order of questions and letter size don't matter
 
-### Generating an exam key
-  1. Provide the exact number of questions and answers in the exam and Press `Create key!` button
+### Generating answer key
+  1. Provide the exact number of questions and answers in the exam and Press `Create key` button
+  2. Provide answers to questions about the question with given number. If you make a mistake you can go back using the `<` button. Window will disappear automatically after entering the last answer
+  3. After key answer window vanish, press `Done` button and provide filename to save answer key for potential future use. Key is automatically imported after saving
 
-  ![Key parameters](./docs/img/key_parameters.png)
+### Importing answer key
+  1. Press `Import` button
+  2. In new dialog select key file you want to import
 
-  2. Provide answers to questions about the given number. If you make a mistake you can go back using the `<` button. Window will disappear automatically after entering the last answer
+  You can import key from _.txt_ file, if it's formatted as a exam response
 
-  ![Key data](./docs/img/key_ans.png)
-
-  3. After key answer window vanish, press `Done` button and provide where to save exam key for potential future use. (You dont need to import key after creating it, it's imported immediately after save).
-
-### Checking tests
-  1. Create or import correct exam key
+### Checking answers
+  1. Create or import correct answer key
   2. Press `Browse` button and provide folder with files written by your students
   3. Press `Check` button to calculate results
-  4. Press `Display` button to show test results
+  4. Press `Display` button to show test results (First 270 records)
   5. Press `Export` button, if you want to generate report file with result table in selected format
-
-  ![Result window](./docs/img/results.png)
   > Future updates will add export options and `predicted grade` column in results
 
-### Searching for cheaters
-  1. Press `Import` button
-  2. In new dialog change file extension to ***Plain text (\*.txt)***
-  3. Select the source file to which you want to check the similarity in other tests
-  4. Press `Browse` button and provide folder with other tests
-  5. Press `Check` button to calculate results
-  6. Press `Display` button to show similarity of other tests to source test
+## Feedback
+  [![GitHub issues open](https://img.shields.io/github/issues-raw/Pixel48/SerialExaminer?color=yellow)][issues]
+  [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/Pixel48/SerialExaminer?color=red)][issues]
 
-## Limits
-  SerialExaminer limitation list for [last release](https://github.com/Pixel48/SerialExaminer/releases/latest).
+  If you have used the program, feel free to leave feedback on the project's [issues page][issues] to help me improve my work
 
-  *These limits will be removed by future updates.*
-
-### Answers in exam key
-  Key creator supports answers quantity in range from 4 to 12
-
-  ![Minimum answers quantity](./docs/img/limit_min_answers_quantity.png)
-  ![Maximum answers quantity](./docs/img/limit_max_answers_quantity.png)
-
-### Records in result display
-  Test result display window supports up to 270.
-
-  Export feature will work with all records, limit applies to display only
-
-  ![Maximum result display records](./docs/img/limit_results_display.png)
-
+---
 ###### Copyright (c) 2020 [Pixel48](https://github.com/Pixel48/) All Rights Reserved
+  [readme-en]: ./README.md "English translation"
+  [readme-pl]: ./README-PL.md "Polskie tłumaczenie"
+  [latest-release]: https://github.com/Pixel48/SerialExaminer/releases/latest
+  [issues]: https://github.com/Pixel48/SerialExaminer/issues
